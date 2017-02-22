@@ -42,7 +42,8 @@ using namespace std;
 
 int main(int agrc, char *argv[]) {
 	freopen("..\\Debug\\Input.txt", "r", stdin);
-	std::ios::sync_with_stdio(false);
+	//freopen("..\\Debug\\Output.txt", "w", stdout);
+	//std::ios::sync_with_stdio(false);
 /*-------------------------------------------------------------------*/
 
 
