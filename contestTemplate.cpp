@@ -45,7 +45,7 @@ ll T;
 ll solve() {
 
 }
-
+/**************	 THINK SIMPLY ************************/
 int main(int agrc, char *argv[]) {
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
