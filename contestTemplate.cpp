@@ -42,7 +42,7 @@ using namespace std;
 //parameters
 ll T;
 /*-------------------------------------------------------------------*/
-void solve() {
+ll solve() {
 
 }
 
@@ -52,9 +52,11 @@ int main(int agrc, char *argv[]) {
 	//std::ios::sync_with_stdio(false);
 /*-------------------------------------------------------------------*/
 	cin >> T;
-	for (int i = 1; i <= T; i++) {
+	for (ull id = 1; id <= T; ++id) {
 		
-		cout << "Case #" << i << ": " << solve() << endl;
+		//Clear parameter here
+
+		cout << "Case #" << id << ": " << solve() << endl;
 	}
 	return 0;
 }
