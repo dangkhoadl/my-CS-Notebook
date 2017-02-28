@@ -1,3 +1,6 @@
+#define DEBUG
+//#define LINUX
+
 #ifdef LINUX
 #include <bits/stdc++.h>
 #endif
@@ -55,8 +58,6 @@ ll solve() {
 
 }
 /**************	 THINK SIMPLY ************************/
-#define DEBUG
-//#define LINUX
 int main(int agrc, char *argv[]) {
 	#ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
