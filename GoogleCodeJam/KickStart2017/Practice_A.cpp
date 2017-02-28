@@ -28,10 +28,10 @@ All names start and end with alphabet letters.
 Sample
 
 
-Input 
- 	
-Output 
- 
+Input
+
+Output
+
 2
 3
 ADAM
@@ -86,39 +86,52 @@ Sample case #2 would only appear in Large data set. The name DEF contains 3 diff
 #include <memory>
 #include <cctype>
 using namespace std;
+
+#define ll long long
+#define ull unsigned long long
+
+//parameters
+ull T;
+ull N;
 /*-------------------------------------------------------------------*/
 
 vector<string> v;
 vector<set<char>> result;
 vector<pair<int, string> > L;
 
+string solve() {
+	while (N--) {
+		string temp = "asas";
+		getline(cin, temp);
+		v.push_back(temp);
+	}
+
+	for (int i = 0; i < v.size(); ++i) {
+		for (int j = 0; j < v[i].size(); ++j) if ('A' <= v[i][j] && v[i][j] <= 'Z') if (result[i].find(v[i][j]) == result[i].end()) {
+			result[i].insert(v[i][j]);
+		}
+		L.push_back({ -int(result[i].size()), v[i] });
+	}
+	sort(L.begin(), L.end());
+
+	return L[0].second;
+}
+
 int main(int agrc, char *argv[]) {
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
 	//std::ios::sync_with_stdio(false);
 	/*-------------------------------------------------------------------*/
-	int T; scanf("%d", &T);
-	for (int count = 1; count <= T; ++count) {
-		int N; scanf("%d", &N);
+	cin >> T;
+	for (ull id = 1; id <= T; ++id) {
+		cin >> N;
+		//Clear parameter here
 		L.clear();
 		result.clear();
 		result.resize(N);
 		v.clear();
 		cin.ignore();
-		while (N--) {
-			string temp = "asas";
-			getline(cin, temp);
-			v.push_back(temp);
-		}
-
-		for (int i = 0; i < v.size(); ++i) {
-			for (int j = 0; j < v[i].size(); ++j) if ('A' <= v[i][j] && v[i][j] <= 'Z') if (result[i].find(v[i][j]) == result[i].end()) {
-				result[i].insert(v[i][j]);
-			}
-			L.push_back({ -int(result[i].size()), v[i] });
-		}
-		sort(L.begin(), L.end());
-		cout << "Case #" << count << ": " << L[0].second << endl;
+		cout << "Case #" << id << ": " << solve() << endl;
 	}
 	return 0;
 }
