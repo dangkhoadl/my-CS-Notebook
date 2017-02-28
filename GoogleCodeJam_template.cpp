@@ -1,9 +1,15 @@
+#ifdef LINUX
+#include <bits/stdc++.h>
+#endif
+
+#ifndef LINUX
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <iostream>
 #include <fstream>
 #include <streambuf>
@@ -35,6 +41,7 @@
 #include <iterator>
 #include <memory>
 #include <cctype>
+#endif
 using namespace std;
 
 #define ll long long
@@ -47,10 +54,14 @@ ll solve() {
 
 }
 /**************	 THINK SIMPLY ************************/
+#define DEBUG
+//#define LINUX
 int main(int agrc, char *argv[]) {
+	#ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
 	//std::ios::sync_with_stdio(false);
+	#endif
 /*-------------------------------------------------------------------*/
 	cin >> T;
 	for (ull id = 1; id <= T; ++id) {
