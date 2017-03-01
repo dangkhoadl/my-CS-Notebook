@@ -13,6 +13,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <bitset>
 #include <iostream>
 #include <fstream>
 #include <streambuf>
@@ -49,11 +50,14 @@ using namespace std;
 
 #define ll long long
 #define ull unsigned long long
+#define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
+#define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
 
 //parameters
-ll T;
+ll N;
 /*-------------------------------------------------------------------*/
 ll solve() {
+	
 
 }
 /**************	 THINK SIMPLY ************************/
@@ -64,12 +68,12 @@ int main(int agrc, char *argv[]) {
 	//std::ios::sync_with_stdio(false);
 	#endif
 /*-------------------------------------------------------------------*/
-	cin >> T;
-	for (ull id = 1; id <= T; ++id) {
-		
-		//Clear parameter here
+	//InOut
+	cin >> N;
+	//Clear parameter
 
-		cout << "Case #" << id << ": " << solve() << endl;
-	}
+	//solve
+	cout << solve() << endl;
+	
 	return 0;
 }
