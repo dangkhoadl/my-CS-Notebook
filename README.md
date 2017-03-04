@@ -1,3 +1,3 @@
 #My Cache
 
-Store some interesting problem and template :D
+Store some interesting problems and templates :D
