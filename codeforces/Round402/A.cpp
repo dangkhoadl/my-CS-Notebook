@@ -49,14 +49,24 @@ input
 4 1 4 1 1 2 4 4 1
 output
 4
-
 */
+
+#define DEBUG
+//#define LINUX
+
+#ifdef LINUX
+#include <bits/stdc++.h>
+#endif
+
+#ifndef LINUX
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
+#include <bitset>
 #include <iostream>
 #include <fstream>
 #include <streambuf>
@@ -88,41 +98,54 @@ output
 #include <iterator>
 #include <memory>
 #include <cctype>
+#endif
 using namespace std;
 
 #define ll long long
 #define ull unsigned long long
+#define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
+#define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
 
 //parameters
 ull N;
+ull A[100];
+ull B[100];
 /*-------------------------------------------------------------------*/
-vector<ull> A(6);
-vector<ull> B(6);
-
 ll solve() {
-	for (int i = 0; i < N; ++i) {
-		int temp; cin >> temp;
-		++A[temp];
-	}
-	for (int i = 0; i < N; ++i) {
-		int temp; cin >> temp;
-		++B[temp];
-	}
-	int result = 0;
-	for (int i = 1; i <= 5 ; ++i) {
-		int temp = abs(int(A[i] - B [i]));
-		if (temp % 2 == 1) return -1;
-		result += (temp / 2);
-	}
-	return result / 2;
-}
+	ll cnt[6];
+	memset(cnt, 0, 6 * sizeof(ull));
 
+	for_i(0, N, 1)
+		++cnt[A[i]];
+	for_i(0, N, 1)
+		--cnt[B[i]];
+	
+	for_i(1, 6, 1) {
+		cnt[i] = abs(cnt[i]);
+		if (cnt[i] % 2 == 1)
+			return -1;
+	}
+	return accumulate(cnt + 1, cnt + 6, 0) / 4;
+}
+/**************	 THINK SIMPLY ************************/
 int main(int agrc, char *argv[]) {
+#ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
+	freopen("..\\Debug\\Cerr.txt", "w", stderr);
 	//std::ios::sync_with_stdio(false);
+#endif
 	/*-------------------------------------------------------------------*/
+	//InOut
 	cin >> N;
+	for_i(0, N, 1)
+		cin >> A[i];
+	for_i(0, N, 1)
+		cin >> B[i];
+	//Clear parameter
+
+	//solve
 	cout << solve() << endl;
+
 	return 0;
 }

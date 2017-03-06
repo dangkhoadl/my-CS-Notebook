@@ -32,7 +32,7 @@
 #include <iomanip>
 #include <sstream>
 #include <cmath>
-#include <time.h>
+#include <ctime>
 #include <random>
 #include <unordered_map>
 #include <unordered_set>
@@ -51,7 +51,9 @@ using namespace std;
 #define ll long long
 #define ull unsigned long long
 #define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
+#define for_id(start,end,step) for(int i = start; i > (int)end; i += step) // [start, end)
 #define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
+#define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
 
 //parameters
 ll N;
@@ -65,6 +67,7 @@ int main(int agrc, char *argv[]) {
 	#ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
+	freopen("..\\Debug\\Cerr.txt", "w", stderr);
 	//std::ios::sync_with_stdio(false);
 	#endif
 /*-------------------------------------------------------------------*/

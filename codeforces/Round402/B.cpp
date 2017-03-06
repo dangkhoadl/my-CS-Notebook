@@ -52,6 +52,7 @@ In the example 2 you can remove two digits: 1 and any 0. The result is number 0 
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <bitset>
 #include <iostream>
 #include <fstream>
 #include <streambuf>
@@ -70,7 +71,7 @@ In the example 2 you can remove two digits: 1 and any 0. The result is number 0 
 #include <iomanip>
 #include <sstream>
 #include <cmath>
-#include <time.h>
+#include <ctime>
 #include <random>
 #include <unordered_map>
 #include <unordered_set>
@@ -88,37 +89,45 @@ using namespace std;
 
 #define ll long long
 #define ull unsigned long long
+#define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
+#define for_id(start,end,step) for(int i = start; i > (int)end; i += step) // [start, end)
+#define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
+#define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
 
 //parameters
-ll N;
-char a[111];
-int k;
-
+char s[111];
+ull N;
+ull k;
 /*-------------------------------------------------------------------*/
 ll solve() {
-	scanf("%s %d", a + 1, &k);
-	int size = strlen(a + 1);
-	
-	int zerocnt = 0;
-	int ans = 0;
-	for (int i = size; i >= 1; --i) {
-		if (a[i] == '0') ++zerocnt;
-		else ++ans;
-		if (zerocnt >= k) return ans;
+	ull cnt = 0;
+	ull zeros = 0;
+	for_id(N, 0, -1) {
+		if (s[i] == '0')
+			++zeros;
+		else
+			++cnt;
+		if (zeros == k)
+			return cnt;
 	}
-	if (zerocnt == 0) return size;
-	return size - 1;
+	return N - 1;
 }
 /**************	 THINK SIMPLY ************************/
 int main(int agrc, char *argv[]) {
-	#ifdef DEBUG
+#ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
+	freopen("..\\Debug\\Cerr.txt", "w", stderr);
 	//std::ios::sync_with_stdio(false);
-	#endif
+#endif
 	/*-------------------------------------------------------------------*/
-	//cin >> N;
-	//Clear parameter here
+	//InOut
+	scanf("%s", s + 1);
+	N = strlen(s + 1);
+	cin >> k;
+	//Clear parameter
+
+	//solve
 	cout << solve() << endl;
 
 	return 0;
