@@ -1,6 +1,9 @@
+
+/*------------------------------------- CONFIG ---------------------------------------------------------------*/
 #define DEBUG
 //#define LINUX
 
+/*------------------------------------- TEMPLATE ---------------------------------------------------------------*/
 #ifdef LINUX
 #include <bits/stdc++.h>
 #endif
@@ -48,34 +51,67 @@
 #endif
 using namespace std;
 
+#define int long long
+#define double long double
 #define ll long long
 #define ull unsigned long long
+
 #define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
 #define for_id(start,end,step) for(int i = start; i > (int)end; i += step) // [start, end)
 #define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
 #define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
+#define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
 
-//parameters
-ll T;
-/*-------------------------------------------------------------------*/
+#define pr(X) { cerr << #X << " = " << (X) << endl; }
+#define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
+
+#define sqr(x) ((x) * (x))
+#define PI (2 * acos((double)0))
+double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
+
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+#define all(a) (a).begin(), (a).end()
+#define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
+/*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
+ull T;
+
+
+/*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
+
+
 ll solve() {
-
+	
+	
 	return 0;
 }
-/**************	 THINK SIMPLY ************************/
-int main(int agrc, char *argv[]) {
-	#ifdef DEBUG
+/*------------------------------------- MAIN ---------------------------------------------------------------*/
+int32_t main(int agrc, char *argv[]) {
+#ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
 	freopen("..\\Debug\\Cerr.txt", "w", stderr);
-	//std::ios::sync_with_stdio(false);
-	#endif
-/*-------------------------------------------------------------------*/
+#endif
+	ios::sync_with_stdio(false);
+	cin.tie(false);
+	cout << fixed << setprecision(11);
+	cerr << fixed << setprecision(6);
+	/*----------------------------------------------------------------------------------------------------*/
+	//InOut
+	cin >> T;
+	
+
+	//Clear parameter
+
+
+	//solve
 	cin >> T;
 	for (ull id = 1; id <= T; ++id) {
 		//InOut
-		
+
+
 		//Clear parameter 
+
 
 		//Solve
 		cout << "Case #" << id << ": " << solve() << endl;

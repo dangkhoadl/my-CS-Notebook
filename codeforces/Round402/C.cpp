@@ -54,6 +54,7 @@ In the second example Igor should buy right now items 1, 2, 4 and 5, paying for 
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <bitset>
 #include <iostream>
 #include <fstream>
 #include <streambuf>
@@ -72,7 +73,7 @@ In the second example Igor should buy right now items 1, 2, 4 and 5, paying for 
 #include <iomanip>
 #include <sstream>
 #include <cmath>
-#include <time.h>
+#include <ctime>
 #include <random>
 #include <unordered_map>
 #include <unordered_set>
@@ -91,58 +92,62 @@ using namespace std;
 #define ll long long
 #define ull unsigned long long
 #define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
+#define for_id(start,end,step) for(int i = start; i > (int)end; i += step) // [start, end)
 #define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
+#define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
 
 //parameters
-ll n,k;
-ll A[200000];
-ll B[200000];
+ll n;
+ull k;
+ull a[200001];
+ull b[200001];
 
-struct node {
-	ll x;
-	ull index;
-} C[200000];
-
+struct node{
+	ll data;
+	ull idx;
+} C[200001];
 /*-------------------------------------------------------------------*/
 ll solve() {
-	ull ans = 0;
-	sort(C, C + n, [](node a, node b) {return a.x < b.x; });
+	for_i(0, n, 1)
+		C[i].data = a[i] - b[i], C[i].idx = i;
+	sort(C, C + n, [](const node &a, const node &b) { return a.data < b.data; });
 
-	for_i(0, k, 1)
-		ans += A[C[i].index];
-
-	ull pos = n;
-	for_i(k, n, 1) {
-		if (C[i].x > 0) {
-			pos = i;
-			break;
+	ull pay = 0;
+	ull pos = 0;
+	for_i(0, n, 1) 
+		if (C[i].data < 0) {
+			pay += a[C[i].idx];
+			pos = i + 1;
 		}
-		ans += A[C[i].index];
-	}
+	
+	if (pos < k) 
+		for_i(pos, k, 1)
+			pay += a[C[i].idx];
+	
+	
+	for_i(max(pos,k), n,1)
+		pay += b[C[i].idx];
 
-	for_i(pos, n, 1)
-		ans += B[C[i].index];
-
-	return ans;
+	return pay;
 }
-
 /**************	 THINK SIMPLY ************************/
 int main(int agrc, char *argv[]) {
 #ifdef DEBUG
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
+	freopen("..\\Debug\\Cerr.txt", "w", stderr);
 	//std::ios::sync_with_stdio(false);
 #endif
 	/*-------------------------------------------------------------------*/
 	//InOut
 	cin >> n >> k;
 	for_i(0, n, 1)
-		cin >> A[i];
+		cin >> a[i];
 	for_i(0, n, 1)
-		cin >> B[i], C[i].x = A[i] - B[i], C[i].index = i;
+		cin >> b[i];
 	//Clear parameter
 
-	//Solve
+	//solve
 	cout << solve() << endl;
 
 	return 0;
