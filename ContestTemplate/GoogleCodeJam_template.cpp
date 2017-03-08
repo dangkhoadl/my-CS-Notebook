@@ -65,12 +65,14 @@ using namespace std;
 #define pr(X) { cerr << #X << " = " << (X) << endl; }
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
 
+const int inf = 1e9 + 7;
 #define sqr(x) ((x) * (x))
 #define PI (2 * acos((double)0))
 double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
 
 typedef pair<int, int> pii;
 typedef vector<int> vi;
+#define sz(a) (int)(a).size()
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/

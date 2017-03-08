@@ -1,4 +1,6 @@
 
+// http://codeforces.com/contest/778/problem/A
+
 /*------------------------------------- CONFIG ---------------------------------------------------------------*/
 #define DEBUG
 //#define LINUX
@@ -76,16 +78,48 @@ typedef vector<int> vi;
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
-ll N;
+string t;
+string p;
+ll idx[200001];
 
-
+bool del[200001];
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
+bool checkSubstr(ll m) {
+	for_i(0, m, 1)
+		del[idx[i]] = true;
+	for_i(m, sz(t), 1)
+		del[idx[i]] = false;
 
+	ll i = 0;
+	for_j(0, sz(p), 1) {
+		while (i < sz(t) && (del[i] || t[i] != p[j]))
+			++i;
+		if (i >= sz(t))
+			return false;
+		++i;
+	}
+	return true;
+}
+
+ll binSearch(ll l, ll r) {
+	ll pos = 0;
+	--r;
+	while (true) {
+		if (l > r)
+			return pos;
+
+		ll m = l + (r - l) / 2;
+		if (checkSubstr(m)) {
+			pos = m;
+			l = m + 1;
+		}
+		else
+			r = m - 1;
+	}
+}
 
 ll solve() {
-	
-
-	return 0;
+	return binSearch(0, sz(t));
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
 int32_t main(int agrc, char *argv[]) {
@@ -100,14 +134,14 @@ int32_t main(int agrc, char *argv[]) {
 	cerr << fixed << setprecision(6);
 	/*----------------------------------------------------------------------------------------------------*/
 	//InOut
-	cin >> N;
-	
+	cin >> t >> p;
+	for_i(0, sz(t), 1)
+		cin >> idx[i], --idx[i];
 
 	//Clear parameter
 
 
 	//solve
 	cout << solve() << endl;
-
 	return 0;
 }

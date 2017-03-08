@@ -1,17 +1,18 @@
 
 // A[left,right)
-int binarySearch(const int A[], int left, int right, int X) {
-	--right;
-	while(true) {
-		int mid = left + (right - left) / 2;
-		if (X == A[mid])
-			return A[mid];
-		if (left > right || X < A[left] || X > A[right])
+int binarySearch(int A[], int l, int r, int X) {
+	--r;
+	while (true) {
+		if (l > r)
 			return -1;
 
-		if (X > A[mid])
-			left = mid + 1;
+		int m = l + ((r - l) >> 1);
+		if (A[m] == X)
+			return m;
+
+		if (X > A[m])
+			l = m + 1;
 		else
-			right = mid - 1;
+			r = m - 1;
 	}
 }
