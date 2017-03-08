@@ -1,4 +1,4 @@
-
+// http://codeforces.com/contest/777/problem/A
 /*------------------------------------- CONFIG ---------------------------------------------------------------*/
 #define DEBUG
 //#define LINUX
@@ -78,16 +78,24 @@ typedef vector<int> vi;
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
-ll N;
-
+ull n;
+int x;
 
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
-
-
 ll solve() {
-	
-
-	return 0;
+	n %= (6 * 6 * 6);
+	bool a[] = { 0, 0, 0 };
+	a[x] = true;
+	while (n) {
+		if (n % 2 != 0) {
+			swap(a[0], a[1]);
+		}
+		else {
+			swap(a[1], a[2]);
+		}
+		n--;
+	}
+	return find(a,a+2,true) - a;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
 int32_t main(int agrc, char *argv[]) {
@@ -102,8 +110,8 @@ int32_t main(int agrc, char *argv[]) {
 	cerr << fixed << setprecision(6);
 	/*----------------------------------------------------------------------------------------------------*/
 	//InOut
-	cin >> N;
-	
+	cin >> n >> x;
+
 
 	//Clear parameter
 
