@@ -63,9 +63,9 @@ using namespace std;
 #define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
 
 #define pr(X) { cerr << #X << " = " << (X) << endl; }
-#define pr_(X) { cerr << #X << " = " << (X) << "; "; }
+#define pr_(X) { cerr << #X << " = " << (X) << " ; "; }
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
-#define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << ", "; }
+#define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << " ; "; }
 
 const int inf = 1e9 + 7;
 #define sqr(x) ((x) * (x))
