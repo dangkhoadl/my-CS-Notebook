@@ -62,10 +62,13 @@ using namespace std;
 #define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
 #define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
 
+
+#ifdef DEBUG
 #define pr(X) { cerr << #X << " = " << (X) << endl; }
 #define pr_(X) { cerr << #X << " = " << (X) << " ; "; }
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
 #define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << " ; "; }
+#endif 
 
 const int inf = 1e9 + 7;
 #define sqr(x) ((x) * (x))
@@ -74,11 +77,13 @@ double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
 
 typedef pair<int, int> pii;
 typedef vector<int> vi;
+#define pb push_back
 #define sz(a) (int)(a).size()
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
-ll N;
+const int MAXN = 1e6 + 1;
+ll n;
 
 
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
@@ -86,7 +91,7 @@ ll N;
 
 ll solve() {
 	
-
+	
 	return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
@@ -95,14 +100,14 @@ int32_t main(int agrc, char *argv[]) {
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
 	freopen("..\\Debug\\Cerr.txt", "w", stderr);
+	cerr << fixed << setprecision(6);
 #endif
 	ios::sync_with_stdio(false);
 	cin.tie(false);
 	cout << fixed << setprecision(11);
-	cerr << fixed << setprecision(6);
 	/*----------------------------------------------------------------------------------------------------*/
 	//InOut
-	cin >> N;
+	cin >> n;
 	
 
 	//Clear parameter
@@ -110,6 +115,6 @@ int32_t main(int agrc, char *argv[]) {
 
 	//solve
 	cout << solve() << endl;
-
+	
 	return 0;
 }
