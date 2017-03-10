@@ -5,7 +5,10 @@ int dat[MAXEDGE];
 
 int root;
 vector<int> child[MAXEDGE];
+int dep[MAXEDGE];
+int hei[MAXEDGE];
 
+/*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 //MultiTree adjnode presentation
 //Node	| childNode	 data
 // root node has adjnode == 0
