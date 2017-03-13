@@ -92,21 +92,19 @@ bool findLineIntersect(const line &l1, const line &l2, point &intersect) {
 //and we can find their intersections.
 point findCircleFrom3Points(const point &X, const point &Y, const point &Z) {
 	//find perpendicular line of XY
-	point mXY(0.5 * (X.x + Y.x), 0.5 * (X.y + Y.y)); //mXY = mid point of X and Y;
+	point mXY((double)0.5 * (X.x + Y.x), (double)0.5 * (X.y + Y.y)); //mXY = mid point of X and Y;
 	line XY(X, Y);
 	line pXY( (-1.0) * XY.B, XY.A, (-1.0) * XY.B * mXY.x + XY.A * mXY.y);
 
 	//find perpendicular line of YZ
-	point mYZ(0.5 * (Y.x + Z.x), 0.5 * (Y.y + Z.y)); //mYZ = mid point of Y and Z;
+	point mYZ((double)0.5 * (Y.x + Z.x), (double)0.5 * (Y.y + Z.y)); //mYZ = mid point of Y and Z;
 	line YZ(Y, Z);
-	line pXY((-1.0) * YZ.B, YZ.A, (-1.0) * YZ.B * mYZ.x + YZ.A * mYZ.y);
+	line pYZ((-1.0) * YZ.B, YZ.A, (-1.0) * YZ.B * mYZ.x + YZ.A * mYZ.y);
 
 	point centre;
-	if (findLineIntersect(pXY, pXY, centre))
+	if (findLineIntersect(pXY, pYZ, centre))
 		return centre;
 	
 	// X,Y,Z are in the same line
-	return Y;
+	return{ (double)inf, (double)inf };
 }
-
-
