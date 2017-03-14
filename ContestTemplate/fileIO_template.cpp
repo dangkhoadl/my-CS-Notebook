@@ -1,4 +1,5 @@
 //#define LINUX
+#define DEBUG
 
 #ifdef LINUX
 #include <bits/stdc++.h>
@@ -47,12 +48,25 @@
 #endif
 using namespace std;
 
-
+#ifdef DEBUG
+#define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
+#define pr(X) { cerr << #X << " = " << (X) << endl; }
+#define pr_(X) { cerr << #X << " = " << (X) << " ; "; }
+#define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
+#define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << " ; "; }
+#define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
+#define prai_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << " ; "; }
+#endif
 
 /*******************************************************************************************/
 
 
 int main(int agrc, char *argv[]) {
+#ifdef DEBUG
+	freopen("..\\Debug\\Cerr.txt", "w", stderr);
+	cerr << fixed << setprecision(6);
+#endif
+
 	if (agrc == 3) {
 		//Input
 		const char *inputFileName(argv[1]);
