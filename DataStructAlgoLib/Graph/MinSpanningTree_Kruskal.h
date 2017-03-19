@@ -1,5 +1,6 @@
 
 //												MST by Kruskal
+//			O(E*log(V))
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 const int MAXV = 1e6 + 1;
 int V, E;
@@ -41,15 +42,17 @@ public:
 };
 
 vector<int> pathwei;
-void Kruskal() {
-	Set S(V+1);
+int Kruskal() {
+	int totalTreeWeight = 0;
+
+	Set S(V + 1);
 	for (int v = 1; v <= V; ++v)
 		S.MakeSet(v);
 
 	priority_queue< pair<int, pair<int, int>>> H;
 	for (int v = 1; v <= V; ++v)
 		for (int i = 0; i < e[v].size(); ++i)
-			H.push({ -wei[v][i], {v, e[v][i]} });
+			H.push({ -wei[v][i],{ v, e[v][i] } });
 
 	while (!H.empty()) {
 		int we = -H.top().first;
@@ -58,10 +61,14 @@ void Kruskal() {
 		H.pop();
 
 		if (S.Find(v) != S.Find(w)) {
+
+			//Update
+			totalTreeWeight += we;
 			pathwei.push_back(we);
 			S.Union(v, w);
 		}
 	}
+	return totalTreeWeight;
 }
 /*--------------------------------------------------------------------------------------------------------------------------------*/
 

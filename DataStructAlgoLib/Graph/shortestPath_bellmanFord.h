@@ -1,5 +1,6 @@
 
-//												shortest path by BellmanFord
+//												shortest path by BellmanFord (Negative weight)
+//		O(V*E)
 /*----------------------------------------------------------- BellmanFord ---------------------------------------------------------------------*/
 const int MAXV = 100 + 1;
 int V, E;
@@ -8,19 +9,25 @@ vector<int> wei[MAXV];
 
 int dist[MAXV];
 int pre[MAXV];
-void bellmanFord(int start) {
+bool bellmanFord(int start) {
 	memset(pre + 1, 0, V * sizeof(int));
-	for (int v = 1; v <= V; ++v) 
-		dist[v] = (v == start) ? 0 : inf;
-	
-	for (int k = 0; k < V - 1; ++k) {
+	fill(dist + 1, dist + V + 1, inf);
+	dist[start] = 0;
+
+	for (int step = 1; step <= V; ++step) {
 		for (int v = 1; v <= V; ++v)
 			for (int i = 0; i < e[v].size(); ++i)
 				if (dist[e[v][i]] > dist[v] + wei[v][i]) {
+					//Check negative cycle
+					if (step == V)
+						return false;
+
+					//Relax
 					dist[e[v][i]] = dist[v] + wei[v][i];
 					pre[e[v][i]] = v;
 				}
 	}
+	return true;
 }
 
 vector<int> reconstructSPT(int start, int end) {
@@ -53,8 +60,8 @@ queue<int> detectNegCycle() {
 }
 bool bellmanFord(int start) {
 	memset(pre + 1, 0, V * sizeof(int));
-	for (int v = 1; v <= V; ++v) 
-		dist[v] = (v == start) ? 0 : inf;
+	fill(dist + 1, dist + V + 1, inf);
+	dist[start] = 0;
 	
 	for (int k = 0; k < V - 1; ++k) {
 		for (int v = 1; v <= V; ++v)

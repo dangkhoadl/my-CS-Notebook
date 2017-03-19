@@ -1,6 +1,8 @@
 
 //												shortest path by dijkstra
 /*--------------------------------------------------------------------------------------------------------------------------------*/
+// O( (V+E) * log(V))
+
 const int MAXV = 1e6 + 1;
 int V, E;
 vector<int> e[MAXV];
@@ -54,16 +56,17 @@ public:
 	}
 };
 
-int dist[MAXV];
-int pre[MAXV];
+int dist[MAXV];		// Store the distance from start -> i
+int pre[MAXV];		// store the path
 void dijkstra(int start) {
 	memset(pre + 1, 0, V * sizeof(int));
-	MinHeap pq;
-	for (int v = 1; v <= V; ++v) {
-		dist[v] = v == start ? 0 : inf;
-		pq.insert({ dist[v] , v});
-	}
+	fill(dist + 1, dist + V + 1, inf);
+	dist[start] = 0;
 
+	MinHeap pq;
+	for (int v = 1; v <= V; ++v) 
+		pq.insert({ dist[v] , v});
+	
 	while (!pq.empty()) {
 		int v = pq.extractMin();
 
@@ -91,7 +94,7 @@ vector<int> reconstructSPT(int start, int end) {
 	return res;
 }
 
-/*--------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------- Use set -------------------------------------------------------------------------------*/
 const int MAXV = 1e6 + 1;
 int V, E;
 vector<int> e[MAXV];
@@ -100,24 +103,96 @@ vector<int> wei[MAXV];
 int dist[MAXV];
 int pre[MAXV];
 void dijkstra(int start) {
-	set<pair<int, int>> pq;
-	for (int v = 1; v <= V; ++v) {
-		dist[v] = v == start ? 0 : inf;
-		pq.insert({ dist[v] , v });
-	}
-	
-	while (pq.size() != 0) {
-		int v = pq.begin()->second;
-		pq.erase(pq.begin());
+	fill(pre + 1, pre + V + 1, inf);
+	fill(dist + 1, dist + V + 1, inf);
+	dist[start] = 0;
 
-		for (int i = 0; i < e[v].size(); ++i) 
+	set<pair<int, int>> s;
+	s.insert({dist[start], start});
+
+	while (!s.empty()) {
+		int v = s.begin()->second;
+		s.erase(s.begin());
+
+		for (int i = 0; i < e[v].size(); ++i)
 			if (dist[e[v][i]] > dist[v] + wei[v][i]) {
-				if (dist[e[v][i]] != inf)
-					pq.erase(pq.find({ dist[e[v][i]], e[v][i] } ));
-				
+				//Update
+				s.erase({ dist[e[v][i]], e[v][i] } );
+
+				//Relax
 				dist[e[v][i]] = dist[v] + wei[v][i];
 				pre[e[v][i]] = v;
-				pq.insert({ dist[e[v][i]] , e[v][i] });
+
+				//Update
+				s.insert({ dist[e[v][i]], e[v][i] });
+			}
+	}
+}
+
+/*------------------------------------------------- Use PQ 1 -------------------------------------------------------------------------------*/
+int dist[MAXV];		// Store the distance from start -> i
+int pre[MAXV];		// store the path
+bool visited[MAXV];
+void dijkstra(int start) {
+	fill(visited + 1, visited + V + 1, false);
+	fill(pre + 1, pre + V + 1, inf);
+	fill(dist + 1, dist + V + 1, inf);
+	dist[start] = 0;
+
+	priority_queue<pair<int, int>, vector<pair<int, int> >, less<pair<int, int> > > pq;
+	pq.push({dist[start], start});
+
+	while (!pq.empty()) {
+		int v = pq.top().second;
+		pq.pop();
+
+		if (visited[v])
+			continue;
+		visited[v] = true;
+
+		for (int i = 0; i < e[v].size(); ++i)
+			if (dist[e[v][i]] > dist[v] + wei[v][i]) {
+
+				//Relax
+				dist[e[v][i]] = dist[v] + wei[v][i];
+				pre[e[v][i]] = v;
+
+				//Update
+				pq.push({ dist[e[v][i]], e[v][i] });
+			}
+	}
+}
+
+/*------------------------------------------------- Use PQ 2 -------------------------------------------------------------------------------*/
+int dist[MAXV];		// Store the distance from start -> i
+int pre[MAXV];		// store the path
+bool visited[MAXV];
+void dijkstra(int start) {
+	fill(visited + 1, visited + V + 1, false);
+	fill(pre + 1, pre + V + 1, inf);
+	fill(dist + 1, dist + V + 1, inf);
+	dist[start] = 0;
+
+	priority_queue<pair<int, int>> pq;
+	pq.push({ -dist[start], start });
+
+	while (!pq.empty()) {
+		int v = pq.top().second;
+		pq.pop();
+
+		if (visited[v])
+			continue;
+		visited[v] = true;
+
+		for (int i = 0; i < e[v].size(); ++i)
+			if (dist[e[v][i]] > dist[v] + wei[v][i]) {
+
+				//Relax
+				dist[e[v][i]] = dist[v] + wei[v][i];
+				pre[e[v][i]] = v;
+
+				//Update
+				pq.push({ -dist[e[v][i]], e[v][i] });
 			}
 	}
 }

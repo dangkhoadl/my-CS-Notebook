@@ -1,6 +1,7 @@
 
 //												MST by Prim
 /*--------------------------------------------------------------------------------------------------------------------------------*/
+//								O(E*log(V))
 const int MAXV = 1e6 + 1;
 int V, E;
 vector<int> e[MAXV];
@@ -54,8 +55,8 @@ public:
 	}
 };
 
-int cost[MAXV];
-int par[MAXV];
+int cost[MAXV]; //store the weight from i -> par[i]
+int par[MAXV];	// root node of the tree (start) has par = 0
 void prim(int start) {
 	MinHeap H;
 	memset(par + 1, 0, V * sizeof(int));
@@ -75,5 +76,32 @@ void prim(int start) {
 	}
 }
 
-/*--------------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------- Use set ------------------------------------------------------------------------*/
+// O(E*log(V))
+int cost[MAXV]; //store the weight from i -> pre[i]
+int pre[MAXV];	//tree dont have root but segment 
+void prim() {
+	fill(cost + 1, cost + V + 1, inf);
+	fill(pre + 1, pre + V + 1, 0);
+
+	set<pair<int, int>> s;
+	for (int v = 1; v <= V; ++v)
+		s.insert({ cost[v], v });
+
+	while (!s.empty()) {
+		int v = s.begin()->second;
+		s.erase(s.begin());
+
+		for(int i=0; i<e[v].size(); ++i)
+			if (cost[e[v][i]] > wei[v][i]) {
+				s.erase({ cost[e[v][i]], e[v][i] });
+
+				//Update
+				cost[e[v][i]] = wei[v][i];
+				pre[e[v][i]] = v;
+
+				s.insert({cost[e[v][i]], e[v][i]});
+			}
+	}
+}
 

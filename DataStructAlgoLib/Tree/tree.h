@@ -1,11 +1,3 @@
-const int MAXEDGE = 21;
-int n;
-int par[MAXEDGE];
-int dat[MAXEDGE];
-
-int root;
-vector<int> child[MAXEDGE];
-
 //MultiTree adjnode presentation
 //Node	| childNode	 data
 // root node has adjnode == 0
@@ -18,6 +10,14 @@ vector<int> child[MAXEDGE];
 //1 1	1 ----> 5(1)
 //4 2	4 ----> 6(2)
 //
+
+const int MAXEDGE = 21;
+int n;
+int par[MAXEDGE];
+int dat[MAXEDGE];
+
+int root;
+vector<int> child[MAXEDGE];
 
 void readInput() {
 	cin >> n;

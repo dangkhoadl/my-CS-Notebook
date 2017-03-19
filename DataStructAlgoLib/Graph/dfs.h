@@ -1,5 +1,6 @@
 
-/*------------------------------------- DFS ---------------------------------------------------------------*/
+//							DFS: 					O (V + E)
+/*-------------------------------------------------------------------------------------------------------------*/
 const int MAXV = 1e6 + 1;
 int V, E;
 vector<int> e[MAXV];
@@ -28,11 +29,11 @@ void explore(int v) {
 	
 }
 void dfs(int v) {
-	memset(visited, false, V);
+	memset(visited + 1, false, V);
 	explore(v);
 }
 void dfsAll() {
-	memset(visited, false, V);
+	memset(visited + 1, false, V);
 	for (int v = 1; v <= V; ++v)
 		explore(v);
 }

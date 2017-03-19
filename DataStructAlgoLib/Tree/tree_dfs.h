@@ -5,15 +5,13 @@ int dat[MAXEDGE];
 
 int root;
 vector<int> child[MAXEDGE];
-int dep[MAXEDGE];
-int hei[MAXEDGE];
 
 /*-----------------------------------------------------------------------------------------------------------------*/
 //dfs(root);
 void dfs(int x) {
 	//PreProcess x
 
-	for_i(0, sz(child[x]), 1) {
+	for (int i = 0; i < child[x].size(); ++i) {
 		//Preprocess x[child]
 
 		//DFS
@@ -27,8 +25,10 @@ void dfs(int x) {
 }
 
 /*--------------------------------------------------DFS to find depth ---------------------------------------------------------------*/
+//Init
 //dep[root] = 0;
 //dfs(root);
+int dep[MAXEDGE];
 void dfs(int x) {
 	//PreProcess x
 	printf("Node[%lld]: data = %lld, depth from root = %lld\n", x, dat[x], dep[x]);
@@ -49,6 +49,7 @@ void dfs(int x) {
 }
 
 /*----------------------------------------------- DFS to find height ------------------------------------------------------------------*/
+int hei[MAXEDGE];
 void dfs(int x) {
 	int maxChildHei = 0;
 	for (int i = 0; i < child[x].size(); ++i) {

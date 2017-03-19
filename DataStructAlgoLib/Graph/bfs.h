@@ -1,3 +1,5 @@
+
+//					BFS: O(V + E)
 /*------------------------------------- BFS ---------------------------------------------------------------*/
 const int MAXV = 1e6 + 1;
 int V, E;
@@ -5,7 +7,6 @@ vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
 int edgeDist[MAXV]; // store the number of edges from start to all other vertices
-
 void bfs(int start) {
 	memset(edgeDist + 1, -1, V * sizeof(int));
 	edgeDist[start] = 0;
