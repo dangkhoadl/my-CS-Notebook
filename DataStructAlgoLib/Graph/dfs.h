@@ -7,7 +7,6 @@ vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
 bool visited[MAXV];
-
 void explore(int v) {
 	visited[v] = true;
 

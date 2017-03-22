@@ -1,7 +1,3 @@
-#ifdef _MSC_VER
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
 /*
 * @author panks
 * Big Integer library in C++, single file implementation.
@@ -10,9 +6,11 @@
 #include <string>
 #include <sstream>
 #include <cmath>
-#define MAX 10000 // for strings
+
 
 using namespace std;
+
+#define MAX 10000 // for strings
 class BigInteger {
 private:
 	string number;
@@ -21,7 +19,7 @@ public:
 	BigInteger(); // empty constructor initializes zero
 	BigInteger(string s); // "string" constructor
 	BigInteger(string s, bool sin); // "string" constructor
-	BigInteger(int n); // "int" constructor
+	BigInteger(int32_t n); // "int" constructor
 	void setNumber(string s);
 	const string& getNumber(); // retrieves the number
 	void setSign(bool s);
@@ -35,9 +33,9 @@ public:
 	bool operator >= (BigInteger b);
 	bool operator <= (BigInteger b);
 	BigInteger& operator ++(); // prefix
-	BigInteger  operator ++(int); // postfix
+	BigInteger operator ++(int32_t); // postfix
 	BigInteger& operator --(); // prefix
-	BigInteger  operator --(int); // postfix
+	BigInteger  operator --(int32_t); // postfix
 	BigInteger operator + (BigInteger b);
 	BigInteger operator - (BigInteger b);
 	BigInteger operator * (BigInteger b);
@@ -48,7 +46,7 @@ public:
 	BigInteger& operator *= (BigInteger b);
 	BigInteger& operator /= (BigInteger b);
 	BigInteger& operator %= (BigInteger b);
-	BigInteger& operator [] (int n);
+	BigInteger& operator [] (int32_t n);
 	BigInteger operator -(); // unary minus sign
 	operator string(); // for conversion from BigInteger to string
 private:
@@ -62,12 +60,6 @@ private:
 	string toString(long long n);
 	long long toInt(string s);
 };
-
-int main() {
-	//Your Code Here
-
-	return 0;
-}
 
 //------------------------------------------------------------------------------
 
@@ -92,7 +84,7 @@ BigInteger::BigInteger(string s, bool sin) { // "string" constructor
 	setSign(sin);
 }
 
-BigInteger::BigInteger(int n) { // "int" constructor
+BigInteger::BigInteger(int32_t n) { // "int" constructor
 	stringstream ss;
 	string s;
 	ss << n;
@@ -165,7 +157,7 @@ BigInteger& BigInteger::operator ++() { // prefix
 	return (*this);
 }
 
-BigInteger BigInteger::operator ++(int) { // postfix
+BigInteger BigInteger::operator ++(int32_t) { // postfix
 	BigInteger before = (*this);
 
 	(*this) = (*this) + 1;
@@ -179,7 +171,7 @@ BigInteger& BigInteger::operator --() { // prefix
 
 }
 
-BigInteger BigInteger::operator --(int) { // postfix
+BigInteger BigInteger::operator --(int32_t) { // postfix
 	BigInteger before = (*this);
 
 	(*this) = (*this) - 1;
@@ -280,7 +272,7 @@ BigInteger& BigInteger::operator %= (BigInteger b) {
 	return (*this);
 }
 
-BigInteger& BigInteger::operator [] (int n) {
+BigInteger& BigInteger::operator [] (int32_t n) {
 	return *(this + (n * sizeof(BigInteger)));
 }
 
@@ -332,7 +324,7 @@ bool BigInteger::greater(BigInteger n1, BigInteger n2) {
 string BigInteger::add(string number1, string number2) {
 	string add = (number1.length() > number2.length()) ? number1 : number2;
 	char carry = '0';
-	int differenceInLength = abs((int)(number1.size() - number2.size()));
+	int32_t differenceInLength = abs((int32_t)(number1.size() - number2.size()));
 
 	if (number1.size() > number2.size())
 		number2.insert(0, differenceInLength, '0'); // put zeros from left
@@ -361,7 +353,7 @@ string BigInteger::add(string number1, string number2) {
 
 string BigInteger::subtract(string number1, string number2) {
 	string sub = (number1.length()>number2.length()) ? number1 : number2;
-	int differenceInLength = abs((int)(number1.size() - number2.size()));
+	int32_t differenceInLength = abs((int32_t)(number1.size() - number2.size()));
 
 	if (number1.size() > number2.size())
 		number2.insert(0, differenceInLength, '0');
@@ -390,8 +382,8 @@ string BigInteger::multiply(string n1, string n2) {
 	string res = "0";
 	for (int i = n1.length() - 1; i >= 0; --i) {
 		string temp = n2;
-		int currentDigit = n1[i] - '0';
-		int carry = 0;
+		int32_t currentDigit = n1[i] - '0';
+		int32_t carry = 0;
 
 		for (int j = temp.length() - 1; j >= 0; --j) {
 			temp[j] = ((temp[j] - '0') * currentDigit) + carry;
