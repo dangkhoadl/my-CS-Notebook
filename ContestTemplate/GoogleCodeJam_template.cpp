@@ -123,7 +123,7 @@ int32_t main(int agrc, char *argv[]) {
 	//Set/Clear parameters
 
 
-	cin >> T;
+	// Solve all cases
 	for (ull case_ = 1; case_ <= T; ++case_) {
 		//InOut
 
