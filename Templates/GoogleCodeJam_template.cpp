@@ -96,12 +96,15 @@ ull T;
 const int MAXN = 1e6 + 1;
 
 
+void setClearPar() {
+	
+}
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
 
 ll solve() {
 	
-	
+
 	return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
@@ -118,17 +121,13 @@ int32_t main(int agrc, char *argv[]) {
 	/*----------------------------------------------------------------------------------------------------*/
 	//InOut
 	cin >> T;
-	
-
-	//Set/Clear parameters
-
 
 	// Solve all cases
 	for (ull case_ = 1; case_ <= T; ++case_) {
-		//InOut
-
-
 		//Set/Clear parameters
+		setClearPar();
+
+		//InOut
 
 
 		//Solve

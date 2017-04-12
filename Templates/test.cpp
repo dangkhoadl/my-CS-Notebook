@@ -72,7 +72,7 @@ using namespace std;
 #define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
 #define prai_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << " ; "; }
 #define pra2(A, start1, end1, start2, end2) {for_(start1, end1, 1) {for__(start2, end2, 1) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << ' '; cerr << endl;} }
-#endif 
+#endif
 
 const int inf = 1e9 + 7;
 #define sq(x) ((x) * (x))
@@ -95,13 +95,15 @@ typedef vector<vector<int>> vvi;
 const int MAXN = 1e6 + 1;
 
 
-
+void setClearPar() {
+	
+}
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
 
 ll solve() {
 	
-	
+
 	return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
@@ -115,16 +117,15 @@ int32_t main(int agrc, char *argv[]) {
 	ios::sync_with_stdio(false);
 	cin.tie(false);
 	cout << fixed << setprecision(11);
-	/*----------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------*/
+	//Set/Clear Global parameter
+	setClearPar();
+
+
 	//InOut
-
-	
-
-	//Set/Clear parameters
 
 
 	//solve
 	solve();
-	
 	return 0;
 }

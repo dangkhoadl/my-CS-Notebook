@@ -93,15 +93,17 @@ typedef vector<vector<int>> vvi;
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
 const int MAXN = 1e6 + 1;
-ll n;
 
 
+void setClearPar() {
+	
+}
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
 
 ll solve() {
 	
-	
+
 	return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
@@ -115,16 +117,15 @@ int32_t main(int agrc, char *argv[]) {
 	ios::sync_with_stdio(false);
 	cin.tie(false);
 	cout << fixed << setprecision(11);
-	/*----------------------------------------------------------------------------------------------------*/
-	//InOut
-	cin >> n;
-	
+/*----------------------------------------------------------------------------------------------------*/
+	//Set/Clear Global parameter
+	setClearPar();
 
-	//Set/Clear parameters
+
+	//InOut
 
 
 	//solve
 	cout << solve() << endl;
-	
 	return 0;
 }
