@@ -1,6 +1,4 @@
 
-// http://codeforces.com/contest/778/problem/A
-
 /*------------------------------------- CONFIG ---------------------------------------------------------------*/
 #define DEBUG
 //#define LINUX
@@ -63,63 +61,50 @@ using namespace std;
 #define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
 #define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
 #define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
+#define for__(start,end,step) for(int __ = start; __ < (int)end; __ += step) // [start, end)
+#define for_it(A) for(auto it = A.begin(); it != A.end(); ++it)
 
+#ifdef DEBUG
 #define pr(X) { cerr << #X << " = " << (X) << endl; }
+#define pr_(X) { cerr << #X << " = " << (X) << " ; "; }
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
+#define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << " ; "; }
+#define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
+#define prai_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << " ; "; }
+#define pra2(A, start1, end1, start2, end2) {for_(start1, end1, 1) {for__(start2, end2, 1) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << ' '; cerr << endl;} }
+#endif
 
 const int inf = 1e9 + 7;
-#define sqr(x) ((x) * (x))
+#define sq(x) ((x) * (x))
 #define PI (2 * acos((double)0))
 double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
 
 typedef pair<int, int> pii;
+typedef vector<pair<int, int>> vii;
+#define fi first
+#define se second
 typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+#define pb push_back
 #define sz(a) (int)(a).size()
+#define bg(a) (a).begin()
+#define en(a) (a).end()
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
-string t;
-string p;
-ll idx[200001];
+const int MAXN = 1e6 + 1;
 
-bool del[200001];
+
+void setClearPar() {
+	
+}
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
-bool checkSubstr(ll m) {
-	for_i(0, m, 1)
-		del[idx[i]] = true;
-	for_i(m, sz(t), 1)
-		del[idx[i]] = false;
 
-	ll i = 0;
-	for_j(0, sz(p), 1) {
-		while (i < sz(t) && (del[i] || t[i] != p[j]))
-			++i;
-		if (i >= sz(t))
-			return false;
-		++i;
-	}
-	return true;
-}
-
-ll binSearch(ll l, ll r) {
-	ll pos = 0;
-	--r;
-	while (true) {
-		if (l > r)
-			return pos;
-
-		ll m = l + (r - l) / 2;
-		if (checkSubstr(m)) {
-			pos = m;
-			l = m + 1;
-		}
-		else
-			r = m - 1;
-	}
-}
 
 ll solve() {
-	return binSearch(0, sz(t));
+	
+
+	return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
 int32_t main(int agrc, char *argv[]) {
@@ -127,21 +112,20 @@ int32_t main(int agrc, char *argv[]) {
 	freopen("..\\Debug\\Input.txt", "r", stdin);
 	freopen("..\\Debug\\Output.txt", "w", stdout);
 	freopen("..\\Debug\\Cerr.txt", "w", stderr);
+	cerr << fixed << setprecision(6);
 #endif
 	ios::sync_with_stdio(false);
 	cin.tie(false);
 	cout << fixed << setprecision(11);
-	cerr << fixed << setprecision(6);
-	/*----------------------------------------------------------------------------------------------------*/
-	//InOut
-	cin >> t >> p;
-	for_i(0, sz(t), 1)
-		cin >> idx[i], --idx[i];
+/*----------------------------------------------------------------------------------------------------*/
+	//Set/Clear Global parameter
+	setClearPar();
 
-	//Clear parameter
+
+	//InOut
 
 
 	//solve
-	cout << solve() << endl;
+	solve();
 	return 0;
 }
