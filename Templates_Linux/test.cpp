@@ -105,9 +105,9 @@ ll solve() {
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
 int32_t main(int agrc, char *argv[]) {
 #ifdef DEBUG
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	freopen("cerr.txt", "w", stderr);
+	freopen("input.in", "r", stdin);
+	freopen("output.out", "w", stdout);
+	freopen("cerr.ce", "w", stderr);
 	cerr << fixed << setprecision(6);
 #endif
 	ios::sync_with_stdio(false);
