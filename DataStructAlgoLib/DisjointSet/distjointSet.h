@@ -25,12 +25,12 @@ void merge(int x, int y) {
 }
 
 /*-------------------------------------------------------------------*/
-struct Set {
+struct disjointSet {
 public:
 	std::vector<int> parent_;
 	std::vector<int> rank_;
 public:
-	Set(int n) {
+	disjointSet(int n) {
 		parent_.assign(n, 0);
 		rank_.assign(n, 0);
 	}
