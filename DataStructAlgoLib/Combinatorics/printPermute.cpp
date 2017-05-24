@@ -30,3 +30,10 @@ void permute(string s, int l, int r) {
 		permute(s, l + 1, r);
 	}
 }
+
+/*------------------------------------- Print all permutation of a string C++ built in---------------------------------------------------------------*/
+void printAllPermu(string &a) {
+	do {
+		cout << a << endl;
+	} while (next_permutation(a.begin(), a.end()));
+}
