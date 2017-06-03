@@ -51,14 +51,18 @@ using namespace std;
 #define double long double
 #define ll long long
 #define ull unsigned long long
+#define __builtin_popcount __builtin_popcountll
 
-#define for_i(start,end,step) for(int i = start; i < (int)end; i += step) // [start, end)
-#define for_id(start,end,step) for(int i = start; i > (int)end; i += step) // [start, end)
-#define for_j(start,end,step) for(int j = start; j < (int)end; j += step) // [start, end)
-#define for_jd(start,end,step) for(int j = start; j > (int)end; j += step) // [start, end)
-#define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
-#define for__(start,end,step) for(int __ = start; __ < (int)end; __ += step) // [start, end)
-#define for_it(A) for(auto it = A.begin(); it != A.end(); ++it)
+#define REP(a) for(int iii=0,_a=(a); iii < _a; ++iii)
+#define FOR(iii,start,end,step) for(int iii=(start), _end=(end); iii < _end; iii += step) 				// [start, end)
+#define FORD(iii,start,end,step) for(int iii=(start), _end=(end); iii > _end; iii += step) 				// [start, end)
+#define for_i(start,end,step) for(int i = (start), _end(end), _step(step); i < (int)_end; i += _step) 	// [start, end)
+#define for_id(start,end,step) for(int i = (start), _end(end), _step(step); i > (int)_end; i += _step) 	// [start, end)
+#define for_j(start,end,step) for(int j = (start), _end(end), _step(step); j < (int)_end; j += _step) 	// [start, end)
+#define for_jd(start,end,step) for(int j = (start), _end(end), _step(step); j > (int)_end; j += _step) 	// [start, end)
+#define for_(start,end,step) for(int _ = (start), _end(end), _step(step); _ < (int)_end; _ += _step) 	// [start, end)
+#define for__(start,end,step) for(int __ = (start), _end(end), _step(step); __ < (int)_end; __ += _step)// [start, end)
+#define for_it(A) for(auto it = (A.begin()), _end(A.end()); it != _end; ++it)
 
 #ifdef DEBUG
 #define pr(X) { cerr << #X << " = " << (X) << endl; }
@@ -86,7 +90,7 @@ typedef vector<vector<int>> vvi;
 #define bg(a) (a).begin()
 #define en(a) (a).end()
 #define all(a) (a).begin(), (a).end()
-#define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1 and char[]
+#define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1, char[] and bool(true,false)
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
 const int MAXN = 1e6 + 1;
 
