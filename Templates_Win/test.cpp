@@ -105,6 +105,12 @@ void setClearPar() {
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 
 
+ll readInput() {
+	
+	return 0;
+}
+
+
 ll solve() {
 	
 
@@ -127,7 +133,7 @@ int32_t main(int agrc, char *argv[]) {
 
 
 	//InOut
-
+	readInput();
 
 	//solve
 	solve();
