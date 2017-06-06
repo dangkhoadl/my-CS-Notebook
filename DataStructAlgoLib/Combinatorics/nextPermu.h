@@ -1,3 +1,34 @@
+
+/******************************************** Implementation 1 ****************************************************************/
+//Find next Permu of a string lexicographically
+// Ex: 123 -> 132 -> 213 -> 231 -> 312 -> 321
+void nextP(string &s) {
+	int r = s.size() - 1;
+	for (int index = r - 1; index >= 0; --index) {
+		// [index + 1, r] = decreasing sequence
+		if (s[index] >= s[index + 1])
+			continue;
+
+		//Swap s[index] with the s[temp]: smallest letter in the [index + 1, r] but s[temp] > s[index]: Can use bin search !!!
+		int temp = index + 1;
+		for (int i = index + 1; i <= r; ++i)
+			if (s[i] < s[temp] && s[i] > s[index])
+				temp = i;
+		swap(s[index], s[temp]);
+
+		//Reorder [index + 1, r] into increasing sequence
+		int l = index + 1;
+		while (l < r) {
+			swap(s[r], s[l]);
+			++l;
+			--r;
+		}
+
+		break;
+	}
+}
+
+/******************************************** Implementation 2 ****************************************************************/
 //Find next Permu of a string lexicographically
 // Ex: 123 -> 132 -> 213 -> 231 -> 312 -> 321
 // Care nextP("321") ----> Error
