@@ -6,6 +6,7 @@ int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
+
 int edgeDist[MAXV]; // store the number of edges from start to all other vertices
 void bfs(int start) {
 	memset(edgeDist + 1, -1, V * sizeof(int));
@@ -30,6 +31,7 @@ void bfs(int start) {
 		}
 	}
 }
+
 /*------------------------------------- shortest(edge) path tree ---------------------------------------------------------------*/
 const int MAXV = 1e6 + 1;
 int V, E;
@@ -39,7 +41,6 @@ vector<int> wei[MAXV];
 
 int edgeDist[MAXV]; // store the number of edges from start to all other vertices
 int pre[MAXV];
-
 void bfs(int start) {
 	memset(edgeDist + 1, -1, V * sizeof(int));
 	memset(pre + 1, -1, V * sizeof(int));
@@ -62,7 +63,6 @@ void bfs(int start) {
 		}
 	}
 }
-
 vector<int> reconstructSPT(int start, int end) {
 	vector<int> res;
 	int v = end;
