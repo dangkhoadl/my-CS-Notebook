@@ -41,7 +41,6 @@ public:
 			sum += ft[i];
 			i = getParent(i);
 		}
-		pr(sum);
 		return sum;
 	}
 	int query(int l, int r) {
