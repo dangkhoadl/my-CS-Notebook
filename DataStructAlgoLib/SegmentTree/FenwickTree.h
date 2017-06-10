@@ -1,49 +1,33 @@
-// Build tree: O(nlogn)
-//	query: O(logn)
-//
-//Example : https://www.youtube.com/watch?v=CWDQJGaN1gY&t=119s
-//	Sum fenwick tree -> Query the sum of range[l,r] of the arg array
-//		arg array = { 3, 2, -1, 6, 5, 4, -3, 3, 7, 2, 3 };	//size = 11
-//		=> FT = { 0, 3, 5, -1, 10, 5, 9, -3, 19, 7, 9, 3 }; //size = 12
-//
-//	query: 
-//		sum of range [0,10] = 31
-//		sum of range [5,10] = 16
-//		update(5,6) -> sum of range [5,10] = 22
-//
-//Note: index of FT start with 1
-//		range of the query: [l,r]
-class FenwickTree {
-public:
-	vector<int> ft;
-public:
-	FenwickTree(const vector<int>& arg) {
-		ft.resize(arg.size() + 1);
 
-		//Build tree
-		for (int i = 0; i < arg.size(); ++i) {
-			update(i, arg[i]);
-		}
+/*------------------------------------- BIT Sum querry ---------------------------------------------------------------*/
+//Array indexed 1: [1,n]
+int a[100];
+int n;
+
+int tree[100];
+//Update tree when a[i] += val
+void add(int val, int i) {			
+	for (; i <= n; i += i&-i) {
+		tree[i] += val;
 	}
-	int getParent(int i) {
-		return i - (i & -i);
-	}
-	int getNext(int i) {
-		return i + (i & -i);
-	}
-	void update(int pos, int val) {
-		for (int i = pos + 1; i < (int)ft.size(); i = getNext(i)) 
-			ft[i] += val;
-	}
-	int sum(int i) {
-		int sum = 0;
-		while (i > 0) {
-			sum += ft[i];
-			i = getParent(i);
-		}
-		return sum;
-	}
-	int query(int l, int r) {
-		return sum(r+1) - sum(l);
-	}
-};
+}
+//Update tree @ the first time
+void buildtree() {
+	memset(tree, 0, sizeof(tree));
+	for (int i = 1; i <= n; ++i)
+		add(a[i], i);
+}
+
+
+//Querry
+// return sum of a in range [1,i]
+int sum(int i) {				
+	int sum_ = 0;
+	for (; i >= 1; i -= i & -i) 
+		sum_ += tree[i];
+	return sum_;
+}
+// return sum of a in range [i,j]
+int querry(int i, int j) {
+	return sum(j) - sum(i - 1);
+}
