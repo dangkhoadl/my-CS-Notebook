@@ -54,7 +54,7 @@ using namespace std;
 #define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
 #define prai_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << " ; "; }
 #define pra2(A, start1, end1, start2, end2) {for_(start1, end1, 1) {for__(start2, end2, 1) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << ' '; cerr << endl;} }
-void pravi(const vector<int> *&a, int start, int end) {
+void pravi(const vector<int> *a, int start, int end) {
 	for (int _ = start; _ < end; ++_) {
 		for (int __ = 0; __ < a[_].size(); ++__)
 			cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
