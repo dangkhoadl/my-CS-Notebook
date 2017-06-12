@@ -1,7 +1,15 @@
 
 //												shortest path by BellmanFord (Negative weight)
 //		O(V*E)
-/*----------------------------------------------------------- BellmanFord ---------------------------------------------------------------------*/
+// Note: for (int k = 0; k < V - 1; ++k): 
+//				-> Repeat (V-1) times
+//		for (int v = 1; v <= V; ++v)
+//			for (int i = 0; i < e[v].size(); ++i)
+//				-> Loop E times
+//
+//		- Works w/ neg weight edges
+//		- Can detect neg weight cycle
+/*----------------------------------------------------------- BellmanFord simple (No neg cycle in graph) ---------------------------------------------------------------------*/
 const int MAXV = 100 + 1;
 int V, E;
 vector<int> e[MAXV];
@@ -9,27 +17,19 @@ vector<int> wei[MAXV];
 
 int dist[MAXV];
 int pre[MAXV];
-bool bellmanFord(int start) {
-	memset(pre + 1, 0, V * sizeof(int));
+void bellmanFord(int start) {
+	fill(pre + 1, pre + V + 1, 0);
 	fill(dist + 1, dist + V + 1, inf);
 	dist[start] = 0;
-
-	for (int step = 1; step <= V; ++step) {
+	
+	for (int k = 0; k < V - 1; ++k)
 		for (int v = 1; v <= V; ++v)
 			for (int i = 0; i < e[v].size(); ++i)
 				if (dist[e[v][i]] > dist[v] + wei[v][i]) {
-					//Check negative cycle
-					if (step == V)
-						return false;
-
-					//Relax
 					dist[e[v][i]] = dist[v] + wei[v][i];
 					pre[e[v][i]] = v;
 				}
-	}
-	return true;
 }
-
 vector<int> reconstructSPT(int start, int end) {
 	vector<int> res;
 	int v = end;
@@ -37,44 +37,45 @@ vector<int> reconstructSPT(int start, int end) {
 		res.push_back(v);
 		v = pre[v];
 
+		if(v == 0)
+			return vector<int>();
 	}
 	res.push_back(start);
 	reverse(res.begin(), res.end());
 	return res;
 }
 
-/*-------------------------------------------------------- Detect negative weight cycles ------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------- BellmanFord w/ Detect negative weight cycles and reconstruct neg cycle ------------------------------------------------------------------------*/
 int dist[MAXV];
 int pre[MAXV];
-queue<int> detectNegCycle() {
-	queue<int> q;
+set<int> negCycle;
+void detectNegCycle() {
 	for (int v = 1; v <= V; ++v)
 		for (int i = 0; i < e[v].size(); ++i)
 			if (dist[e[v][i]] > dist[v] + wei[v][i]) {
 				dist[e[v][i]] = dist[v] + wei[v][i];
 				pre[e[v][i]] = v;
-				
-				q.push(v);
+
+				negCycle.insert(v);
 			}
-	return q;
 }
 bool bellmanFord(int start) {
-	memset(pre + 1, 0, V * sizeof(int));
+	fill(pre + 1, pre + V + 1, 0);
 	fill(dist + 1, dist + V + 1, inf);
 	dist[start] = 0;
-	
-	for (int k = 0; k < V - 1; ++k) {
+
+	for (int k = 0; k < V - 1; ++k)
 		for (int v = 1; v <= V; ++v)
 			for (int i = 0; i < e[v].size(); ++i)
 				if (dist[e[v][i]] > dist[v] + wei[v][i]) {
 					dist[e[v][i]] = dist[v] + wei[v][i];
 					pre[e[v][i]] = v;
 				}
-	}
 
 	//check neg cycle
-	queue<int> q = detectNegCycle();
-	if (q.empty())
+	detectNegCycle();
+	if (negCycle.empty())
 		return false;
 
 	return true;
