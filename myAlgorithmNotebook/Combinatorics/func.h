@@ -11,8 +11,8 @@ inline double factorial(int x) {
 }
 
 /*------------------------------------- Combination ---------------------------------------------------------------*/
-inline double combination(int n, int r) {
-	return factorial(n) / factorial(r) / factorial(n - r);
+inline double combination(int n, int k) {
+	return factorial(n) / factorial(k) / factorial(n - k);
 }
 
 double Com[101][101];
@@ -23,23 +23,23 @@ inline double combination(int n, int r) {
 		Com[i][i] = 1;
 	}
 
-	for (int i = 1; i < r + 1; ++i)
+	for (int i = 1; i < k + 1; ++i)
 		for (int j = 1; j < n + 1; ++j)
 			Com[i][j] = Com[i - 1][j - 1] + Com[i][j - 1];
 
-	return Com[r][n];
+	return Com[k][n];
 }
 
 /*------------------------------------- Permutation ---------------------------------------------------------------*/
-inline double permutation(int n, int r) {
-	return factorial(n) / factorial(n - r);
+inline double permutation(int n, int k) {
+	return factorial(n) / factorial(n - k);
 }
 
-inline double permutation(int n, int r) {
-	if (r == 0)
+inline double permutation(int n, int k) {
+	if (k == 0)
 		return 1;
 	double res = 1;
-	for (int i = n - r + 1; i < n + 1; ++i)
+	for (int i = n - k + 1; i < n + 1; ++i)
 		res *= i;
 	return res;
 }

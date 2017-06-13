@@ -1,12 +1,20 @@
-const int MAXEDGE = 21;
-int n;
-int par[MAXEDGE];
-int dat[MAXEDGE];
+const int MAXV = 21;
 
+int V;
+int par[MAXV];
+vector<int> child[MAXV];
 int root;
-vector<int> child[MAXEDGE];
+/*--------------------------------------------- Simple dfs --------------------------------------------------------------------*/
+void dfs(int x) {
+	//Process x
 
-/*-----------------------------------------------------------------------------------------------------------------*/
+	for(int i = 0; i < child[x].size(); ++i) {
+		dfs(child[x][i]);
+	}
+}
+
+
+/***************************************************************** DP on tree *************************************************************************************/
 //dfs(root);
 void dfs(int x) {
 	//PreProcess x
@@ -14,51 +22,41 @@ void dfs(int x) {
 	for (int i = 0; i < child[x].size(); ++i) {
 		//Preprocess x[child]
 
-		//DFS
 		dfs(child[x][i]);
-
 		//PostProcess x[child]
+		
 	}
-
 	//PostProcess x
 	
+}
+/*--------------------------------------------------DFS to find number of node in subtree ------------------------------------------------*/
+int cnt[21];
+void dfs(int x) {
+	cnt[x] = 1;
+	for(int i = 0; i < child[x].size(); ++i) {
+		dfs(child[x][i]);
+		cnt[x] += cnt[child[x][i]];
+	}
 }
 
 /*--------------------------------------------------DFS to find depth ---------------------------------------------------------------*/
 //Init
 //dep[root] = 0;
-//dfs(root);
-int dep[MAXEDGE];
+int dep[MAXV];
 void dfs(int x) {
-	//PreProcess x
-	printf("Node[%lld]: data = %lld, depth from root = %lld\n", x, dat[x], dep[x]);
-
 	for (int i = 0; i < child[x].size(); ++i) {
-		//PreProcess x[child]
 		dep[child[x][i]] = dep[x] + 1;
-		//printf("Node[%lld]: data = %lld, depth from root = %lld\n", child[x][i], dat[child[x][i]], dep[child[x][i]]);
-
 		dfs(child[x][i]);
-
-		//PostProcess x[child]
-		//printf("Node[%lld]: data = %lld, depth from root = %lld\n", child[x][i], dat[child[x][i]], dep[child[x][i]]);
 	}
-
-	//PostProcess x
-	//printf("Node[%lld]: data = %lld, depth from root = %lld\n", x, dat[x], dep[x]);
 }
 
 /*----------------------------------------------- DFS to find height ------------------------------------------------------------------*/
-int hei[MAXEDGE];
+int hei[MAXV];
 void dfs(int x) {
 	int maxChildHei = 0;
 	for (int i = 0; i < child[x].size(); ++i) {
 		dfs(child[x][i]);
-
-		//PostProcess x[child]
 		maxChildHei = max(maxChildHei, hei[child[x][i]]);
 	}
-
-	//PostProcess x
 	hei[x] = maxChildHei + 1;
 }
