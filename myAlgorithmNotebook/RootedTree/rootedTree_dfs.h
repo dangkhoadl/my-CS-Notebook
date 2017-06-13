@@ -30,7 +30,7 @@ void dfs(int x) {
 	
 }
 /*--------------------------------------------------DFS to find number of node in subtree ------------------------------------------------*/
-int cnt[21];
+int cnt[MAXV];
 void dfs(int x) {
 	cnt[x] = 1;
 	for(int i = 0; i < child[x].size(); ++i) {

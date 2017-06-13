@@ -1,11 +1,9 @@
+// O(V + E)
 
-//					BFS: O(V + E)
-const int MAXV = 101;
-
-int V, E;
+const int MAXV = 21;
+int V;
 vector<int> e[MAXV];
-vector<int> wei[MAXV];
-
+int val[MAXV];
 /*------------------------------------- simple BFS ---------------------------------------------------------------*/
 bool visited[MAXV];
 void bfs(int start) {
@@ -30,7 +28,7 @@ void bfs(int start) {
 	}
 }
 
-/*------------------------------------- BFS to find edge dist---------------------------------------------------------------*/
+/*------------------------------------- BFS to find edge dist ---------------------------------------------------------------*/
 int edgeDist[MAXV]; // store the number of edges from start to all other vertices
 void bfs(int start) {
 	memset(edgeDist + 1, -1, V * sizeof(int));
@@ -43,7 +41,7 @@ void bfs(int start) {
 		q.pop();
 
 		//Process
-		//cout << v << endl;
+		
 
 		for (int i = 0; i < e[v].size(); ++i) {
 			if (edgeDist[e[v][i]] == -1) {

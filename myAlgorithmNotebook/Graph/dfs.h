@@ -1,12 +1,11 @@
 
 //							DFS: 					O (V + E)
-/*-------------------------------------------------------------------------------------------------------------*/
-const int MAXV = 1e6 + 1;
+const int MAXV = 101;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
-
+/*-------------------------------------------------------------------------------------------------------------*/
 bool visited[MAXV];
 void explore(int v) {
 	visited[v] = true;
@@ -37,13 +36,8 @@ void dfsAll() {
 	for (int v = 1; v <= V; ++v)
 		explore(v);
 }
+
 /*--------------------------------------------------------------------------------------------------------*/
-const int MAXV = 1e6 + 1;
-int V, E;
-vector<int> e[MAXV];
-vector<int> wei[MAXV];
-
-
 bool visited[MAXV];
 void explore(int v) {
 	visited[v] = true;
@@ -78,12 +72,6 @@ void dfsAll() {
 
 /*--------------------------------------------------------------------------------------------------------*/
 //DFS by stack (less runtime - only 1 pass)
-const int MAXV = 1e6 + 1;
-int V, E;
-vector<int> e[MAXV];
-vector<int> wei[MAXV];
-
-
 bool visited[MAXV];
 void dfs(int start) {
 	memset(visited + 1, false, V);
@@ -111,12 +99,6 @@ void dfs(int start) {
 	}
 }
 /*--------------------------------------------- Pre/Post CLK-----------------------------------------------------------*/
-const int MAXV = 1e6 + 1;
-int V, E;
-vector<int> e[MAXV];
-vector<int> wei[MAXV];
-
-
 bool visited[MAXV];
 int preCLK[MAXV];
 int postCLK[MAXV];
