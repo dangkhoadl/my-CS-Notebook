@@ -1,34 +1,58 @@
 
 //							DSU
-//			init range: [0, num)
-/*-------------------------------------------------------------------*/
+// O(logn) for every operations
+/*---------------------------- Simple DSU 1 ---------------------------------------*/
+// init range: [1, n]
 #define MAXN 20
+
 int par_[MAXN];
-
-void init(int num) {
-	memset(par_, -1, num * sizeof(int));
+int size_[MAXN];	// size of the corresponding set
+void init(int n) {
+	for(int i = 1; i <= n; ++i)
+		par_[i] = i;
+	fill(size_ + 1, size_ + n + 1, 1);
+}
+int find(int x) {
+	while(x != par_[x])
+		x = par_[x];
+	return x;
+}
+void merge(int a, int b) {
+	a = find(a);
+	b = find(b);
+	if(size_[a] < size_[b])
+		swap(a,b);
+	size_[a] += size_[b];
+	par_[b] = a;
 }
 
-int find(int v) {
-	return par_[v] < 0 ? v : (par_[v] = find(par_[v]));
-}
+/*---------------------------- Simple DSU 2 ---------------------------------------*/
+// init range: [0, n)
+#define MAXN 20
 
-void merge(int x, int y) {
-	if ((x = find(x)) == (y = find(y)))
+int par_[MAXN];
+void init(int n) {
+	memset(par_, -1, n * sizeof(int));
+}
+int find(int x) {
+	return par_[x] < 0 ? x : (par_[x] = find(par_[x]));
+}
+void merge(int a, int b) {
+	if ((a = find(a)) == (b = find(b)))
 		return;
 	
-	if (par_[y] < par_[x]) 
-		swap(x, y);
+	if (par_[b] < par_[a]) 
+		swap(a, b);
 	
-	par_[x] += par_[y];
-	par_[y] = x;
+	par_[a] += par_[b];
+	par_[b] = a;
 }
 
-/*-------------------------------------------------------------------*/
+/*---------------------------- DSU w/ struct ---------------------------------------*/
 struct disjointSet {
 public:
-	std::vector<int> parent_;
-	std::vector<int> rank_;
+	vector<int> parent_;
+	vector<int> rank_;
 public:
 	disjointSet(int n) {
 		parent_.assign(n, 0);
@@ -38,59 +62,23 @@ public:
 		parent_[i] = i;
 		rank_[i] = 0;
 	}
-	int Find(int i) {
-		if (i != parent_[i])
-			parent_[i] = Find(parent_[i]);
-		return parent_[i];
+	int Find(int x) {
+		if (x != parent_[x])
+			parent_[x] = Find(parent_[x]);
+		return parent_[x];
 	}
-	void Union(int i, int j) {
-		int i_id = Find(i);
-		int j_id = Find(j);
-		if (i_id == j_id)
+	void Merge(int a, int b) {
+		int a_id = Find(a);
+		int b_id = Find(b);
+		if (a_id == b_id)
 			return;
 
-		if (rank_[i_id] > rank_[j_id])
-			parent_[j_id] = i_id;
+		if (rank_[a_id] > rank_[b_id])
+			parent_[b_id] = a_id;
 		else {
-			parent_[i_id] = j_id;
-			if (rank_[i_id] == rank_[j_id])
-				++rank_[j_id];
+			parent_[a_id] = b_id;
+			if (rank_[a_id] == rank_[b_id])
+				++rank_[b_id];
 		}
 	}
 };
-
-/*-------------------------------------------------------------------*/
-#define MAXN 20
-int par_[MAXN];
-int rank_[MAXN];
-
-void makeSet(int i) {
-	par_[i] = i;
-	rank_[i] = 0;
-}
-
-void init(int num) {
-	for (int i = 0; i < num; ++i)
-		makeSet(i);
-}
-
-int find(int i) {
-	if (i != par_[i])
-		par_[i] = find(par_[i]);
-	return par_[i];
-}
-
-void merge(int i, int j) {
-	int i_id = find(i);
-	int j_id = find(j);
-	if (i_id == j_id)
-		return;
-
-	if (rank_[i_id] > rank_[j_id])
-		par_[j_id] = i_id;
-	else {
-		par_[i_id] = j_id;
-		if (rank_[i_id] == rank_[j_id])
-			++rank_[j_id];
-	}
-}

@@ -14,7 +14,7 @@
 //4 2 3			4 --(3)--> 2
 //5 6 1			5 --(1)--> 6
 
-const int MAXV = 1e6 + 1;
+const int MAXV = 101;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
@@ -40,7 +40,7 @@ void readInput() {
 //1 2 3			4 --(3)--> 2
 //1 6 1			5 --(1)--> 6
 
-const int MAXV = 1e6 + 1;
+const int MAXV = 101;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
@@ -72,7 +72,7 @@ void readInput() {
 //4 2 3			4 --(3)-- 2
 //5 6 1			5 --(1)-- 6
 
-const int MAXV = 1e6 + 1;
+const int MAXV = 101;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
@@ -97,7 +97,7 @@ void readInput() {
 //1 4 1			3 --(1)-- 4
 //1 2 3			4 --(3)-- 2
 //1 6 1			5 --(1)-- 6
-const int MAXV = 1e6 + 1;
+const int MAXV = 101;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
