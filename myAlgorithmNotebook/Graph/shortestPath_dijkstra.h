@@ -24,7 +24,6 @@ void dijkstra(int start) {
 
 		for (int i = 0; i < e[v].size(); ++i)
 			if (dist[e[v][i]] > dist[v] + wei[v][i]) {
-
 				//Relax
 				dist[e[v][i]] = dist[v] + wei[v][i];
 				pre[e[v][i]] = v;
