@@ -34,7 +34,8 @@ void dfs(int start) {
 void dfsAll() {
 	memset(visited + 1, false, V);
 	for (int v = 1; v <= V; ++v)
-		explore(v);
+		if(!visited[v])
+			explore(v);
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
@@ -67,7 +68,7 @@ void dfsAll() {
 	memset(visited + 1, false, V);
 	for (int v = 1; v <= V; ++v)
 		if(!visited[v])
-		explore(v);
+			explore(v);
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
