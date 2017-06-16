@@ -41,7 +41,7 @@ void dfs(int x) {
 
 /*--------------------------------------------------DFS to find depth ---------------------------------------------------------------*/
 //Init
-//dep[root] = 0;
+//dep[root] = 1;
 int dep[MAXV];
 void dfs(int x) {
 	for (int i = 0; i < child[x].size(); ++i) {
