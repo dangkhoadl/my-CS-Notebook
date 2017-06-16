@@ -21,12 +21,11 @@ void bfs(int start) {
 		//process v
 		
 
-		for (int i = 0; i < e[v].size(); ++i) {
+		for (int i = 0; i < e[v].size(); ++i)
 			if (!visited[e[v][i]]) {
 				visited[e[v][i]] = true;
 				q.push(e[v][i]);
 			}
-		}
 	}
 }
 
@@ -45,14 +44,13 @@ void bfs(int start) {
 		//Process
 		//cout << v << endl;
 
-		for (int i = 0; i < e[v].size(); ++i) {
+		for (int i = 0; i < e[v].size(); ++i) 
 			if (edgeDist[e[v][i]] == -1) {
 				q.push(e[v][i]);
 
 				//update
 				edgeDist[e[v][i]] = edgeDist[v] + 1;
 			}
-		}
 	}
 }
 
@@ -70,7 +68,7 @@ void bfs(int start) {
 		int v = q.front();
 		q.pop();
 
-		for (int i = 0; i < e[v].size(); ++i) {
+		for (int i = 0; i < e[v].size(); ++i) 
 			if (edgeDist[e[v][i]] == -1) {
 				q.push(e[v][i]);
 
@@ -78,7 +76,6 @@ void bfs(int start) {
 				edgeDist[e[v][i]] = edgeDist[v] + 1;
 				pre[e[v][i]] = v;
 			}
-		}
 	}
 }
 vector<int> reconstructSPT(int start, int end) {
