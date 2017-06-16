@@ -1,5 +1,13 @@
 
 //O(V + E)
+// Algo:
+//		- Find groups of Strong Connected Components in Directed graph
+//		- DFS(G)
+//			Sort the vertex by postvisit order
+//		- build Gr = G.inverse()
+//		- DFS(Gr)
+//			Construct SCC groups
+
 /********************************** Kosaraju ************************************************************/
 const int MAXV = 101;
 int V, E;
