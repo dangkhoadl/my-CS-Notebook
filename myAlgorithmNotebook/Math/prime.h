@@ -1,4 +1,4 @@
-/*-------------------------------------------------------------------*/
+/*------------------------------ Check if n is a prime -------------------------------------*/
 bool isPrime(int n) {
 	if (n <= 1)
 		return false;
@@ -13,7 +13,7 @@ bool isPrime(int n) {
 	return true;
 }
 
-/*-------------------------------------------------------------------*/
+/*---------------------------------- check a list of prime between [2,n] ---------------------------------*/
 #define MAXN 2000
 bool prime[MAXN];
 void sieve(int n) {
@@ -25,4 +25,18 @@ void sieve(int n) {
 		if (prime[i])
 			for (int k = i*i; k <= n; k += i)
 				prime[k] = false;
+}
+
+/*------------------------- factorize a prime number ------------------------------------------*/
+vector<int> prfac;
+void factorizePrime(int n) {
+	prfac.clear();
+
+	for(int x = 2; x*x <= n; ++x) 
+		while(n % x == 0) {
+			prfac.push_back(x);
+			n /= x;
+		}
+	if(n > 1)
+		prfac.push_back(n);
 }
