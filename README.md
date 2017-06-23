@@ -1,3 +1,3 @@
-# My Cache
+# My Competitive Programming Cache
 
-Store some interesting problems and templates :D
+interesting problems, algorithms and templates for CP
