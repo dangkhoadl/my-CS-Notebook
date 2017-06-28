@@ -110,26 +110,33 @@ typedef vector<vector<int>> vvi;
 #define en(a) (a).end()
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1, char[] and bool(true,false)
-/*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
+/*----------------------------------- Functions -----------------------------------------------------------------*/
 ull T;
 const int MAXN = 1e6 + 1;
 
 
-void setClearPar() {
-	
-}
-/*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
-
-
 ll readInput() {
-	
+
+
+	return 0;
+}
+//______ Brute
+
+ll brute() {
+
+	return 0;
+}
+//______ Solution
+
+ll sol() {
 
 	return 0;
 }
 
+//______ solve
 
 ll solve() {
-	
+
 
 	return 0;
 }
@@ -150,9 +157,6 @@ int32_t main(int agrc, char *argv[]) {
 
 	// Solve all cases
 	for (ull case_ = 1; case_ <= T; ++case_) {
-		//Set/Clear parameters
-		setClearPar();
-
 		//InOut
 		readInput();
 
