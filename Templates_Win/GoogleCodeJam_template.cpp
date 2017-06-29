@@ -153,7 +153,7 @@ int32_t main(int agrc, char *argv[]) {
 	cout << fixed << setprecision(11);
 	/*----------------------------------------------------------------------------------------------------*/
 	//InOut
-	cin >> T;
+	scanf("%lld", &T);
 
 	// Solve all cases
 	for (ull case_ = 1; case_ <= T; ++case_) {
