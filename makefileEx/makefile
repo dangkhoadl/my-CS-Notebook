@@ -1,14 +1,17 @@
 CC=g++
-CFLAGS=-c -Wall -std=c++11 -O2
+CFLAGS=-w -O2 -c -std=c++11
 LDFLAGS=
-SOURCES=main.cpp lib.cpp
+SOURCES=test.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXE=program
+EXE=test.exe
 
 all: $(SOURCES) $(EXE)
 
-run:
+build:
 	make all && ./$(EXE)
+
+run:
+	./$(EXE)
 
 $(EXE): $(OBJECTS) 
 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
