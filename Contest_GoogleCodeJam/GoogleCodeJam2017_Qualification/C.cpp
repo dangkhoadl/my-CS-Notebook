@@ -3,7 +3,7 @@
 
 int N, K;
 ll readInput() {
-	cin >> N >> K;
+	scanf("%lld %lld", &N, &K);
 	return 0;
 }
 //______ Brute
