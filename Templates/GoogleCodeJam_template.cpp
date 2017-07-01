@@ -149,7 +149,7 @@ int32_t main(int agrc, char *argv[]) {
 		readInput();
 
 		//Solve
-		printf("Case # %llu: %lld\n", case_, solve());
+		printf("Case #%llu: %lld\n", case_, solve());
 	}
 	return 0;
 }
