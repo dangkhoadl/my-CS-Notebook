@@ -116,28 +116,16 @@ const int MAXN = 1e6 + 1;
 
 
 ll readInput() {
-
-
-	return 0;
-}
-//______ Brute
-
-ll brute() {
-
-	return 0;
-}
-//______ Solution
-
-ll sol() {
-
+	
+	
 	return 0;
 }
 
-//______ solve
+
 
 ll solve() {
-
-
+	
+	
 	return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
@@ -161,7 +149,7 @@ int32_t main(int agrc, char *argv[]) {
 		readInput();
 
 		//Solve
-		cout << "Case #" << case_ << ": " << solve() << endl;
+		printf("Case # %llu: %lld\n", case_, solve());
 	}
 	return 0;
 }

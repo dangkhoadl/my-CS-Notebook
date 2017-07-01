@@ -152,6 +152,6 @@ int32_t main(int agrc, char *argv[]) {
 	readInput();
 
 	//solve
-	cout << solve() << endl;
+	printf("%lld\n", solve());
 	return 0;
 }
