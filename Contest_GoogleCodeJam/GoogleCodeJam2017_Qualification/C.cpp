@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 // https://codejam.withgoogle.com/codejam/contest/3264486/dashboard#s=p2
 
@@ -56,6 +55,42 @@ pii sol2() {
             S.insert( {x1, 1} );
         else
             ++it->se;
+    }
+    return {x0,x1};
+}
+
+/*_______________________________ O(log(K)) _________________________*/
+pii sol3() {
+    map<int,int> S;
+    S.insert( {N,1} );
+    int x0 = 0;
+    int x1 = 0;
+    
+    int k = K;
+    while(k > 0) {
+        auto it = S.end(); --it;
+        int x = it->fi;
+        int cnt = it->se;
+        S.erase(it);
+
+        k -= cnt;
+
+        x0 = ceil((double)(x-1) / 2);
+        it = S.find(x0);
+        if(it == S.end())
+            S.insert( {x0, cnt} );
+        else
+            it->se += cnt;
+
+        x1 = floor((double)(x-1) / 2);
+        it = S.find(x1);
+        if(it == S.end())
+            S.insert( {x1, cnt} );
+        else
+            it->se += cnt;
+
+        if(x0 == 0 && x1 == 0)
+            return {0,0};
     }
     return {x0,x1};
 }
