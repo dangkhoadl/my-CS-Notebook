@@ -9,13 +9,13 @@ public:
 	MaxHeap() : H(), size(0) {}
 	MaxHeap(std::vector<int> A) : H(A), size(A.size()) {}
 	int parent(int i) {
-		return (i + 1) / 2 - 1;
+		return floor((double)(i-1) / 2);
 	}
 	int leftChild(int i) {
-		return (2 * (i + 1) - 1);
+		return (2*i + 1);
 	}
 	int rightChild(int i) {
-		return (2 * (i + 1));
+		return (2*i + 2);
 	}
 	void siftUp(int i) {
 		while (i > 0 && H[parent(i)] < H[i]) {
@@ -91,13 +91,13 @@ public:
 public:
 	MinHeap() : H(), size(0) {}
 	int parent(int i) {
-		return (i + 1) / 2 - 1;
+		return floor((double)(i-1) / 2);
 	}
 	int leftChild(int i) {
-		return (2 * (i + 1) - 1);
+		return (2*i + 1);
 	}
 	int rightChild(int i) {
-		return (2 * (i + 1));
+		return (2*i + 2);
 	}
 	void siftUp(int i) {
 		while (i > 0 && H[parent(i)] > H[i]) {

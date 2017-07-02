@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 // https://codejam.withgoogle.com/codejam/contest/3264486/dashboard#s=p2
 
@@ -58,4 +59,3 @@ pii sol2() {
     }
     return {x0,x1};
 }
-
