@@ -132,6 +132,10 @@ typedef vector<vector<int>> vvi;
 #define en(a) (a).end()
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1, char[] and bool(true,false)
+
+#define ra(A, start, end) (A)+start, (A)+end
+#define rvi(A, start, end) (A).begin()+start, (A).begin()+end
+inline bool DEC(int iii_,int jjj_) { return (iii_<jjj_); }
 /*----------------------------------- Functions -----------------------------------------------------------------*/
 ull T;
 const int MAXN = 1e6 + 1;
