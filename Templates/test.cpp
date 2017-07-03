@@ -70,27 +70,49 @@ using namespace std;
 #define for_it(A) for(auto it = (A.begin()), _end(A.end()); it != _end; ++it)
 
 #ifdef DEBUG
-#define pr(X) { cerr << #X << " = " << (X) << endl; }
-#define pr_(X) { cerr << #X << " = " << (X) << " ; "; }
+#define pr(args...) { vector<string> _v = split(#args, ','); err(_v.begin(), args); cerr << endl;}
+vector<string> split(const string& s, char c) {
+    vector<string> v;
+    stringstream ss(s);
+    string x;
+    while (getline(ss, x, c))
+        v.emplace_back(x);
+    return move(v);
+}
+void err(vector<string>::iterator it) {}
+template<typename T, typename... Args>
+void err(vector<string>::iterator it, T a, Args... args) {
+    cerr << it -> substr((*it)[0] == ' ', it->length()) << " = " << a << ", ";
+    err(++it, args...);
+}
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
 #define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << " ; "; }
 #define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
 #define prai_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << " ; "; }
 #define pra2(A, start1, end1, start2, end2) {for_(start1, end1, 1) {for__(start2, end2, 1) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << ' '; cerr << endl;} }
 void pravi(const vector<int> *a, int start, int end) {
-	for (int _ = start; _ < end; ++_) {
-		for (int __ = 0; __ < a[_].size(); ++__)
-			cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
-		cerr << endl;
-	}
+    for (int _ = start; _ < end; ++_) {
+        for (int __ = 0; __ < a[_].size(); ++__)
+            cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
+        cerr << endl;
+    }
 }
 void prvvi(const vector<vector<int>> &a, int start, int end) {
-	for (int _ = start; _ < end; ++_) {
-		for (int __ = 0; __ < a[_].size(); ++__)
-			cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
-		cerr << endl;
-	}
+    for (int _ = start; _ < end; ++_) {
+        for (int __ = 0; __ < a[_].size(); ++__)
+            cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
+        cerr << endl;
+    }
 }
+#else
+#define pr(args...)
+#define pra(A, start, end)
+#define pra_(A, start, end)
+#define prai(A, start, end)
+#define prai_(A, start, end)
+#define pra2(A, start1, end1, start2, end2)
+void pravi(const vector<int> *a, int start, int end) {}
+void prvvi(const vector<vector<int>> &a, int start, int end) {}
 #endif
 
 const int inf = 1e9 + 7;

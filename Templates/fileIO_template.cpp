@@ -50,30 +50,69 @@
 using namespace std;
 
 #ifdef DEBUG
-#define for_(start,end,step) for(int _ = start; _ < (int)end; _ += step) // [start, end)
-#define for__(start,end,step) for(int __ = start; __ < (int)end; __ += step) // [start, end)
-#define pr(X) { cerr << #X << " = " << (X) << endl; }
-#define pr_(X) { cerr << #X << " = " << (X) << " ; "; }
+#ifdef DEBUG
+#define pr(args...) { vector<string> _v = split(#args, ','); err(_v.begin(), args); cerr << endl;}
+vector<string> split(const string& s, char c) {
+    vector<string> v;
+    stringstream ss(s);
+    string x;
+    while (getline(ss, x, c))
+        v.emplace_back(x);
+    return move(v);
+}
+void err(vector<string>::iterator it) {}
+template<typename T, typename... Args>
+void err(vector<string>::iterator it, T a, Args... args) {
+    cerr << it -> substr((*it)[0] == ' ', it->length()) << " = " << a << ", ";
+    err(++it, args...);
+}
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << endl; }
 #define pra_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << A[_] << ' '; cerr << " ; "; }
 #define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
 #define prai_(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = "; for_(start, end, 1) cerr << '[' << _ << ']' << A[_] << ' '; cerr << " ; "; }
 #define pra2(A, start1, end1, start2, end2) {for_(start1, end1, 1) {for__(start2, end2, 1) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << ' '; cerr << endl;} }
 void pravi(const vector<int> *a, int start, int end) {
-	for (int _ = start; _ < end; ++_) {
-		for (int __ = 0; __ < a[_].size(); ++__)
-			cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
-		cerr << endl;
-	}
+    for (int _ = start; _ < end; ++_) {
+        for (int __ = 0; __ < a[_].size(); ++__)
+            cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
+        cerr << endl;
+    }
 }
 void prvvi(const vector<vector<int>> &a, int start, int end) {
-	for (int _ = start; _ < end; ++_) {
-		for (int __ = 0; __ < a[_].size(); ++__)
-			cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
-		cerr << endl;
-	}
+    for (int _ = start; _ < end; ++_) {
+        for (int __ = 0; __ < a[_].size(); ++__)
+            cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "  ";
+        cerr << endl;
+    }
 }
-#endif 
+#else
+#define pr(args...)
+#define pra(A, start, end)
+#define pra_(A, start, end)
+#define prai(A, start, end)
+#define prai_(A, start, end)
+#define pra2(A, start1, end1, start2, end2)
+void pravi(const vector<int> *a, int start, int end) {}
+void prvvi(const vector<vector<int>> &a, int start, int end) {}
+#endif
+
+const int inf = 1e9 + 7;
+#define sq(x) ((x) * (x))
+#define PI (2 * acos((double)0))
+double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
+
+typedef pair<int, int> pii;
+typedef vector<pair<int, int>> vii;
+#define fi first
+#define se second
+typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
+#define pb push_back
+#define sz(a) (int)(a).size()
+#define bg(a) (a).begin()
+#define en(a) (a).end()
+#define all(a) (a).begin(), (a).end()
+#define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1, char[] and bool(true,false)
 
 /*******************************************************************************************/
 
