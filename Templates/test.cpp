@@ -59,13 +59,13 @@ using namespace std;
 #define __builtin_popcount __builtin_popcountll
 
 #define REP(a) for(int iii=0,_a=(a); iii < _a; ++iii)
-#define FOR(iii,start,end,step) for(int iii=(start), _end=(end); iii < _end; iii += step) 				// [start, end)
-#define FORD(iii,start,end,step) for(int iii=(start), _end=(end); iii > _end; iii += step) 				// [start, end)
-#define for_i(start,end,step) for(int i = (start), _end(end), _step(step); i < (int)_end; i += _step) 	// [start, end)
-#define for_id(start,end,step) for(int i = (start), _end(end), _step(step); i > (int)_end; i += _step) 	// [start, end)
-#define for_j(start,end,step) for(int j = (start), _end(end), _step(step); j < (int)_end; j += _step) 	// [start, end)
-#define for_jd(start,end,step) for(int j = (start), _end(end), _step(step); j > (int)_end; j += _step) 	// [start, end)
-#define for_(start,end,step) for(int _ = (start), _end(end), _step(step); _ < (int)_end; _ += _step) 	// [start, end)
+#define FOR(iii,start,end,step) for(int iii=(start), _end=(end); iii < _end; iii += step)               // [start, end)
+#define FORD(iii,start,end,step) for(int iii=(start), _end=(end); iii > _end; iii += step)              // [start, end)
+#define for_i(start,end,step) for(int i = (start), _end(end), _step(step); i < (int)_end; i += _step)   // [start, end)
+#define for_id(start,end,step) for(int i = (start), _end(end), _step(step); i > (int)_end; i += _step)  // [start, end)
+#define for_j(start,end,step) for(int j = (start), _end(end), _step(step); j < (int)_end; j += _step)   // [start, end)
+#define for_jd(start,end,step) for(int j = (start), _end(end), _step(step); j > (int)_end; j += _step)  // [start, end)
+#define for_(start,end,step) for(int _ = (start), _end(end), _step(step); _ < (int)_end; _ += _step)    // [start, end)
 #define for__(start,end,step) for(int __ = (start), _end(end), _step(step); __ < (int)_end; __ += _step)// [start, end)
 #define for_it(A) for(auto it = (A.begin()), _end(A.end()); it != _end; ++it)
 
@@ -132,47 +132,48 @@ typedef vector<vector<int>> vvi;
 #define en(a) (a).end()
 #define all(a) (a).begin(), (a).end()
 #define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1, char[] and bool(true,false)
-/*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
+
+#define ra(A, start, end) (A)+start, (A)+end
+#define rvi(A, start, end) (A).begin()+start, (A).begin()+end
+inline bool DEC(int iii_,int jjj_) { return (iii_<jjj_); }
+
+const double EPSILON = 1e-6; // for x <= 10^6;
+inline const bool areSame(double a, double b) {return fabs(a - b) < EPSILON;}   
+inline int d2i(double x) {return x >= 0 ? x + EPSILON : x - EPSILON;}
+inline double sfloor(double x) {return x >= 0 ? floor(x + EPSILON) : floor(x - EPSILON);}
+inline double sceil(double x) {return x >= 0 ? ceil(x - EPSILON) : ceil(x + EPSILON);};
+/*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 const int MAXN = 1e6 + 1;
 
 
-void setClearPar() {
-	
-}
-/*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
-
-
 ll readInput() {
-	
-	return 0;
+    
+    
+    return 0;
 }
 
 
 ll solve() {
-	
-
-	return 0;
+    
+    
+    return 0;
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
 int32_t main(int agrc, char *argv[]) {
 #ifdef DEBUG
-	freopen("input.in", "r", stdin);
-	freopen("output.out", "w", stdout);
-	freopen("cerr.ce", "w", stderr);
-	cerr << fixed << setprecision(6);
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+    freopen("cerr.ce", "w", stderr);
+    cerr << fixed << setprecision(6);
 #endif
-	ios::sync_with_stdio(false);
-	cin.tie(false);
-	cout << fixed << setprecision(11);
+    ios::sync_with_stdio(false);
+    cin.tie(false);
+    cout << fixed << setprecision(11);
 /*----------------------------------------------------------------------------------------------------*/
-	//Set/Clear Global parameter
-	setClearPar();
+    //InOut
+    readInput();
 
-
-	//InOut
-	readInput();
-
-	//solve
-	solve();
-	return 0;
+    //solve
+    solve();
+    return 0;
 }

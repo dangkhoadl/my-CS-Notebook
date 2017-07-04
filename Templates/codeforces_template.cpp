@@ -136,6 +136,12 @@ typedef vector<vector<int>> vvi;
 #define ra(A, start, end) (A)+start, (A)+end
 #define rvi(A, start, end) (A).begin()+start, (A).begin()+end
 inline bool DEC(int iii_,int jjj_) { return (iii_<jjj_); }
+
+const double EPSILON = 1e-6; // for x <= 10^6;
+inline const bool areSame(double a, double b) {return fabs(a - b) < EPSILON;}   
+inline int d2i(double x) {return x >= 0 ? x + EPSILON : x - EPSILON;}
+inline double sfloor(double x) {return x >= 0 ? floor(x + EPSILON) : floor(x - EPSILON);}
+inline double sceil(double x) {return x >= 0 ? ceil(x - EPSILON) : ceil(x + EPSILON);};
 /*----------------------------------- PARAMETERS -----------------------------------------------------------------*/
 const int MAXN = 1e6 + 1;
 
