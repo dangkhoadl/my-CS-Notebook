@@ -52,6 +52,7 @@
 #ifdef DEBUG
 using namespace std;
 #define FOR(iii,start,end) for(int iii=(start), _end=(end); iii < _end; ++iii)  // [start, end)
+#define for_it(A) for(auto it = (A.begin()), _end(A.end()); it != _end; ++it)
 template<typename T,typename TT> inline ostream& operator<<(ostream &s,pair<T,TT> t) {return s<<"("<<t.first<<","<<t.second<<")";}
 #define pr(args...) { vector<string> _v = split(#args, ','); err(_v.begin(), args); cerr << endl;}
 vector<string> split(const string& s, char c) {vector<string> v;stringstream ssss_(s);string x;while(getline(ssss_, x, c)) {v.emplace_back(x);}return move(v);}
@@ -85,41 +86,41 @@ template<typename T> void prPQ(const priority_queue<T> &a) {}
 /*******************************************************************************************/
 int main(int agrc, char *argv[]) {
 #ifdef DEBUG
-	freopen("cerr.ce", "w", stderr);
+    freopen("cerr.ce", "w", stderr);
     cerr << fixed << setprecision(6);
 #endif
 
-	if (agrc == 3) {
-		//Input
-		const char *inputFileName(argv[1]);
-		FILE *fileIn;
-		fileIn = fopen(inputFileName, "r");
+    if (agrc == 3) {
+        //Input
+        const char *inputFileName(argv[1]);
+        FILE *fileIn;
+        fileIn = fopen(inputFileName, "r");
 
-		if (!fileIn) {
-			printf("File does not exist !!!\n");
-			return 0;
-		}
+        if (!fileIn) {
+            printf("File does not exist !!!\n");
+            return 0;
+        }
 
-		//Read
+        //Read
 
-		fclose(fileIn);
+        fclose(fileIn);
 
-		//Process
+        //Process
 
 
-		//Output
-		const std::string outputFileName(argv[2]);
-		std::ofstream fileOut;
-		fileOut.open(outputFileName);
+        //Output
+        const std::string outputFileName(argv[2]);
+        std::ofstream fileOut;
+        fileOut.open(outputFileName);
 
-		//Write
+        //Write
 
-		fileOut.close();
-	}
-	else {
-		const char* inputProgram(argv[0]);
-		printf("Plz rerun the %s program\n", inputProgram);
-	}
+        fileOut.close();
+    }
+    else {
+        const char* inputProgram(argv[0]);
+        printf("Plz rerun the %s program\n", inputProgram);
+    }
 
-	return 0;
+    return 0;
 }

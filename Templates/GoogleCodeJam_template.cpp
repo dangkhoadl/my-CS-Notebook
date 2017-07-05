@@ -138,7 +138,7 @@ const int MAXN = 1e6 + 1;
 
 ll readInput() {
     
-
+    
     return 0;
 }
 
