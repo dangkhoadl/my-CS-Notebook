@@ -51,6 +51,7 @@
 
 #ifdef DEBUG
 using namespace std;
+#define quit exit(0);
 #define FOR(iii,start,end) for(int iii=(start), _end=(end); iii < _end; ++iii)  // [start, end)
 #define for_it(A) for(auto it = (A.begin()), _end(A.end()); it != _end; ++it)
 template<typename T,typename TT> inline ostream& operator<<(ostream &s,pair<T,TT> t) {return s<<"("<<t.first<<","<<t.second<<")";}
@@ -70,6 +71,7 @@ template<typename T> void prS(const stack<T> &a) {stack<T> s(a);cerr << "stack =
 template<typename T> void prQ(const queue<T> &a) {queue<T> q(a);cerr << "queue =  [front] ";while(!q.empty()) {cerr << q.front() << ' ';q.pop();}cerr << "[back]" << endl;}
 template<typename T> void prPQ(const priority_queue<T> &a) {priority_queue<T> pq(a);cerr << "heap =  [top] ";while(!pq.empty()) {cerr << pq.top() << ' ';pq.pop();}cerr << endl;}
 #else
+#define quit 
 #define pr(args...)
 #define pra(A, start, end)
 #define pra_(A, start, end)

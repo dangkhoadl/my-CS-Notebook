@@ -101,6 +101,7 @@ inline double sceil(double x) {return x >= 0 ? ceil(x - EPS) : ceil(x + EPS);};
 #define ss(sss,iii) scanf("%s",sss+iii)
 
 #ifdef DEBUG
+#define quit exit(0);
 template<typename T,typename TT> inline ostream& operator<<(ostream &s,pair<T,TT> t) {return s<<"("<<t.first<<","<<t.second<<")";}
 #define pr(args...) { vector<string> _v = split(#args, ','); err(_v.begin(), args); cerr << endl;}
 vector<string> split(const string& s, char c) {vector<string> v;stringstream ssss_(s);string x;while(getline(ssss_, x, c)) {v.emplace_back(x);}return move(v);}
@@ -118,6 +119,7 @@ template<typename T> void prS(const stack<T> &a) {stack<T> s(a);cerr << "stack =
 template<typename T> void prQ(const queue<T> &a) {queue<T> q(a);cerr << "queue =  [front] ";while(!q.empty()) {cerr << q.front() << ' ';q.pop();}cerr << "[back]" << endl;}
 template<typename T> void prPQ(const priority_queue<T> &a) {priority_queue<T> pq(a);cerr << "heap =  [top] ";while(!pq.empty()) {cerr << pq.top() << ' ';pq.pop();}cerr << endl;}
 #else
+#define quit 
 #define pr(args...)
 #define pra(A, start, end)
 #define pra_(A, start, end)
