@@ -136,7 +136,7 @@ template<typename T> void prQ(const queue<T> &a) {}
 template<typename T> void prPQ(const priority_queue<T> &a) {}
 #endif
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
-const int MAXN = 1e6 + 1;
+const int MAXN = 1000 + 3;
 
 
 ll readInput() {
