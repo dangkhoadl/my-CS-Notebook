@@ -7,12 +7,15 @@
 
 /*_____________________________________________________________________________________ Complete search by recursion O(2^n )_____________________________________________________________________________________*/
 // Set = {0,1,2,3, ..., n-1}
+// subset index from 0
 // call func by search(0,n)
 vector<int> subset;
 void search(int i, int n) {
 	if(i == n) {
 		//Process subset
+		for(int i=0; i < subset.size(); ++i) {
 
+        }
 	}
 	else {
 		search(i + 1, n);
@@ -20,6 +23,24 @@ void search(int i, int n) {
 		search(i + 1, n);
 		subset.pop_back();
 	}
+}
+// Set = {1,2,3, ..., n}
+// subset index from 1
+// call func by search(1,n)
+vector<int> subset(1);
+void search(int i, int n) {
+    if(i == n+1) {
+        //Process subset
+        for(int i=1; i < subset.size(); ++i) {
+
+        }
+    }
+    else {
+        search(i + 1, n);
+        subset.push_back(i);
+        search(i + 1, n);
+        subset.pop_back();
+    }
 }
 /*_________________________________ Example print all subsets of a vector __________________________*/
 // Call search(0,n)
@@ -64,13 +85,15 @@ void search(int i, int n, int k) {
 
 /*_____________________________________________________________________________________ Complete search through all Permu _____________________________________________________________________________________*/
 // Set = {0,1,2,3, ..., n-1}
-// call func by search(n)
+// call func by search(n), permu index = 0
 vector<int> permu;
 bool chosen[100];
 void search(int n) {
 	if (permu.size() == n) {
 		// process permutation
-
+		for(int i = 0; i < permu.size(); ++i) {
+            
+        }
 	}
 	else {
 		for (int i = 0; i < n; i++) {
@@ -83,6 +106,29 @@ void search(int n) {
 			permu.pop_back();
 		}
 	}
+}
+// Set = {1,2,3,..,n}
+// call func by search(n), permu idex start w/ 1
+vector<int> permu(1,0);
+bool chosen[100];
+void search(int n) {
+    if (permu.size() == n+1) {
+        // process permutation
+        for(int i = 1; i < permu.size(); ++i) {
+            
+        }
+    }
+    else {
+        for (int i = 1; i <= n; ++i) {
+            if (chosen[i]) 
+                continue;
+            chosen[i] = true;
+            permu.push_back(i);
+            search(n);
+            chosen[i] = false;
+            permu.pop_back();
+        }
+    }
 }
 /*_________________________________ Example print all P of a string __________________________*/
 // Call search(n)
@@ -136,24 +182,41 @@ void search(int n,int k) {
 }
 
 /*_____________________________________________________________________________________ C++ builtin Permu _____________________________________________________________________________________*/
+// set = {0,1,2,...,n-1}
+//Permu start w/ 0
 vector<int> permu;
 void search(int n) {
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++)
 		permu.push_back(i);
-	}
 	do {
 		// process permutation
-		
+		for(int j=0; j < permu.size(); ++j) {
+
+		}
 	} while (next_permutation(permu.begin(), permu.end()));
+}
+// set = {1,2,...,n}
+//Permu start w/ 1
+vector<int> permu;
+void search(int n) {
+    permu.clear();
+    permu.resize(1);
+    for (int i = 1; i <= n; ++i)
+        permu.push_back(i);
+    do {
+        // process permutation
+        for(int j=1; j < permu.size(); ++j) {
+            
+        }
+    } while (next_permutation(permu.begin()+1, permu.end()));
 }
 /*_________________________________ Example print all P of a string __________________________*/
 string a = "CAB";
 
 vector<int> permu;
 void search(int n) {
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++)
 		permu.push_back(i);
-	}
 	do {
 		// process permutation
 		for(int j=0; j < permu.size(); ++j)
