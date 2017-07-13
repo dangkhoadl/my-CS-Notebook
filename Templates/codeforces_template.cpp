@@ -1,5 +1,6 @@
 
 /*------------------------------------- CONFIG ---------------------------------------------------------------*/
+#define TEST
 #define DEBUG
 //#define LINUX
 
@@ -100,7 +101,7 @@ inline double sceil(double x) {return x >= 0 ? ceil(x - EPS) : ceil(x + EPS);};
 #define sc(ccc) scanf("%c", &ccc)
 #define ss(sss,iii) scanf("%s",sss+iii)
 
-#ifdef DEBUG
+#if defined(DEBUG) && defined(TEST)
 #define quit exit(0);
 #define nl cerr<<endl;
 template<typename T,typename TT> inline ostream& operator<<(ostream &s,pair<T,TT> t) {return s<<"("<<t.first<<","<<t.second<<")";}

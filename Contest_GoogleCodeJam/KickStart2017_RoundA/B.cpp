@@ -1,0 +1,72 @@
+
+// https://codejam.withgoogle.com/codejam/contest/8284486/dashboard#s=p1
+
+const int MAXN = 2000 + 3;
+
+char s1[MAXN];
+char s2[MAXN];
+ll readInput() {
+    ss(s1,1);
+    ss(s2,1);
+    return 0;
+}
+
+vector<char> S1;
+bool check1[20000];
+vector<char> S2;
+bool check2[20000];
+bool dp[20000][20000];
+bool sol() {
+    S1.clear();
+    S1.resize(1);
+    ms(check1,false);
+    FOR(i,1,ssz(s1,1)) {
+        if(s1[i] != '*') {
+            S1.pb(s1[i]);
+            continue;
+        }
+        check1[sz(S1)] = true;
+        REP(4)
+            S1.pb('*');
+    }
+
+    S2.clear();
+    S2.resize(1);
+    ms(check2,false);
+    FOR(i,1,ssz(s2,1)) {
+        if(s2[i] != '*') {
+            S2.pb(s2[i]);
+            continue;
+        }
+        check2[sz(S2)] = true;
+        REP(4)
+            S2.pb('*');
+    }
+
+    FOR(x1,1,sz(S1)+1) FOR(x2,1,sz(S2)+1)
+        dp[x1][x2] = false;
+
+    dp[1][1] = true;
+    FOR(x1,1,sz(S1)+1) FOR(x2,1,sz(S2)+1) {
+        if(!dp[x1][x2])
+            continue;
+
+        if(check1[x1]) {
+            FOR(x1_,x1+1,x1+5)
+                dp[x1_][x2] = true;
+        }
+        if(check2[x2]) {
+            FOR(x2_,x2+1,x2+5)
+                dp[x1][x2_] = true;
+        }
+        if(S1[x1] == S2[x2] || S1[x1] == '*' || S2[x2] == '*')
+            dp[x1+1][x2+1] = true;
+    }
+
+    return dp[sz(S1)][sz(S2)];
+}
+
+ll solve() {
+    
+    return sol();
+}
