@@ -9,6 +9,11 @@ ll readInput() {
     return 0;
 }
 
+const int MOD = 26;
+inline int sub(int a,int b) {
+    return (a-b + MOD) % MOD;
+}
+
 int b[MAXN];
 int a[MAXN];
 char A[MAXN];
@@ -26,10 +31,10 @@ bool sol() {
     //Process
     a[2] = b[1];
     for(int i = 4; i < ssz(B,1); i+=2) 
-        a[i] = (b[i-1] - a[i-2] + 26) % 26;
+        a[i] = sub(b[i-1],a[i-2]);
     a[n-1] = b[n];
     for(int i = n-3; i > 0; i-=2)
-        a[i] = (b[i+1] - a[i+2] + 26) % 26;
+        a[i] = sub(b[i+1],a[i+2]);
 
     //Convert
     FOR(i,1,ssz(B,1))
