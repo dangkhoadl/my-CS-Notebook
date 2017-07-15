@@ -46,9 +46,7 @@ void preset() {
 bool dp[20000][20000];
 bool dpSol() {
     preset();
-
-    FOR(x1,1,sz(S1)+1) FOR(x2,1,sz(S2)+1)
-        dp[x1][x2] = false;
+    ms(dp,false);
 
     dp[1][1] = true;
     FOR(x1,1,sz(S1)+1) FOR(x2,1,sz(S2)+1) {
@@ -73,14 +71,11 @@ queue<pii> q;
 bool visited[20001][20001];
 bool bfsSol() {
     preset();
-
     while(!q.empty()) q.pop();
-    FOR(i,1,sz(S1)+2)
-        ms(visited[i], false);
+    ms(visited,false);
 
     q.push({1,1});
     visited[1][1] = true;
-
     while(!q.empty()) {
         int x1 = q.front().fi;
         int x2 = q.front().se;

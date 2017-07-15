@@ -24,8 +24,7 @@ int dp2[MAXQ][MAXQ][MAXQ];
 int dpSol() {
     int m_,fr1_,fr2_;
     if(N == 1) {
-        FOR(i,0,Q+1)
-            ms(dp1[i],-1);
+        ms(dp1,-1);
 
         dp1[0][0] = 0;
         FOR(q,0,Q+1) FOR(fr1,0,Q+1) {
@@ -49,8 +48,7 @@ int dpSol() {
         return dp1[Q][scr[1]];
     }
 
-    FOR(i,0,Q+1) FOR(j,0,Q+1)
-        ms(dp2[i][j],-1);
+    ms(dp2,-1);
 
     dp2[0][0][0] = 0;
     FOR(q,0,Q+1) FOR(fr1,0,Q+1) FOR(fr2,0,Q+1) {
@@ -86,8 +84,7 @@ int bfsSol() {
     if(N == 1) 
         scr[2] = 0;
     while(!S.empty()) S.pop();
-    FOR(i,0,Q+1) FOR(j,0,Q+1) FOR(k,0,Q+1)
-        ms(visited[i][j][k], false);
+    ms(visited, false);
 
     S.push({{0,0},{0,0}});
     visited[0][0][0][0] = true;
@@ -137,5 +134,5 @@ int bfsSol() {
 
 
 int solve() {
-    return bfsSol();
+    return dpSol();
 }
