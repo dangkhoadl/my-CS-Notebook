@@ -128,7 +128,7 @@ template<typename T> void prPQ(const priority_queue<T> &a) {priority_queue<T> pq
 #define pra_(A, start, end)
 #define prai(A, start, end)
 #define prai_(A, start, end)
-#define pra2(A, start1, end1, start2, end2)
+#define praa(A, start1, end1, start2, end2)
 #define prit(A)
 template<typename T> void prav(const vector<T> *a, int start, int end) {}
 template<typename T> void prvv(const vector<vector<T>> &a, int start, int end) {}
