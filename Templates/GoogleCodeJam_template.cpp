@@ -137,7 +137,6 @@ template<typename T> void prQ(const queue<T> &a) {}
 template<typename T> void prPQ(const priority_queue<T> &a) {}
 #endif
 /*----------------------------------- Functions -----------------------------------------------------------------*/
-ull t,T;
 const int MAXN = 1e6 + 3;
 
 
@@ -148,11 +147,17 @@ ll readInput() {
 }
 
 
-
-ll solve() {
+int sol() {
     
     
     return 0;
+}
+
+
+void solve(unsigned long long t) {
+    
+    printf("Case #%llu: %lld\n", t, sol());
+    
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
 int32_t main(int agrc, char *argv[]) {
@@ -167,15 +172,16 @@ int32_t main(int agrc, char *argv[]) {
     cout << fixed << setprecision(11);
     /*----------------------------------------------------------------------------------------------------*/
     //InOut
-    scanf("%lld", &T);
+    unsigned long long T;
+    scanf("%llu", &T);
 
     // Solve all cases
-    for (t = 1; t <= T; ++t) {
+    for (unsigned long long t = 1; t <= T; ++t) {
         //InOut
         readInput();
 
         //Solve
-        printf("Case #%llu: %lld\n", t, solve());
+        solve(t);
     }
     return 0;
 }
