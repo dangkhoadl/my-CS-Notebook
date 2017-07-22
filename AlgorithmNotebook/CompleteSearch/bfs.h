@@ -11,6 +11,7 @@ int bfs() {
 	// Init 1st stage
 	queue<pii> q;
 	q.push( { 0,0 } );
+	visited[0][0] = true;
 	dp[0][0] = ;
 	while(!q.empty()) {
 		// current state
