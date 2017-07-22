@@ -34,20 +34,23 @@ int bfs() {
 		b_ =  ;
 		x_ =  ;
 
-		// check visited and dp
+		// check visited
 		if(!visited[a_][b_]) {
 			visited[a_][b_] = true;
 			q.push( {a_, b_} );
 		}
+		// dp
 		dp[a_][b_] = max(dp[a_][b_], x_); // max,min, +, - 
 
 		/*____________ next states by FOR ______________*/
 		FOR(i_,1,N+1) {
 			x_ =   ;
+			// check visited
 			if(!visited[a_][i_]) {
 				visited[a_][i_] = true;
 				q.push({a_,i_});
 			}
+			// dp
 			dp[a_][i_] = max(dp[a_][i_], x_) // max,min, +, - 
 		}
 	}
