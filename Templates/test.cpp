@@ -135,6 +135,15 @@ template<typename T> void prS(const stack<T> &a) {}
 template<typename T> void prQ(const queue<T> &a) {}
 template<typename T> void prPQ(const priority_queue<T> &a) {}
 #endif
+int randInt(int a, int b) {
+    // Seed with a real random value, if available
+    std::random_device r;
+ 
+    // Choose a random mean between 1 and 6
+    std::default_random_engine e1(r());
+    std::uniform_int_distribution<int> uniform_dist(a, b-1);
+    return uniform_dist(e1);
+}
 /*------------------------------------- FUNCTIONS ---------------------------------------------------------------*/
 const int MAXN = 1000 + 3;
 
