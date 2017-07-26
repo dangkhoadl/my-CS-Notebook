@@ -1,18 +1,29 @@
 
-// A[left,right)
-int binarySearch(int A[], int l, int r, int X) {
-	--r;
-	while (true) {
-		if (l > r)
-			return -1;
+// A[left,right]
+int binarySearchR(int x, int l, int r) {
+    if(l > r)
+        return -1;
 
-		int m = l + ((r - l) >> 1);
-		if (A[m] == X)
-			return m;
+    int m = l + (r-l)/2;
+    if(A[m] == x)
+        return m;
+    if(x > A[m])
+        return binarySearchR(x,m+1,r);
+    return binarySearchR(x,l,m-1);
+}
 
-		if (X > A[m])
-			l = m + 1;
-		else
-			r = m - 1;
-	}
+int binarySearch(int x, int l, int r) {
+    while (true) {
+        if (l > r)
+            return -1;
+
+        int m = l + (r-l)/2;
+        if (A[m] == x)
+            return m;
+
+        if (x > A[m]) 
+            l = m + 1;
+        else
+            r = m - 1;
+    }
 }
