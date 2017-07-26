@@ -77,7 +77,7 @@ typedef vector<vector<int>> vvi;
 #define all(a) (a).begin(), (a).end()
 #define ra(A, start, end) (A)+start, (A)+end
 #define rv(A, start, end) (A).begin()+start, (A).begin()+end
-#define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1, char[] and bool(true,false)
+#define ms(a,x) memset(a, x, sizeof(a)) //Care: Only init with 0,-1,0x7f, char[] and bool(true,false)
 
 #define REP(a) for(int iii=0, _a=(a); iii < _a; ++iii)
 #define FOR(iii,start,end) for(int iii=(start), _end=(end); iii < _end; ++iii)               // [start, end)
