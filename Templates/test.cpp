@@ -112,7 +112,8 @@ template<typename T, typename... Args> void err(vector<string>::iterator it, T a
 #define pra(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = ";FOR(_,start, end) cerr << A[_] << ' '; cerr << endl; }
 #define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = ";FOR(_,start, end) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
 #define prit(A) {cerr << #A << " = ";for_it(A) {cerr << *it << ' ';}cerr << endl;}
-#define praa(A, start1, end1, start2, end2) {FOR(_,start1, end1) {FOR(__,start2, end2) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << "\t"; cerr << endl;} }
+#define praa(A, start1, end1, start2, end2) {FOR(_,start1, end1) {FOR(__,start2, end2) cerr << A[_][__] << "\t"; cerr << endl;} }
+#define praai(A, start1, end1, start2, end2) {FOR(_,start1, end1) {FOR(__,start2, end2) cerr << '[' << _ << "]["  << __ << ']' << A[_][__] << "\t\t\t"; cerr << endl;} }
 template<typename T> void prav(const vector<T> *a, int start, int end) {FOR(_,start,end) {FOR(__,0,sz(a[_])) {cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "\t";} cerr << endl;}}
 template<typename T> void prvv(const vector<vector<T>> &a, int start, int end) {FOR(_,start,end) {FOR(__,0,sz(a[_])) {cerr << '[' << _ << "][" << __ << ']' << a[_][__] << "\t";}cerr << endl;}}
 template<typename T> void prS(const stack<T> &a) {stack<T> s(a);cerr << "stack =  [top] ";while(!s.empty()) {cerr << s.top() << ' ';s.pop();}cerr << endl;}
@@ -125,6 +126,7 @@ template<typename T> void prPQ(const priority_queue<T> &a) {priority_queue<T> pq
 #define pra(A, start, end)
 #define prai(A, start, end)
 #define praa(A, start1, end1, start2, end2)
+#define praai(A, start1, end1, start2, end2)
 #define prit(A)
 template<typename T> void prav(const vector<T> *a, int start, int end) {}
 template<typename T> void prvv(const vector<vector<T>> &a, int start, int end) {}
