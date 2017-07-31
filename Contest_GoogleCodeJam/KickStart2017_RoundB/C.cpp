@@ -89,12 +89,11 @@ int sol() {
         if(k == K)
             res = max(res, v);
 
-        if(k >= K)
-            continue;
-
         int r_,h_,k_,v_;
         r_ = r + h;
         k_ = k + 1;
+        if(k_ > K)
+            continue;
         FOR(c_,c-h+1,c+h) {
             if(!ok(r_,c_))
                 continue;
