@@ -6,7 +6,7 @@ int dp[][];
 int bfs() {
 	// Reset 
 	ms(visited, false);
-	ms(dp, );
+	ms(dp, ); //0x7f, -0x7f, -1, 0
 
 	// Init 1st stage
 	queue<pii> q;
@@ -20,10 +20,6 @@ int bfs() {
 		int x = dp[a][b];
 		q.pop();
 
-		//Stop condition
-		if( a > A )
-			continue;
-
 		//Process current state
 
 
@@ -35,28 +31,39 @@ int bfs() {
 		b_ =  ;
 		x_ =  ;
 
+		// Stop, Bounding condition
+		if(a_ > A)
+			continue;
+
 		// check visited
 		if(!visited[a_][b_]) {
 			visited[a_][b_] = true;
 			q.push( {a_, b_} );
 		}
 		// dp
-		dp[a_][b_] = max(dp[a_][b_], x_); // max,min, +, - 
+		dp[a_][b_] = max(dp[a_][b_], x_); // Only optimization problem (max,min) 
 
 		/*____________ next states by FOR ______________*/
 		FOR(i_,1,N+1) {
+			a_ =  ;
+			b_ =  ;
 			x_ =   ;
+			// Stop, Bounding condition
+			if(a_ > A)
+				continue;
 			// check visited
 			if(!visited[a_][i_]) {
 				visited[a_][i_] = true;
 				q.push({a_,i_});
 			}
 			// dp
-			dp[a_][i_] = max(dp[a_][i_], x_) // max,min, +, - 
+			dp[a_][i_] = max(dp[a_][i_], x_) // Only optimization problem (max,min)  
 		}
 	}
 
 	//Check and return value
+	FOR()
+		res = max(res, );
 	return dp[][];
 }
 
