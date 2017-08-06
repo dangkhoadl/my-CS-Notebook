@@ -1,60 +1,93 @@
 
 // https://www.youtube.com/watch?v=8LusJS5-AGo&index=1&list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr
 
-int w[5] = {0,1,3,4,5};
-int v[5] = {0,1,4,5,7};
-const int I = 4;
-const int W = 7;
+const int MAXN = 1000 + 3;
 
-bool visited[1000][1000];
-int dp[1000][1000];
-int knapSack01() {
+int N, W;
+int val[MAXN];
+int wei[MAXN];
+ll readInput() {
+    sii(N,W);
+    FOR(n,1,N+1)
+        si(val[n]);
+    FOR(n,1,N+1)
+        si(wei[n]);
+    return 0;
+}
+
+vi itemsList;
+void addResult(int x,int display) {
+    itemsList.clear();
+    for (int i = 0; i < display; ++i)
+        if (x & (1 << i))
+            itemsList.pb(i);
+}
+
+bool visited[MAXN][MAXN];
+int dp[MAXN][MAXN];
+int items[MAXN][MAXN];
+int bfs() {
     ms(visited, false);
-    ms(dp, -1);
+    ms(dp, 0);
+    ms(items, 0);
 
     queue<pii> q;
     q.push({0,0});
     visited[0][0] = true;
-    dp[0][0] = 0;
     while(!q.empty()) {
         int i = q.front().fi;
-        int wei = q.front().se;
-        int val = dp[i][wei];
+        int w = q.front().se;
+        int v = dp[i][w];
+        int it = items[i][w];
         q.pop();
 
-        if(i >= I || wei > W)
+        int i_, w_, v_, it_;
+
+        i_ = i + 1;
+        if(i_ > N)
             continue;
-        int i_, wei_, val_;
 
         //Case default
-        i_ = i+1;
-        wei_ = wei + 1;
-        val_ = val;
-        if(!visited[i_][wei_]) {
-            visited[i_][wei_] = true;
-            q.push({i_,wei_});
+        w_ = w + 1;
+        v_ = v;
+        it_ = it;
+        if(!visited[i_][w_]) {
+            visited[i_][w_] = true;
+            q.push({i_,w_});
         }
-        dp[i_][wei_] = max(dp[i_][wei_], val_);
+        if(v_ > dp[i_][w_]) {
+            dp[i_][w_] = v_;
+            items[i_][w_] = it_;
+        }
 
         // Case choose i_
-        i_ = i+1;
-        wei_ = wei + w[i_];
-        val_ = val + v[i_];
-        if(!visited[i_][wei_]) {
-            visited[i_][wei_] = true;
-            q.push({i_,wei_});
+        w_ = w + wei[i_];
+        v_ = v + val[i_];
+        it_ = it |= (1<<i_);
+        if(!visited[i_][w_]) {
+            visited[i_][w_] = true;
+            q.push({i_,w_});
         }
-        dp[i_][wei_] = max(dp[i_][wei_], val_);
+        if(v_ > dp[i_][w_]) {
+            dp[i_][w_] = v_;
+            items[i_][w_] = it_;
+        }
 
         // Case not choose i_
-        i_ = i+1;
-        wei_ = wei;
-        val_ = val;
-        if(!visited[i_][wei_]) {
-            visited[i_][wei_] = true;
-            q.push({i_,wei_});
+        w_ = w;
+        v_ = v;
+        it_ = it &= ~(1<<i_);
+        if(!visited[i_][w_]) {
+            visited[i_][w_] = true;
+            q.push({i_,w_});
         }
-        dp[i_][wei_] = max(dp[i_][wei_], val_);
+        if(v_ > dp[i_][w_]) {
+            dp[i_][w_] = v_;
+            items[i_][w_] = it_;
+        }
     }
-    return dp[I][W];
+    
+    //print selected items
+    addResult(items[N][W], N+1);
+    return dp[N][W];
 }
