@@ -1,0 +1,6 @@
+
+
+# Install minisat
+	sudo apt-get install minisat
+
+
