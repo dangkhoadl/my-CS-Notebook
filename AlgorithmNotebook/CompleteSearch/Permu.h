@@ -28,6 +28,7 @@ void search(int n) {
         }
     }
 }
+
 // Set = {1,2,3,..,n}
 // call func by search(n), permu idex start w/ 1
 vector<int> permu(1,0);
