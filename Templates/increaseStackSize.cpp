@@ -16,14 +16,11 @@ int32_t main(int agrc, char *argv[]) {
     struct rlimit rl;
     int result;
     result = getrlimit(RLIMIT_STACK, &rl);
-    if (result == 0)
-    {
-        if (rl.rlim_cur < kStackSize)
-        {
+    if (result == 0) {
+        if (rl.rlim_cur < kStackSize) {
             rl.rlim_cur = kStackSize;
             result = setrlimit(RLIMIT_STACK, &rl);
-            if (result != 0)
-            {
+            if (result != 0) {
                 fprintf(stderr, "setrlimit returned result = %d\n", result);
             }
         }
