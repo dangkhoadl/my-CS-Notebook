@@ -8,14 +8,14 @@ vector<int> e[MAXV];
 int CLK = 1;
 stack<int> S;
 bool onStack[MAXV];
-int index[MAXV];
+int order[MAXV];
 int lowlink[MAXV];
 
 vector<int> group;
 vector<vector<int>> SCC;
 void explore(int v) {
-    // Set the depth index for v to the smallest unused index
-    index[v] = CLK;
+    // Set the depth order for v to the smallest unused order
+    order[v] = CLK;
     lowlink[v] = CLK++;
     S.push(v);
     onStack[v] = true;
@@ -24,7 +24,7 @@ void explore(int v) {
     for(int i = 0; i < e[v].size(); ++i) {
         int w = e[v][i];
 
-        if(index[w] == -1) {
+        if(order[w] == -1) {
             // Successor w has not yet been visited; recurse on it
             explore(w);
             lowlink[v] = min(lowlink[v], lowlink[w]);
@@ -32,13 +32,13 @@ void explore(int v) {
         else if(onStack[w]) {
             // Successor w is in stack S and hence in the current SCC
             // Note: The next line may look odd - but is correct.
-            // It says w.index not w.lowlink; that is deliberate and from the original paper
-            lowlink[v] = min(lowlink[v], index[w]);
+            // It says w.order not w.lowlink; that is deliberate and from the original paper
+            lowlink[v] = min(lowlink[v], order[w]);
         }
     }
 
     // If v is a root node, pop the stack and generate an SCC
-    if(lowlink[v] == index[v]) {
+    if(lowlink[v] == order[v]) {
         group.clear();
         int w = 0;
         do {
@@ -52,11 +52,11 @@ void explore(int v) {
 }
 
 void tarjan() {
-    memset(index, -1, sizeof(index));
+    memset(order, -1, sizeof(order));
     memset(onStack, false, sizeof(onStack));
     memset(lowlink, 0x7f, sizeof(lowlink));
     for(int v = 1; v <= V; ++v) {
-        if(index[v] == -1)
+        if(order[v] == -1)
             explore(v);
     }
 }

@@ -21,15 +21,6 @@
 //				a1: a1 = (1)   and -a1  = (2)
 //				a2: a2 = (3)   and -a2 = (4)
 //
-//		- Check SCC by kosaraju
-//			- if -a and a in the same group ---> false;
-//
-//		- Yield result
-//			- Start the last group of SCC
-//				Ex: A = (-x4), B = (x1,x2,-x3), C = (-x1, -x2, x3), D = (x4)
-//					Start w/ D -> x4 = true
-//							 C -> x3 = true, x2 = false, x1 = false
-//							 ...
 //			- Final result
 //					x1 = false, x2 =false, x3 = true, x4 = true	
 
@@ -43,152 +34,114 @@ void readInput() {
 	while(scanf("%lld %lld", &a, &b) > 0)
 		sat.push_back( {a,b} );
 }
+
+inline pair<int,int> getVertexID(int i) {
+    if(i > 0)
+        return {i*2 - 1, i*2};
+    return {-i*2, -i*2 -1};
+}
+
+inline pair<int,int> getVar(int i) {
+    return {i*2-1, i*2};
+}
+
 vector<int> e[MAXV];
-int V=0;
+int V = 0;
 void createGraph() {
-	for(int i = 0; i < sat.size(); ++i) {
-		int a = sat[i].first;
-		int b = sat[i].second;
-		V = max(V, abs(a) * 2);
-		V = max(V, abs(b) * 2);
+    for(int i = 0; i < sat.size(); ++i) {
+        int a = sat[i].first;
+        int b = sat[i].second;
+        V = max(V, abs(a) * 2);
+        V = max(V, abs(b) * 2);
 
-		int va, va_, vb, vb_;
-		
-		if(a > 0) {
-			va = a*2 - 1;
-			va_ = a*2; 
-		}
-		else {
-			va = -a*2;
-			va_ = -a*2 - 1;
-		}
-
-		if (b > 0) {
-			vb = b * 2 - 1;
-			vb_ = b * 2;
-		}
-		else {
-			vb = -b * 2;
-			vb_ = -b * 2 - 1;
-		}
-
-		e[va_].push_back(vb);
-		e[vb_].push_back(va);
-	}
+        int va = getVertexID(a).first;
+        int va_ = getVertexID(a).second;
+        int vb = getVertexID(b).first;
+        int vb_ = getVertexID(b).second;
+        
+        e[va_].push_back(vb);
+        e[vb_].push_back(va);
+    }
 }
-// ------------------------------------------------ kosaraju ---------------------------
-// DFS G
-bool visited[MAXV];
-int preCLK[MAXV];
-int postCLK[MAXV];
+// ------------------------------------------------ Tarjan ---------------------------
 int CLK = 1;
+stack<int> S;
+bool onStack[MAXV];
+int order[MAXV];
+int lowlink[MAXV];
+
+int groupID = 1;
+int SCC[MAXV];
 void explore(int v) {
-	visited[v] = true;
-	
-	//Previsit
-	preCLK[v] = CLK;
-	++CLK;
+    // Set the depth order for v to the smallest unused order
+    order[v] = CLK;
+    lowlink[v] = CLK++;
+    S.push(v);
+    onStack[v] = true;
 
-	for (int i = 0; i < e[v].size(); ++i) {
-		if (!visited[e[v][i]])
-			explore(e[v][i]);
-	}
+    // Consider successors of v
+    for(int i = 0; i < e[v].size(); ++i) {
+        int w = e[v][i];
 
-	//PostVisit
-	postCLK[v] = CLK;
-	++CLK;
+        if(order[w] == -1) {
+            // Successor w has not yet been visited; recurse on it
+            explore(w);
+            lowlink[v] = min(lowlink[v], lowlink[w]);
+        }
+        else if(onStack[w]) {
+            // Successor w is in stack S and hence in the current SCC
+            // Note: The next line may look odd - but is correct.
+            // It says w.order not w.lowlink; that is deliberate and from the original paper
+            lowlink[v] = min(lowlink[v], order[w]);
+        }
+    }
+
+    // If v is a root node, pop the stack and generate an SCC
+    if(lowlink[v] == order[v]) {
+        int w = 0;
+        do {
+            w = S.top();
+            S.pop();
+            onStack[w] = false;
+
+            // Set
+            SCC[w] = groupID; 
+        } while(w != v);
+
+        ++groupID;
+    }
 }
-void dfs() {
-	memset(visited + 1, false, V);
-	for (int v = 1; v <= V; ++v)
-		if (!visited[v])
-			explore(v);
+
+void tarjan() {
+    memset(order, -1, sizeof(order));
+    memset(onStack, false, sizeof(onStack));
+    memset(lowlink, 0x7f, sizeof(lowlink));
+    memset(SCC, -1, sizeof(SCC));
+    while(!S.empty()) S.pop();
+    for(int v = 1; v <= V; ++v) {
+        if(order[v] == -1)
+            explore(v);
+    }
 }
-//DFS G_R
-vector<int> e_r[MAXV];
-bool visited_r[MAXV];
-void explore_r(int v) {
-	visited_r[v] = true;
-	for (int i = 0; i < e_r[v].size(); ++i) {
-		if (!visited_r[e_r[v][i]])
-			explore_r(e_r[v][i]);
-	}
-}
-//Kosaraju
-bool check[MAXV];
-vector<pair<int,int>> piiSorted;
-vector<vector<int>> SCC;
-void kosaraju() {
-	// dfs G
-	dfs();
 
-	//Sort postVisit 
-	for(int i = 1; i <= V; ++i) {
-		piiSorted.push_back( {-postCLK[i], i} );
-	}
-	sort(piiSorted.begin(), piiSorted.end());
-
-	// Create G_r
-	for(int v = 1; v <= V; ++v) 
-		for(int i = 0; i < e[v].size(); ++i)
-			e_r[e[v][i]].push_back(v);
-
-	//dfs G_r
-	memset(check + 1, false, V);
-	memset(visited_r + 1, false, V);
-	for(int i = 0; i < piiSorted.size(); ++i) {
-		int v = piiSorted[i].second;
-		if(!visited_r[v]) 
-			explore_r(v);
-
-		// Put SCC into group
-		vector<int> group;
-		for(int j = 1; j <= V; ++j) 
-			if(visited_r[j] && !check[j]) {
-				check[j] = true;
-				group.push_back(j);
-			}
-		
-		if (group.size() > 0) 
-			SCC.push_back(group);
-	}
-}
-bool processed[MAXV];
 bool res[MAXV];
 bool twoSat() {
-	memset(res + 1, false, V/2);
-	createGraph();
-	kosaraju();
+    memset(res, false, sizeof(res));
+    createGraph();
+    tarjan();
 
-	//check SCC
-	for(int i = 0; i < SCC.size(); ++i) {
-		memset(processed + 1, false, V/2);
-		for(int j = 0; j < SCC[i].size(); ++j) {
-			if (SCC[i][j] % 2 == 0) {
-				if(processed[SCC[i][j]/2])
-					return false;
-				processed[SCC[i][j]/2] = true;
-			}
-			else {
-				if(processed[(SCC[i][j] + 1)/2])
-					return false;
-				processed[(SCC[i][j] + 1)/2] = true;
-			}
-		}
-	}
+    //check SCC and yield results
+    for(int i = 1; i <= V/2; ++i) {
+        int posVar = getVar(i).first;
+        int negVar = getVar(i).second;
 
-	// Yield Result
-	memset(processed + 1, false, V / 2);
-	for(int i = SCC.size()-1; i >= 0; --i)
-		for (int j = 0; j < SCC[i].size(); ++j) {
-			if (SCC[i][j] % 2 != 0 && !processed[(SCC[i][j] + 1) / 2]) {
-				res[(SCC[i][j] + 1) / 2] = true;
-				processed[(SCC[i][j] + 1) / 2] = true;
-			}
-			else if (SCC[i][j] % 2 == 0 && !processed[SCC[i][j] / 2]) {
-				processed[SCC[i][j] / 2] = true;
-			}
-		}
+        if(SCC[posVar] == SCC[negVar])
+            return false;
 
-	return true;
+        if(SCC[posVar] < SCC[negVar])
+            res[i] = false;
+        else
+            res[i] = true;
+    }
+    return true;
 }
