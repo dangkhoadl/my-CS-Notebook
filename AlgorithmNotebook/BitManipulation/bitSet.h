@@ -1,3 +1,5 @@
+
+
 // Basic Operation:
 //      All subsets of a n-element set {0,1,...,n-1}            [0 : 2^n-1]     [0 : (1<<n)-1]
 //      Init set:                                               x = 0
@@ -11,7 +13,7 @@ vector<int> listSetElements(int x) {
         return {1};
 
     vector<int> res;
-    for(int k = 0; k <= x; ++k) {
+    for(int k = 0; k <= x/2; ++k) {
         if(x & (1<<k))
             res.pb(k);
     }
