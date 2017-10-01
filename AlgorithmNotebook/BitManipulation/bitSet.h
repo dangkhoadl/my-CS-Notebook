@@ -6,6 +6,7 @@
 //      Add element k to set:                                   x |= (1 << k)
 //      Remove element k out of set:                            x &= ~(1 << k)
 //      (bool) Check if k is in set:                            x & (1 << k)
+//          Notes: k <= x/2
 vector<int> listSetElements(int x) {
     if(x == 1)
         return {0};
