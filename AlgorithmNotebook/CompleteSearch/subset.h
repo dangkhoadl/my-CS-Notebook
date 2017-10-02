@@ -62,29 +62,34 @@ void search(int i, int n) {
 }
 
 
+/*_________________________________ Example print all subsets of n-element Set __________________________*/
 // Set = {0,1,2,3, ..., n-1}
 //    Number of Subset = C(0,n) + C(1,n) + ... + C(n,n) = (1+1)^n = 2^n = (1 << n)
+vector<set<int>> subsets;
 #define isOn(S, k) (S & (1 << k))
 void printAllSubset(int n) {
     for (int x = 0; x < (1 << n); ++x) {
+        set<int> a;
         for (int i = 0; i < n; ++i) {
             if (isOn(x,i)) {
-                // Process subset
-
+                a.insert(i);
             }
         }
+        subsets.push_back(a);
     }
 }
 
 /*_________________________________ Example print all subsets of a vector __________________________*/
 //    Number of Subset = C(0,n) + C(1,n) + ... + C(n,n) = (1+1)^n = 2^n = (1 << n)
+vector<set<int>> subsets;
 #define isOn(S, k) (S & (1 << k))
 void printAllSubset(const vector<int> &a) {
     for (int x = 0; x < (1 << a.size()); ++x) {
+        set<int> aa;
         for (int i = 0; i < a.size(); ++i) {
             if (isOn(x,i))
-                cout << a[i] << ' ';
+                aa.insert(a[i]);
         }
-        cout << endl;
+        subsets.push_back(aa);
     }
 }
