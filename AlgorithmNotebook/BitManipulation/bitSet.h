@@ -1,25 +1,22 @@
 
 
-// Basic Operation:
+// bitSet:
 //      All subsets of a n-element set {0,1,...,n-1}            [0 : 2^n-1]     [0 : (1<<n)-1]
 //      Init set:                                               x = 0
 //      Add element k to set:                                   x |= (1 << k)
 //      Remove element k out of set:                            x &= ~(1 << k)
 //      (bool) Check if k is in set:                            x & (1 << k)
-//          Notes: k <= x/2
-vector<int> listSetElements(int x) {
-    if(x == 1)
-        return {0};
-    if(x == 2)
-        return {1};
-
+vector<int> bitSetToSet(int x) {
     vector<int> res;
-    for(int k = 0; k <= x/2; ++k) {
-        if(x & (1<<k))
+    int k = 0;
+    for(int i = 1; i <= x; i <<= 1, ++k) {
+        if(x & i)
             res.pb(k);
     }
     return res;
 }
+
+
 
 #define isOn(x, k) (x & (1 << k))       //To check if the k-th item of the set is on. 
 #define setBit(x, k) (x |= (1 << k))    //To set/turn on the k-th item (0-based indexing) of the set.
