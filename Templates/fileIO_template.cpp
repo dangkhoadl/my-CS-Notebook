@@ -1,55 +1,5 @@
-//#define LINUX
-#define DEBUG
 
-/*------------------------------------- TEMPLATE ---------------------------------------------------------------*/
-#ifdef LINUX
-#include <bits/stdc++.h>
-#endif
 
-#ifndef LINUX
-#ifdef _MSC_VER
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <bitset>
-#include <iostream>
-#include <fstream>
-#include <streambuf>
-#include <istream>
-#include <vector>
-#include <list>
-#include <forward_list>
-#include <string>
-#include <map>
-#include <algorithm>
-#include <functional>
-#include <numeric>
-#include <stack>
-#include <queue>
-#include <set>
-#include <iomanip>
-#include <sstream>
-#include <cmath>
-#include <ctime>
-#include <random>
-#include <unordered_map>
-#include <unordered_set>
-#include <bitset>
-#include <utility>
-#include <climits>
-#include <cassert>
-#include <istream>
-#include <random>
-#include <iterator>
-#include <memory>
-#include <cctype>
-#include <complex>
-#endif
-
-/*******************************************************************************************/
 int main(int agrc, char *argv[]) {
     if (agrc == 3) {
         //Input
