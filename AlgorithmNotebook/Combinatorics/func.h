@@ -16,7 +16,7 @@ inline double combination(int n, int k) {
 }
 
 double Com[101][101];
-inline double combination(int n, int r) {
+inline double combination(int n, int k) {
 	Com[0][0] = 1;
 	for (int i = 0; i < n + 1; ++i) {
 		Com[0][i] = 1;
