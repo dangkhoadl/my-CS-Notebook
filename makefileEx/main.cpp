@@ -1,4 +1,4 @@
-#include "lib.h"
+#include ".//libs//lib.h"
 
 int main() {
 	foo();

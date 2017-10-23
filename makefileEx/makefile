@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS=-w -O2 -c -std=c++11
 LDFLAGS=
-SOURCES=test.cpp
+SOURCES=main.cpp .//libs//lib.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXE=test.exe
+EXE=main.exe
 
 all: $(SOURCES) $(EXE)
 
