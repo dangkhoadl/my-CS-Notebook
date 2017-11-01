@@ -25,8 +25,9 @@ vector<int> bitSetToSet(int x) {
 #define lowBit(x) (x & (-x))            //To get the value of the least signiﬁcant bit that is on (ﬁrst from the right).
 #define setAll(x, n) (x = (1 << n) - 1) //To turn on all bits in a set of size n.
 
+#define isOdd(x) (x & 1)
+#define isEven(x) !(x & 1)
 #define powerOf2(k) (1<<k)              // 2^k or total number of subset of k-element set
-#define modulo(x, N) ((x) & (N - 1))
 #define isPowerOfTwo(x) (!(x & (x - 1)))
 #define nearestPowerOfTwo(x) ((int)pow(2.0, (int)((log((double)x) / log(2.0)) + 0.5)))
 #define turnOffLastBit(x) ((x) & (x - 1))
