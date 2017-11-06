@@ -18,10 +18,9 @@ vector<int> wei[MAXV];
 int dist[MAXV][MAXV];
 void floydWarshall() {
 	//Base cases
-	for (int i = 1; i <= V; ++i) {
-		fill(dist[i] + 1, dist[i] + V + 1, inf);
+	memset(dist, 0x7f, sizeof(dist));
+	for (int i = 1; i <= V; ++i) 
 		dist[i][i] = 0;
-	}
 		
 	for (int v = 1; v <= V; ++v)
 		for (int i = 0; i < e[v].size(); ++i)

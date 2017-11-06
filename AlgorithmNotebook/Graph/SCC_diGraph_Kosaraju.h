@@ -55,14 +55,14 @@ void kosaraju() {
             e_r[e[v][i]].push_back(v);
 
     // dfs G
-    memset(visited + 1, false, V);
+    memset(visited, false, sizeof(visited));
     for (int v = 1; v <= V; ++v) {
         if (!visited[v])
             explore(v);
     }
 
     //dfs G_r
-    memset(visited_r + 1, false, V);
+    memset(visited_r, false, sizeof(visited));
     while(!postVisitOrder.empty()) {
         int v = postVisitOrder.top();
         postVisitOrder.pop();

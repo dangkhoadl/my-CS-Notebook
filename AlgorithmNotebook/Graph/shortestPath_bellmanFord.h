@@ -18,8 +18,9 @@ vector<int> wei[MAXV];
 int dist[MAXV];
 int pre[MAXV];
 void bellmanFord(int start) {
-	fill(pre + 1, pre + V + 1, 0);
-	fill(dist + 1, dist + V + 1, inf);
+	memset(pre, 0, sizeof(pre));
+	memset(dist, 0x7f, sizeof(dist));
+
 	dist[start] = 0;
 	
 	for (int k = 0; k < V - 1; ++k)
@@ -61,8 +62,9 @@ void detectNegCycle() {
 			}
 }
 bool bellmanFord(int start) {
-	fill(pre + 1, pre + V + 1, 0);
-	fill(dist + 1, dist + V + 1, inf);
+	memset(pre, 0, sizeof(pre));
+	memset(dist, 0x7f, sizeof(dist));
+
 	dist[start] = 0;
 
 	for (int k = 0; k < V - 1; ++k)

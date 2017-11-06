@@ -20,9 +20,9 @@ void explore(int v, int preC) {
 			explore(e[v][i], color[v]);
 }
 void dfs(int start) {
-	memset(visited + 1, false, V);
-	memset(color + 1, 0, V);
-	explore(start, 2);
+	memset(visited + 1, false, sizeof(visited));
+	memset(color + 1, 0, sizeof(color));
+	explore(start, 2, sizeof(start));
 }
 bool biGraphCheck() {
 	dfs(1);

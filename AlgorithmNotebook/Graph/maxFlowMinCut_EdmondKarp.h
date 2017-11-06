@@ -21,8 +21,8 @@ int EdmondKarp(int s, int t) {
 	//Repeat
 	while(true) {
 		// bfs to find path from s -> t
-		memset(visited + 1, false, V);
-		memset(pre + 1, -1, V * sizeof(int));
+		memset(visited, false, sizeof(visited));
+		memset(pre, -1, sizeof(pre));
 		visited[s] = true;
 		queue<int> q;
 		q.push(s);

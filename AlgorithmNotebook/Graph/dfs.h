@@ -28,11 +28,11 @@ void explore(int v) {
 	
 }
 void dfs(int start) {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	explore(start);
 }
 void dfsAll() {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	for (int v = 1; v <= V; ++v)
 		if(!visited[v])
 			explore(v);
@@ -61,11 +61,11 @@ void explore(int v) {
 	//cout << v << endl;
 }
 void dfs(int start) {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	explore(start);
 }
 void dfsAll() {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	for (int v = 1; v <= V; ++v)
 		if(!visited[v])
 			explore(v);
@@ -75,7 +75,7 @@ void dfsAll() {
 //DFS by stack (less runtime - only 1 pass)
 bool visited[MAXV];
 void dfs(int start) {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 
 	stack<int> s;
 	s.push(start);
@@ -121,11 +121,11 @@ void explore(int v) {
 	++CLK;
 }
 void dfs(int start) {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	explore(start);
 }
 void dfsAll() {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	for (int v = 1; v <= V; ++v)
 		if (!visited[v])
 			explore(v);

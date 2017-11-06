@@ -18,7 +18,7 @@ void explore(int v) {
 	topoOrder.push_back(v);
 }
 void dfs() {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	for (int v = 1; v <= V; ++v)
 		if(!visited[v])
 			explore(v);
@@ -47,7 +47,7 @@ void explore(int v) {
 	topoOrder.push_back(v);
 }
 void dfs() {
-	memset(state + 1, 0, V);
+	memset(state, 0, sizeof(state));
 	for (int v = 1; v <= V; ++v)
 		if (state[v] == 0)
 			explore(v);
@@ -83,7 +83,7 @@ void explore(int v) {
 	topoOrder.push_back(v);
 }
 void dfs() {
-	memset(state + 1, 0, V);
+	memset(state, 0, sizeof(state));
 	for (int v = 1; v <= V; ++v)
 		if (state[v] == 0)
 			explore(v);
@@ -127,7 +127,7 @@ void explore(int v) {
 	topoOrder.push_back(v);
 }
 void dfs() {
-	memset(state + 1, 0, V);
+	memset(state, 0, sizeof(state));
 	for (int v = 1; v <= V; ++v)
 		if (state[v] == 0)
 			explore(v);

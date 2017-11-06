@@ -21,6 +21,11 @@ vector<int> wei[MAXV];
 
 void readInput() {
 	cin >> V >> E;
+
+	for (int i = 1; i <= V; ++i) {
+		e[i].clear();
+		wei[i].clear();
+	}
 	for (int i = 1; i <= E; ++i) {
 		int v, u, w;
 		cin >> v >> u >> w;
@@ -47,6 +52,10 @@ vector<int> wei[MAXV];
 
 void readInput() {
 	cin >> V >> E;
+	for (int i = 1; i <= V; ++i) {
+		e[i].clear();
+		wei[i].clear();
+	}
 	for (int i = 1; i <= V; ++i) {
 		int num, u, w;
 		cin >> num;
@@ -79,6 +88,10 @@ vector<int> wei[MAXV];
 
 void readInput() {
 	cin >> V >> E;
+	for (int i = 1; i <= V; ++i) {
+		e[i].clear();
+		wei[i].clear();
+	}
 	for (int i = 1; i <= E; ++i) {
 		int v, u, w;
 		cin >> v >> u >> w;
@@ -104,6 +117,10 @@ vector<int> wei[MAXV];
 
 void readInput() {
 	cin >> V >> E;
+	for (int i = 1; i <= V; ++i) {
+		e[i].clear();
+		wei[i].clear();
+	}
 	for (int i = 1; i <= V; ++i) {
 		int num, u, w;
 		cin >> num;

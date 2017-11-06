@@ -20,7 +20,7 @@ void explore(int v) {
 	}
 }
 void dfsAll() {
-	memset(visited + 1, false, V);
+	memset(visited, false, sizeof(visited));
 	label = 1;
 	for (int v = 1; v <= V; ++v)
 		if (!visited[v]) {

@@ -6,9 +6,10 @@ int dist[MAXV];
 int pre[MAXV];
 bool processed[MAXV];
 void dijkstra(int start) {
-	fill(processed + 1, processed + V + 1, false);
-	fill(pre + 1, pre + V + 1, 0);
-	fill(dist + 1, dist + V + 1, inf);
+	memset(processed, false, sizeof(processed));
+	memset(pre, 0, sizeof(pre));
+	memset(dist, 0x7f, sizeof(dist));
+
 	dist[start] = 0;
 
 	priority_queue<pair<int, int>> pq;
@@ -62,8 +63,9 @@ vector<int> wei[MAXV];
 int dist[MAXV];
 int pre[MAXV];
 void dijkstra(int start) {
-	fill(pre + 1, pre + V + 1, 0);
-	fill(dist + 1, dist + V + 1, inf);
+	memset(pre, 0, sizeof(pre));
+	memset(dist, 0x7f, sizeof(dist));
+
 	dist[start] = 0;
 
 	set<pair<int, int>> s;
@@ -93,9 +95,10 @@ int dist[MAXV];		// Store the distance from start -> i
 int pre[MAXV];		// store the path
 bool processed[MAXV];
 void dijkstra(int start) {
-	fill(processed + 1, processed + V + 1, false);
-	fill(pre + 1, pre + V + 1, 0);
-	fill(dist + 1, dist + V + 1, inf);
+	memset(processed, false, sizeof(processed));
+	memset(pre, 0, sizeof(pre));
+	memset(dist, 0x7f, sizeof(dist));
+
 	dist[start] = 0;
 
 	priority_queue<pair<int, int>, vector<pair<int, int> >, less<pair<int, int> > > pq;
@@ -179,8 +182,8 @@ public:
 int dist[MAXV];		// Store the distance from start -> i
 int pre[MAXV];		// store the path
 void dijkstra(int start) {
-	memset(pre + 1, 0, V * sizeof(int));
-	fill(dist + 1, dist + V + 1, inf);
+	memset(pre, 0, sizeof(pre));
+	memset(dist, 0x7f, sizeof(dist));
 	dist[start] = 0;
 
 	MinHeap pq;
