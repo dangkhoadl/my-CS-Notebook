@@ -11,7 +11,7 @@ vector<int> wei[MAXV];
 int par_[MAXN];
 int size_[MAXN];	// size of the corresponding set
 void init(int n) {
-	ms(size_, 1);
+	memset(size_, 1, sizeof(size_));
 	for(int i = 1; i <= n; ++i)
 		par_[i] = i;
 }

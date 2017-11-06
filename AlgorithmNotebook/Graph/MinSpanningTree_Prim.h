@@ -9,9 +9,9 @@ int cost[MAXV];
 int pre[MAXV];
 bool processed[MAXV];
 void prim(int start) {
-    ms(processed, false);
-    ms(pre, 0);
-    ms(cost, 0x7f);
+    memset(processed, false, sizeof(processed));
+    memset(pre, 0, sizeof(pre));
+    memset(cost, 0x7f, sizeof(cost));
 
     cost[start] = 0;
 
@@ -27,7 +27,7 @@ void prim(int start) {
         processed[v] = true;
 
         for (int i = 0; i < e[v].size(); ++i) {
-            if (cost[e[v][i]] > wei[v][i] && e[v][i] != pre[v]) {
+            if (cost[e[v][i]] > wei[v][i] && !processed[e[v][i]]) {
                 //Relax
                 cost[e[v][i]] = wei[v][i];
                 pre[e[v][i]] = v;
