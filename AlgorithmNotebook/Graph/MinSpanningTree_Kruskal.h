@@ -11,9 +11,9 @@ vector<int> wei[MAXV];
 int par_[MAXN];
 int size_[MAXN];	// size of the corresponding set
 void init(int n) {
+	ms(size_, 1);
 	for(int i = 1; i <= n; ++i)
 		par_[i] = i;
-	fill(size_ + 1, size_ + n + 1, 1);
 }
 int find(int x) {
 	while(x != par_[x])
@@ -31,6 +31,8 @@ void merge(int a, int b) {
 
 vector<int> pathwei;
 int Kruskal() {
+	pathwei.clear();
+
 	int totalW = 0;
 	init(V);
 
