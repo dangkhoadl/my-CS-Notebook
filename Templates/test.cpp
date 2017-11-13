@@ -83,7 +83,7 @@ typedef vector<vector<int>> vvi;
 #define REP(a) for(int iii=0, _a=(a); iii < _a; ++iii)
 #define FOR(iii,start,end) for(int iii=(start), _end=(end); iii < _end; ++iii)               // [start, end)
 #define FORD(iii,start,end) for(int iii=(start), _end=(end); iii > _end; --iii)              // [start, end)
-#define for_it(A) for(auto it = (A.begin()), _end(A.end()); it != _end; ++it)
+#define FORIT(it__,A) for(auto it__ = (A.begin()), _end(A.end()); it__ != _end; ++it__)
 
 inline bool DEC(int iii_,int jjj_) { return (iii_<jjj_); }
 inline double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
@@ -111,7 +111,7 @@ void err(vector<string>::iterator it) {}
 template<typename T, typename... Args> void err(vector<string>::iterator it, T a, Args... args) {cerr << it -> substr((*it)[0] == ' ', it->length()) << " = " << a << ", ";err(++it, args...);}
 #define pra(A, start, end) {cerr << #A << '[' << start << ',' << (end - 1) << "] = ";FOR(_,start, end) cerr << A[_] << ' '; cerr << endl; }
 #define prai(A, start, end) { cerr << #A << '[' << start << ',' << (end - 1) << "] = ";FOR(_,start, end) cerr << '[' << _ << ']' << A[_] << ' '; cerr << endl; }
-#define prit(A) {cerr << #A << " = ";for_it(A) {cerr << *it << ' ';}cerr << endl;}
+#define prit(A) {cerr << #A << " = ";FORIT(it__,A) {cerr << *it__ << ' ';}cerr << endl;}
 #define praa(A, start1, end1, start2, end2) {FOR(_,start1, end1) {FOR(__,start2, end2) {ostringstream ss;ss << A[_][__];cerr << setw(10) << left << ss.str();}cerr << endl;}}
 #define praai(A, start1, end1, start2, end2) {FOR(_,start1, end1) {FOR(__,start2, end2) {ostringstream ss;ss << '[' << _ << "]["  << __ << "]" << A[_][__];cerr << setw(17) << left << ss.str();}cerr << endl;}}
 template<typename T> void prav(const vector<T> *a, int start, int end) {FOR(_,start,end) {FOR(__,0,sz(a[_])) {ostringstream ss;ss << a[_][__];cerr << setw(10) << left << ss.str();} cerr << endl;}}
