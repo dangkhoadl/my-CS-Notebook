@@ -16,10 +16,10 @@ void quicksort(int a[], int left, int right) {
 
     while(i <= j) {
         // pointer i: Find element that < pivot from left
-        while(a[i] < pivot) ++i;
+        while(a[i] < pivot) ++i;                                    // Sorting condition !!!
 
         // pointer j: Find element that > pivot from right  
-        while(a[j] > pivot) --j;
+        while(a[j] > pivot) --j;                                    // Sorting condition !!!
 
         // if i still in left, j still in right: swap than continue
         if(i <= j) {

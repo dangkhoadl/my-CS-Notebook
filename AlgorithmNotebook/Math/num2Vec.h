@@ -1,14 +1,14 @@
 
 // convert n --> vector<int>
 
-vector<int> numV;
-void num2Vec(int num) {
-	numV.clear();
-	int a = 0;
-	while(num) {
-		a = num % 10;
-		num /= 10;
-		numV.pb(a);
-	}
-	reverse(all(numV));
+vector<int> num2Vec(int num) {
+    vector<int> numV;
+    int a = 0;
+    while(num) {
+        a = num % 10;
+        num /= 10;
+        numV.push_back(a);
+    }
+    reverse(numV.begin(), numV.end());
+    return numV;
 }
