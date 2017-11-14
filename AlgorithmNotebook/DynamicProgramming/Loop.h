@@ -5,6 +5,10 @@ int solveDP() {
     ms(visited, false);
     ms(dp, ); //0x7f, -0x7f, -1, 0
     
+    // Init state
+    dp[0][0] = ;
+    visited[0][0] = true;
+
     FOR(i) FOR(j) {
         if(!visited[i][j])
             continue;
@@ -13,6 +17,8 @@ int solveDP() {
         // Case 1
         i_ = ;
         j_ = ;
+        if(i_ >  or j_ > )
+            continue;
         dp_ = ;
         dp[i_][j_] = max(dp[i_][j_], dp_);
         visited[i_][j_] = true;
@@ -20,6 +26,8 @@ int solveDP() {
         // Case 2
         i_ = ;
         j_ = ;
+        if(i_ >  or j_ > )
+            continue;
         dp_ = ;
         dp[i_][j_] = max(dp[i_][j_], dp_);
         visited[i_][j_] = true;
