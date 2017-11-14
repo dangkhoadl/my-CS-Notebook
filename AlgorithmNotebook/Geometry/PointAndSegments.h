@@ -13,7 +13,7 @@ bool isInRange(int p, int a, int b) {
 bool isIntersect(pair<int,int> seg1, pair<int,int> seg2, pair<int,int> &res) {
     assert(seg1.first <= seg1.second and seg2.first <= seg2.second);
 
-    int a = max(seg1.first, seg2.fi);
+    int a = max(seg1.first, seg2.first);
     int b = min(seg1.second, seg2.second);
     if(a > b)
         return false;
