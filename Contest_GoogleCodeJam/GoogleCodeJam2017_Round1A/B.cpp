@@ -1,82 +1,94 @@
 
 // https://codejam.withgoogle.com/codejam/contest/5304486/dashboard#s=p1
 
-const int MAXN = 50 + 1;
-int N,P;
+const int MAXN = 50 + 3;
+
+int N, P;
 int R[MAXN];
 int Q[MAXN][MAXN];
 ll readInput() {
     sii(N,P);
     FOR(n,1,N+1)
         si(R[n]);
-    FOR(n,1,N+1)
-        FOR(p,1,P+1)
-            si(Q[n][p]);
+    FOR(n,1,N+1) FOR(p,1,P+1) {
+        si(Q[n][p]);
+    }
+    
     return 0;
 }
 
-pii findRange(int q, int r) {
-    int a = q/r;
-    while(10*q <= 11*a*r)
-        --a;
+
+// Find x in range[a,b] such that 
+//      S <= W*x <= E
+// a,b,S,W,E: int
+bool findRange(int S, int W, int E, pair<int,int> &res) {
+    assert(S <= E);
+    int a = S/W+1;
+    while(S <= W*a) --a;
     ++a;
 
-    int b = q/r;
-    while(9*r*b <= 10*q) 
-        ++b;
+    int b = E/W-1;
+    while(W*b <= E) ++b;
     --b;
 
-    if(a>b)
-        return {-1,-1};
-    return {a,b};
+    if(a > b)
+        return false;
+
+    res = {a,b};
+    return true;
 }
-int res;
-vii ab[MAXN];
-void process() {
-    res = 0;
+
+// Greedy by Priority queue. If use vector<pair<int,int>> and sort 2 times for first and second --> Must use stable sort
+//     sort(first)
+//     stable_sort(second)
+priority_queue<pii> Range[MAXN];
+void cache() {
     FOR(n,1,N+1) {
-        ab[n].clear();
-        FOR(p,1,P+1) {
-            pii r = findRange(Q[n][p], R[n]);
-            if(r.fi == -1)
-                continue;
-            ab[n].pb(r);
-        }
+        while(!Range[n].empty()) Range[n].pop();
     }
 
-    if(N == 1) {
-        res = sz(ab[1]);
-        return;
+    FOR(n,1,N+1) FOR(p,1,P+1) {
+        pii res = {-1,-2};
+        if(findRange(90*Q[n][p], 99*R[n], 110*Q[n][p], res))
+            Range[n].push({-res.fi,-res.se});
     }
-    FOR(n,1,N+1) {
-        sort(all(ab[n]), [](pii i, pii j){return i.se>j.se;});
-        stable_sort(all(ab[n]), [](pii i, pii j){return i.fi>j.fi;});
-    }
+}
+
+int sol() {
+    cache();
+
+    int cnt = 0;
     while(1) {
-        FOR(n,1,N+1)
-            if(sz(ab[n]) == 0)
-                return;
+        // Stop Condition: 1 PQ is empty
+        FOR(n,1,N+1) {
+            if(sz(Range[n]) == 0)
+                return cnt;
+        }
 
-        int a = -1;
+        // Check if all segment intersect
+        int a = -inf;
         int b = inf;
         FOR(n,1,N+1) {
-            a = max(a,ab[n].back().fi);
-            b = min(b,ab[n].back().se);
+            a = max(a,-Range[n].top().fi);
+            b = min(b,-Range[n].top().se);
         }
+
+        // Case not all intersect --> Greedy: pop (the end that farthest to the left) 
         if(a>b) {
-            FOR(n,1,N+1)
-                if(ab[n].back().se == b)
-                    ab[n].pop_back();
+            FOR(n,1,N+1) {
+                if(-Range[n].top().se == b)
+                    Range[n].pop();
+            }
         }
+        // Case all match: form a kit and remove from the pool
         else {
-            FOR(n,1,N+1)
-                ab[n].pop_back();
-                ++res;
+            ++cnt;
+            FOR(n,1,N+1) 
+                Range[n].pop();
         }
     }
 }
 
-ll solve() {
-    process();
-    return res;
+void solve(unsigned long long t) {
+    printf("Case #%llu: %lld\n", t, sol());
 }
