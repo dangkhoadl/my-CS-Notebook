@@ -31,12 +31,8 @@ int bfs() {
 		b_ =  ;
 		x_ =  ;
 
-		// Stop, Bounding condition
-		if(a_ > A)
-			continue;
-
 		// check visited
-		if(!visited[a_][b_]) {
+		if(!visited[a_][b_] and a_ <= A and b_ <= B) {
 			visited[a_][b_] = true;
 			q.push( {a_, b_} );
 		}
@@ -48,11 +44,9 @@ int bfs() {
 			a_ =  ;
 			b_ =  ;
 			x_ =   ;
-			// Stop, Bounding condition
-			if(a_ > A)
-				continue;
-			// check visited
-			if(!visited[a_][i_]) {
+
+			// check visited and Stop, Bounding condition
+			if(!visited[a_][i_] and a_ <= A and b_ <= B) {
 				visited[a_][i_] = true;
 				q.push({a_,i_});
 			}

@@ -17,20 +17,21 @@ int solveDP() {
         // Case 1
         i_ = ;
         j_ = ;
-        if(i_ >  or j_ > )
-            continue;
         dp_ = ;
-        dp[i_][j_] = max(dp[i_][j_], dp_);
-        visited[i_][j_] = true;
+        if(i_ <=  and j_ <= and dp_ ) {
+            dp[i_][j_] = max(dp[i_][j_], dp_);
+            visited[i_][j_] = true;
+        }
+            
 
         // Case 2
         i_ = ;
         j_ = ;
-        if(i_ >  or j_ > )
-            continue;
         dp_ = ;
-        dp[i_][j_] = max(dp[i_][j_], dp_);
-        visited[i_][j_] = true;
+        if(i_ <=  and j_ <= and dp_ ) {
+            dp[i_][j_] = max(dp[i_][j_], dp_);
+            visited[i_][j_] = true;
+        }
     }
 
     FOR()
