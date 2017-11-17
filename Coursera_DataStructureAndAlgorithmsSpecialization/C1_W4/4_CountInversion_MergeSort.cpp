@@ -1,19 +1,40 @@
 
 
-// [left, right]
-// Stable
-// Time Complexity - O(nlogn)
-// Space Complexity - Depend
-void mergesort(int a[], int temp[], int left, int right) {
+const int MAXN = 1e5 + 3;
 
+int N;
+int a[MAXN];
+ll readInput() {
+    si(N);
+    FOR(i,1,N+1)
+        si(a[i]);
+    return 0;
+}
+
+
+// O(n^2)
+int brute() {
+    int cnt = 0;
+    FOR(i,1,N) FOR(j,i+1,N+1) {
+        if(a[i] > a[j])
+            ++cnt;
+    }
+    return cnt;
+}
+
+
+// O(nlogn)
+int cnts = 0;
+int temp[MAXN];
+void mergesort(int a[], int temp[], int left, int right, int &cnt) {
     /*-------------------------------------- Stop condition ----------------------------------*/
     if(left >= right)
         return;
 
     /*-------------------------------------- Sort each half Recursively ----------------------------------*/
     int mid = left + (right - left) / 2;
-    mergesort(a, temp, left, mid);
-    mergesort(a, temp, mid+1, right);
+    mergesort(a, temp, left, mid, cnt);
+    mergesort(a, temp, mid+1, right, cnt);
 
 
     /*-------------------------------------- Merge 2 halves into temp ----------------------------------*/
@@ -31,10 +52,16 @@ void mergesort(int a[], int temp[], int left, int right) {
         if(i > mid) temp[cur++] = a[j++];
 
         // case right = 0 elements, copy left to temp
-        else if(j > right) temp[cur++] = a[i++];
+        else if(j > right) {
+            cnt += (left + cur - i);
+            temp[cur++] = a[i++];
+        }
 
         // Case left < right, copy left to temp
-        else if(a[i] <= a[j]) temp[cur++] = a[i++];                     // Important Note: The " <= " make the mergeSort stable: If a[i] == a[i]: we favor the left one (stable !!!)
+        else if(a[i] <= a[j]) {
+            cnt += (left + cur - i);
+            temp[cur++] = a[i++];
+        }
 
         // case left > right, copy right to temp
         else temp[cur++] = a[j++];
@@ -42,4 +69,17 @@ void mergesort(int a[], int temp[], int left, int right) {
 
     /*-------------------------------------- Copy temp back into a[left,right] ----------------------------------*/
     for(int i=0; i < cur; ++i) a[left + i] = temp[i];
+}
+int sol() {
+    int cnt = 0;
+    mergesort(a,temp,1,N,cnt);
+    return cnt;
+}
+
+
+ll solve() {
+    // cout << brute() << endl;
+    cout << sol() << endl;
+
+    return 0;
 }
