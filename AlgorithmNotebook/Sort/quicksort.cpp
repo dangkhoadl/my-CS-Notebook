@@ -4,6 +4,109 @@
 // Unstable
 // Time complexity - Avg: O(n logn), Worstcase: O(n^2)
 // Space complexity - O(logn)
+
+
+/********************************************** quicksort Implementation 1 ***********************************************************/
+int partition(int a[], int left, int right) {
+    // Choose pivot and swap with a[left]
+    swap(a[left], a[left + rand() % (right - left)]);
+    int pivot = a[left];
+
+    // 
+    int i = left + 1;
+    int j = left + 1;
+    for( ; i <= right; ++i) {
+        if(a[i] <= pivot)                       // Condition
+            swap(a[i], a[j++]);
+    }
+
+    swap(a[left], a[--j]);
+    return j;
+}
+void quicksort(int a[], int left, int right) {
+    // Stop Condition
+    if(left >= right)
+        return;
+
+    // Partition and sort 2 halves recursively
+    int p = partition(a,left,right);
+    quicksort(a,left,p-1);
+    quicksort(a,p+1,right);
+}
+
+
+
+/********************************************** quicksort Implementation 1 - remove tail recursion ************************************/
+int partition(int a[], int left, int right) {
+    swap(a[left], a[left + rand() % (right - left)]);   // Random
+    int pivot = a[left];
+
+    int i = left + 1;
+    int j = left + 1;
+    for( ; i <= right; ++i) {
+        if(a[i] <= pivot)                               // Condition
+            swap(a[i], a[j++]);
+    }
+
+    swap(a[left], a[--j]);
+    return j;
+}
+void quicksort(int a[], int left, int right) {
+    while(left < right) {
+        int p = partition(a,left,right);
+        if((p-left) < (right-p)) {
+            quicksort(a,left,p-1);
+            left = p + 1;
+        }
+        else {
+            quicksort(a,p+1,right);
+            right = p - 1;
+        }
+    }
+}
+
+
+
+/********************************************** quicksort Implementation 1 - Non-Recursion ***********************************************************/
+int partition(int a[], int left, int right) {
+    swap(a[left], a[left + rand() % (right - left)]);   // Random
+    int pivot = a[left];
+
+    int i = left + 1;
+    int j = left + 1;
+    for( ; i <= right; ++i) {
+        if(a[i] <= pivot)                               // Condition
+            swap(a[i], a[j++]);
+    }
+
+    swap(a[left], a[--j]);
+    return j;
+}
+void quicksort(int a[], int left, int right) {
+    stack<int> S;
+    S.push(left);
+    S.push(right);
+
+    while(!S.empty()) {
+        // Pop h and l
+        right = S.top(); S.pop();
+        left = S.top(); S.pop();
+ 
+        int p = partition(a,left,right);
+
+        if(p-1 > left) {
+            S.push(left);
+            S.push(p-1);
+        }
+ 
+        if (p+1 < right) {
+            S.push(p+1);
+            S.push(right);
+        }
+    }
+}
+
+/********************************************** quicksort Implementation 2 ***********************************************************/
 void quicksort(int a[], int left, int right) {
     // Choose pivot
     int pivot = a[left + rand() % (right - left)];
@@ -15,10 +118,10 @@ void quicksort(int a[], int left, int right) {
     int j = right;
 
     while(i <= j) {
-        // pointer i: Find element that < pivot from left
+        // pointer i: Find element that >= pivot from left
         while(a[i] < pivot) ++i;                                    // Sorting condition !!!
 
-        // pointer j: Find element that > pivot from right  
+        // pointer j: Find element that <= pivot from right  
         while(a[j] > pivot) --j;                                    // Sorting condition !!!
 
         // if i still in left, j still in right: swap than continue
