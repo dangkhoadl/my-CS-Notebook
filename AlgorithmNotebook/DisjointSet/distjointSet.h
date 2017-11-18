@@ -1,6 +1,19 @@
 
 //							DSU
 // O(logn) for every operations
+
+/*---------------------------- Update Data ---------------------------------------*/
+int root_a = find(a);
+int root_b = find(b);
+if(root_a != root_b) {
+    merge(a, b);
+    int root = find(root_b);
+    if(a == root)
+        R[a] += R[b];           // Update if root_a is the new root
+    else
+        R[b] += R[a];           // Update if root_b is the new root
+
+
 /*---------------------------- Simple DSU 1 ---------------------------------------*/
 // init range: [1, n]
 #define MAXN 20

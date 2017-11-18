@@ -25,7 +25,7 @@ inline long long mul(long long a,long long b) {
     return ((a%MOD) * (b%MOD)) % MOD;
 }
 inline long long power(long long a, long long n) {
-    assert(n>0);
+    assert(n>=0);
     assert(a>=0);
     if(a == 0)
         return 0;
