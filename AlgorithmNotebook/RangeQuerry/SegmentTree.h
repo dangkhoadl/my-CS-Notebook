@@ -31,7 +31,6 @@ void buildtree() {
 		add(a[i], i);
 }
 
-
 // return sum of a in range [i,j]
 int query(int i, int j) {
 	i += (n - 1);

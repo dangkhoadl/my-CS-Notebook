@@ -1,11 +1,14 @@
 
+
+
 // Build O(n), Update O(n), querry O(1)
 
+/*--------------------------------- Sum query -----------------------*/
 //Array indexed 1: [1,n]
-int a[100];
+int a[MAXN];
 int n;
 
-int sum[100];
+int sum[MAXN];
 void build() {
 	memset(sum, 0, sizeof(sum));
 	int sum_ = 0;
