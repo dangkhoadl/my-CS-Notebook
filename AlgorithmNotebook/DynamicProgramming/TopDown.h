@@ -1,7 +1,7 @@
 
 
-int dp[MAXN][MAXN][MAXN][MAXN];
-bool visited[MAXN][MAXN][MAXN][MAXN];
+int dp[MAXN][MAXN];
+bool visited[MAXN][MAXN];
 int solveDP(int i, int j) {
     // Return processed cases
     if(visited[i][j])
