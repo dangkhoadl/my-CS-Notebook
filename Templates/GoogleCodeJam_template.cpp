@@ -60,7 +60,8 @@ using namespace std;
 
 #define MIN LLONG_MIN
 #define MAX LLONG_MAX
-const int inf = 1e9 + 7;
+const long long inf = 9187201950435737471;
+const long long ninf = -9114861777597660799;
 const double EPS = 1e-9;
 #define sq(x) ((x) * (x))
 #define PI (2 * acos((double)0))
