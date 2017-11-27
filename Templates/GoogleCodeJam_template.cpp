@@ -99,6 +99,7 @@ inline double sceil(double x) {return x >= 0 ? ceil(x - EPS) : ceil(x + EPS);};
 
 #define si(nnn) scanf("%lld",&nnn)
 #define sii(nnn,mmm) scanf("%lld %lld",&nnn, &mmm)
+#define siii(nnn,mmm,kkk) scanf("%lld %lld %lld",&nnn, &mmm, &kkk)
 #define sd(ddd) scanf("%lf", &ddd)
 #define sc(ccc) scanf("%c", &ccc)
 #define ss(sss,iii) scanf("%s",sss+iii)
