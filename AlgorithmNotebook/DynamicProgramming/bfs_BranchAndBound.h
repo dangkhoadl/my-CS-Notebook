@@ -30,7 +30,7 @@ int bfs() {
         a_ =  ;
         b_ =  ;
         dp_ =  dp[a][b] + ;
-        if(!visited[a_][b_] and a_ <= A and b_ <= B) {
+        if(!visited[a_][b_] and a_ <= A and b_ <= B and dp_) {
             visited[a_][b_] = true;
             q.push( {a_, b_} );
         }
@@ -41,7 +41,7 @@ int bfs() {
         a_ =  ;
         b_ =  ;
         dp_ =  dp[a][b] + ;
-        if(!visited[a_][b_] and a_ <= A and b_ <= B) {
+        if(!visited[a_][b_] and a_ <= A and b_ <= B and dp_) {
             visited[a_][b_] = true;
             q.push( {a_, b_} );
         }
@@ -53,7 +53,7 @@ int bfs() {
             a_ =  ;
             b_ =  ;
             dp_ =  dp[a][b] + ;
-            if(!visited[a_][b_] and a_ <= A and b_ <= B) {
+            if(!visited[a_][b_] and a_ <= A and b_ <= B and dp_) {
                 visited[a_][b_] = true;
                 q.push( {a_,b_} );
             }
