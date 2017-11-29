@@ -12,30 +12,30 @@ ll readInput() {
 
 int dp[MAXN];
 bool visited[MAXN];
-int solDP(int n) {
+int get(int n) {
     if(visited[n])
         return dp[n];
 
     visited[n] = true;
-
+    int nn;
     FOR(i,1, safe_sqrt(n)+1) {
-        dp[n-(i*i)] = visited[n-(i*i)] ? dp[n-(i*i)] : solDP(n-(i*i));
-        dp[n] = min(dp[n], dp[n-(i*i)] + 1);
+        nn = n-(i*i); 
+        dp[n] = min(dp[n], get(nn) + 1);
     }
     return dp[n];
 }
-int driver(int n) {
+int solveDP(int n) {
     ms(dp, 0x7f);
     ms(visited, false);
 
     // Base cases
     dp[0] = 0; visited[0] = true;
 
-    return solDP(n);
+    return get(n);
 }
 
 int sol() {
-    return driver(N);
+    return solveDP(N);
 }
 
 void solve(unsigned long long t) {

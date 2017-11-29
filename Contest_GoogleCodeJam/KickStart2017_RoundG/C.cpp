@@ -51,7 +51,6 @@ int query_min(int i1, int j1, int i2, int j2) {
 int dp[MAXN][MAXN][MAXN][MAXN];
 bool visited[MAXN][MAXN][MAXN][MAXN];
 int cut(int i1, int j1, int i2, int j2) {
-    // Return processed cases
     if(visited[i1][j1][i2][j2])
         return dp[i1][j1][i2][j2];
     
@@ -61,18 +60,12 @@ int cut(int i1, int j1, int i2, int j2) {
 
     // Cut Horizontally
     FOR(m,i1,i2) {
-        dp[i1][j1][m][j2] = visited[i1][j1][m][j2] ? dp[i1][j1][m][j2] : cut(i1,j1,m,j2);
-        dp[m+1][j1][i2][j2] = visited[m+1][j1][i2][j2] ? dp[m+1][j1][i2][j2] : cut(m+1,j1,i2,j2);
-
-        dp[i1][j1][i2][j2] = max(dp[i1][j1][i2][j2], dp[i1][j1][m][j2] + dp[m+1][j1][i2][j2] + currentCoin);
+        dp[i1][j1][i2][j2] = max(dp[i1][j1][i2][j2], cut(i1,j1,m,j2) + cut(m+1,j1,i2,j2) + currentCoin);
     }
 
     // Cut Vertically
     FOR(m,j1,j2) {
-        dp[i1][j1][i2][m] = visited[i1][j1][i2][m] ? dp[i1][j1][i2][m] : cut(i1,j1,i2,m);
-        dp[i1][m+1][i2][j2] = visited[i1][m+1][i2][j2] ? dp[i1][m+1][i2][j2] : cut(i1,m+1,i2,j2);
-
-        dp[i1][j1][i2][j2] = max(dp[i1][j1][i2][j2], dp[i1][j1][i2][m] + dp[i1][m+1][i2][j2] + currentCoin);
+        dp[i1][j1][i2][j2] = max(dp[i1][j1][i2][j2], cut(i1,j1,i2,m) + cut(i1,m+1,i2,j2) + currentCoin);
     }
 
     return dp[i1][j1][i2][j2];
