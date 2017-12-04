@@ -44,9 +44,9 @@ int V, E;
 
 int dist[MAXV][MAXV];
 void floydWarshall() {
-    for (int k = 1; k <= N; ++k)
-        for (int i = 1; i <= N; ++i)
-            for (int j = 1; j <= N; ++j)  {
+    for (int k = 1; k <= V; ++k)
+        for (int i = 1; i <= V; ++i)
+            for (int j = 1; j <= V; ++j)  {
                 if(i == j)
                     dist[i][j] = 0;
                 else
