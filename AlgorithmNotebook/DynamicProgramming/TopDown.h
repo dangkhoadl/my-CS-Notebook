@@ -3,9 +3,12 @@
 int dp[MAXN][MAXN];
 bool visited[MAXN][MAXN];
 int get(int i, int j) {
+    int &res = dp[i][j];
+    bool &vis = visited[i][j];  
+
     // Return processed cases
-    if(visited[i][j])
-        return dp[i][j];
+    if(vis)
+        return res;
     
     visited[i][j] = true;
 
@@ -16,14 +19,14 @@ int get(int i, int j) {
     j1 = ;
     i2 = ;
     j2 = ;
-    dp[i][j] = max(dp[i][j], get(i1,j1) + get(i2,j2));
+    res = max(res, get(i1,j1) + get(i2,j2));
 
     // Case 2
     i1 = ;
     j1 = ;
     i2 = ;
     j2 = ;
-    dp[i][j] = max(dp[i][j], get(i1,j1) - get(i2,j2));
+    res = max(res, get(i1,j1) - get(i2,j2));
 
     // For
     FOR() {
@@ -31,10 +34,10 @@ int get(int i, int j) {
         j1 = ;
         i2 = ;
         j2 = ;
-        dp[i][j] = max(dp[i][j],  get(i1,j1) + get(i2,j2));
+        res = max(res,  get(i1,j1) + get(i2,j2));
     }
 
-    return dp[i][j];
+    return res;
 }
 int solveDP() {
     ms(dp, 0);
