@@ -1,7 +1,11 @@
 
 
-const long long MOD = 1e9+7;
+inline long long mod(long long x, long long m) {
+    return ((x%m)+m) % m;
+}
 
+/*****************************************************/
+const long long MOD = 1e9+7;
 
 inline long long add(long long a, long long b) {
     if(a<0)
