@@ -20,9 +20,11 @@ _by UC San Diego and National Research University Higher School of Economics_
 4. Number Theory and Cryptography [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/PDLQW5LAA76M)]
 5. Delivery Problem [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/3XVNY8EGV4SN)]
 
+### 3. CSE547 - Discrete Mathematics - [[Youtube](https://www.youtube.com/watch?v=KkuSQGAHan0&list=PL462275E91FC7844D)]
+
 ## Resources
 ### 1. Google Code Jam - [Past Contests](https://codejam.withgoogle.com/codejam/past-contests)
-### 2. E-maxx.eng - [Source](https://e-maxx-eng.appspot.com/)
+### 2. E-maxx-eng - [Source](https://e-maxx-eng.appspot.com/)
 ### 3. E-maxx.ru - [Source](http://e-maxx.ru/)
 ### 4. Top Coder Tutorials
 
