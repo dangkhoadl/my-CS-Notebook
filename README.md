@@ -4,21 +4,8 @@
 ### 1. Data Structures and Algorithms Specialization - [[Coursera](https://www.coursera.org/specializations/data-structures-algorithms)] - [[__Completed__](https://www.coursera.org/account/accomplishments/specialization/certificate/AKFYZQ9QD8XH)]
 _by UC San Diego and National Research University Higher School of Economics_
 
-1. Algorithmic Toolbox [[__Completed__](https://www.coursera.org/account/accomplishments/specialization/certificate/AKFYZQ9QD8XH)]
-2. Data Structures [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/6CFDR5B8NRLJ)]
-3. Algorithms on Graphs [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/RMLFA7G5M646)]
-4. Algorithms on Strings [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/6FEBGEJJB9AU)]
-5. Advanced Algorithms and Complexity [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/5BQKW4PKPM8M)]
-6. Genome Assembly Programming Challenge [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/TYE64XMQYX4Z)]
-
 ### 2. Introduction to Discrete Mathematics for Computer Science Specialization - [[Coursera](https://www.coursera.org/specializations/discrete-mathematics)] - [[__Completed__](https://www.coursera.org/account/accomplishments/specialization/certificate/XKJ5J47MLEUK)]
 _by UC San Diego and National Research University Higher School of Economics_
-
-1. What is a Proof? [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/8C3PXXCTCKD2)]
-2. Combinatorics and Probability [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/XCVLA9F6SSK3)]
-3. Introduction to Graph Theory [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/5KKCWJ58QU68)]
-4. Number Theory and Cryptography [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/PDLQW5LAA76M)]
-5. Delivery Problem [[__Completed__](https://www.coursera.org/account/accomplishments/certificate/3XVNY8EGV4SN)]
 
 ### 3. CSE547 - Discrete Mathematics - [[Youtube](https://www.youtube.com/watch?v=KkuSQGAHan0&list=PL462275E91FC7844D)]
 
