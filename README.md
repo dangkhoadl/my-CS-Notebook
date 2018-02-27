@@ -2,12 +2,9 @@
 # My Competitive Programming Cache
 ## Courses
 ### 1. Data Structures and Algorithms Specialization - [[Coursera](https://www.coursera.org/specializations/data-structures-algorithms)]
-_by UC San Diego and National Research University Higher School of Economics_
-
 ### 2. Introduction to Discrete Mathematics for Computer Science Specialization - [[Coursera](https://www.coursera.org/specializations/discrete-mathematics)]
-_by UC San Diego and National Research University Higher School of Economics_
-
-### 3. CSE547 - Discrete Mathematics - [[Youtube](https://www.youtube.com/watch?v=KkuSQGAHan0&list=PL462275E91FC7844D)]
+### 3. CSE547 - Discrete Mathematics - [[Youtube](https://www.youtube.com/playlist?list=PL462275E91FC7844D)]
+### 4. Math for Competitive Programming - [[Youtube](https://www.youtube.com/playlist?list=PLPt2dINI2MIY7l5zyFd1W28rei3b-AXaJ)]
 
 ## Resources
 ### 1. Google Code Jam - [Past Contests](https://codejam.withgoogle.com/codejam/past-contests)
