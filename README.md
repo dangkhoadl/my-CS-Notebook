@@ -19,7 +19,7 @@
 	+ [Optimizing DP solution](https://apps.topcoder.com/forums/?module=Thread&start=0&threadID=697925)
 
 ### 7. VNOI Wiki - [Source](http://vnoi.info/wiki/Home)
-
+### 8. Algorithms - Jeff Erickson [Source](http://jeffe.cs.illinois.edu/teaching/algorithms/)
 
 ## Books
 
