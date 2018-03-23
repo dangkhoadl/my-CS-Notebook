@@ -46,6 +46,19 @@ int binSearchPrev(const vector<int> &a, double x, int l, int r) {
 }
 
 
+int prefix_sum[MAXN];
+void build() {
+    memset(prefix_sum, 0, sizeof(prefix_sum));
+    int sum_ = 0;
+    for(int i=0; i < sz(V); ++i) {
+        prefix_sum[i] = sum_ += V[i];
+    }
+}
+int query(int i, int j) {
+    return prefix_sum[j] - prefix_sum[i-1];
+}
+
+
 double E[MAXK];
 double sol() {
     double sum = 0.0;
@@ -56,12 +69,12 @@ double sol() {
 
     // Greedy K > 0
     sort(all(V));
+    build();
+
     FOR(k,1,K+1) {
         int idx = binSearchPrev(V, E[k-1], 0, sz(V)-1);
-        sum = (idx+1) * E[k-1];
 
-        FOR(i,idx+1,sz(V))
-            sum += V[i];
+        sum = (idx+1) * E[k-1] + query(idx+1, sz(V)-1);
         E[k] = sum / N;
     }
     
