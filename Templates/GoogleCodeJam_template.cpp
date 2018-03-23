@@ -88,11 +88,6 @@ typedef vector<vector<int>> vvi;
 #define FORIT(it__,A) for(auto it__ = (A.begin()), _end(A.end()); it__ != _end; ++it__)
 
 inline bool DEC(int iii_,int jjj_) { return (iii_<jjj_); }
-inline double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); }
-inline const bool areSame(double a, double b) {return fabs(a - b) < EPS;}   
-inline int d2i(double x) {return x >= 0 ? x + EPS : x - EPS;}
-inline double sfloor(double x) {return x >= 0 ? floor(x + EPS) : floor(x - EPS);}
-inline double sceil(double x) {return x >= 0 ? ceil(x - EPS) : ceil(x + EPS);};
 
 #define bitcount __builtin_popcountll
 #define checkbit(n,b) ( (n >> b) & 1)
