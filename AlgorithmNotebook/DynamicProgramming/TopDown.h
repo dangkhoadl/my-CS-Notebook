@@ -4,14 +4,13 @@ int dp[MAXN][MAXN];
 bool visited[MAXN][MAXN];
 int get(int i, int j) {
     int &res = dp[i][j];
-    bool &vis = visited[i][j];  
-
-    // Return processed cases
+    bool &vis = visited[i][j];
     if(vis)
         return res;
-    
-    visited[i][j] = true;
+    vis = true;
 
+
+    //////////////////////////////////////
     int i1,j1, i2,j2;
 
     // Case 1
