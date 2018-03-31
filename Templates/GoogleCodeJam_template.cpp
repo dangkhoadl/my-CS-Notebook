@@ -160,7 +160,7 @@ void solve(unsigned long long t) {
     
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
-int32_t main(int agrc, char *argv[]) {
+int32_t main() {
 #ifdef DEBUG
     freopen("input.in", "r", stdin);
     freopen("output.out", "w", stdout);
@@ -168,7 +168,7 @@ int32_t main(int agrc, char *argv[]) {
     cerr << fixed << setprecision(6);
 #endif
     ios::sync_with_stdio(false);
-    cin.tie(false);
+    // cin.tie(false);
     cout << fixed << setprecision(11);
     /*----------------------------------------------------------------------------------------------------*/
     //InOut
