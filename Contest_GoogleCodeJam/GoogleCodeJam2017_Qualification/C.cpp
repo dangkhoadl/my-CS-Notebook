@@ -1,96 +1,63 @@
 
 // https://codejam.withgoogle.com/codejam/contest/3264486/dashboard#s=p2
 
+const int MAXN = 1e18 + 3;
+
 int N, K;
 ll readInput() {
-	scanf("%lld %lld", &N, &K);
-	return 0;
-}
-
-/*_______________________________ O(K*log(K)) _________________________*/
-pii sol1() {
-    priority_queue<int> S;
-    S.push(N);
-    int x0 = 0;
-    int x1 = 0;
-
-    REP(K) {
-        int x = S.top();
-        S.pop();
-
-        x0 = ceil((double)(x - 1) / 2);
-        S.push(x0);
-
-        x1 = floor((x - 1) / 2);
-        S.push(x1);
-    }
-    return{ x0,x1 };
-}
-
-/*_______________________________ ~O(K) _________________________*/
-pii sol2() {
-    map<int,int> S;
-    S.insert( {N,1} );
-    int x0 = 0;
-    int x1 = 0;
+    sii(N,K);
     
-    REP(K) {
-        auto it = S.end(); --it;
-        int x = it->fi;
-        if(it->se == 1)
-            S.erase(it);
-        else
-            --it->se;
-
-        x0 = ceil((double)(x-1) / 2);
-        it = S.find(x0);
-        if(it == S.end())
-            S.insert( {x0, 1} );
-        else
-            ++it->se;
-
-        x1 = floor((double)(x-1) / 2);
-        it = S.find(x1);
-        if(it == S.end())
-            S.insert( {x1, 1} );
-        else
-            ++it->se;
-    }
-    return {x0,x1};
+    return 0;
 }
 
-/*_______________________________ O(log(K)) _________________________*/
-pii sol3() {
-    map<int,int> S;
-    S.insert( {N,1} );
-    int x0 = 0;
-    int x1 = 0;
-    
+pii getval(int n) {
+    int a, b;
+    if(n % 2 == 0) {
+        a = n / 2;
+        b = a - 1; 
+    }
+    else {
+        a = b = (n-1) / 2;
+    }
+    return {a,b};
+}
+
+pii sol() {
+    priority_queue<int> PQ;
+    unordered_map<int, int> cnt;
+
+    PQ.push(N);
+    cnt[N] = 1;
+
+    pii ab;
     int k = K;
-    while(k > 0) {
-        auto it = S.end(); --it;
-        int x = it->fi;
-        int cnt = it->se;
-        S.erase(it);
+    while(k>0) {
+        int num = PQ.top(); PQ.pop();
 
-        k -= cnt;
+        k -= cnt[num];
+        ab = getval(num);
 
-        x0 = ceil((double)(x-1) / 2);
-        it = S.find(x0);
-        if(it == S.end())
-            S.insert( {x0, cnt} );
+        auto it = cnt.find(ab.fi);
+        if(it == cnt.end()) {
+            PQ.push(ab.fi);
+            cnt[ab.fi] = cnt[num];
+        }
         else
-            it->se += cnt;
+            cnt[ab.fi] += cnt[num];
 
-        x1 = floor((double)(x-1) / 2);
-        it = S.find(x1);
-        if(it == S.end())
-            S.insert( {x1, cnt} );
+        it = cnt.find(ab.se);
+        if(it == cnt.end()) {
+            PQ.push(ab.se);
+            cnt[ab.se] = cnt[num];
+        }
         else
-            it->se += cnt;
-
-        if(x0 == 0 && x1 == 0)
-            return {0,0};
+            cnt[ab.se] += cnt[num];
     }
-    return {x0,x1};
+    return ab;
+}
+
+
+void solve(unsigned long long t) {
+    pii res = sol();
+    printf("Case #%llu: %lld %lld\n", t, res.fi, res.se);
 }
