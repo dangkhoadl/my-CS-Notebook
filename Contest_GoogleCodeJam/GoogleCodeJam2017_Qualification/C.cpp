@@ -22,7 +22,24 @@ pii getval(int n) {
     return {a,b};
 }
 
-pii sol() {
+// O(K)
+pii sol1() {
+    priority_queue<int> PQ;
+    PQ.push(N);
+
+    pii ab;
+    REP(K) {
+        int num = PQ.top(); PQ.pop();
+
+        ab = getval(num);
+        PQ.push(ab.fi);
+        PQ.push(ab.se);
+    }
+    return ab;
+}
+
+// O(log(K))
+pii sol2() {
     priority_queue<int> PQ;
     unordered_map<int, int> cnt;
 
@@ -58,6 +75,6 @@ pii sol() {
 
 
 void solve(unsigned long long t) {
-    pii res = sol();
+    pii res = sol2();
     printf("Case #%llu: %lld %lld\n", t, res.fi, res.se);
 }
