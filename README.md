@@ -1,5 +1,5 @@
 
-# My Competitive Programming Cache
+# My Competitive Programming Notebook
 ## Courses
 ### 1. Data Structures and Algorithms Specialization - [[Coursera](https://www.coursera.org/specializations/data-structures-algorithms)]
 ### 2. Introduction to Discrete Mathematics for Computer Science Specialization - [[Coursera](https://www.coursera.org/specializations/discrete-mathematics)]
