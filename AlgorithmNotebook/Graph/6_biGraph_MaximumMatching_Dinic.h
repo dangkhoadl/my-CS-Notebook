@@ -91,7 +91,7 @@ void maximumMatching() {
     }
 
     // Connect C -> sink
-    for(int c=1, c<=C; ++c) {
+    for(int c=1; c<=C; ++c) {
         Flow.addEdge(F+c, snk, 1);
     }
 
