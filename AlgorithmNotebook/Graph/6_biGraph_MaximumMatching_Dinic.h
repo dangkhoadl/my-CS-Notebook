@@ -103,7 +103,7 @@ void maximumMatching() {
 
     // Find Maximum matching
     Flow.maxFlow(src, snk);
-    for(int f=1; f<=F; ++f) for(int c=1, c<=C; ++c) {
+    for(int f=1; f<=F; ++f) for(int c=1; c<=C; ++c) {
         if(Flow.checkFlow(f,F+c))
             cout << f << " matches " << c << endl; 
     }
