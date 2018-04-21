@@ -96,7 +96,7 @@ void maximumMatching() {
     }
 
     // Connect F -> C
-    for(int f=1; f<=F; ++f) for(int c=1, c<=C; ++c){
+    for(int f=1; f<=F; ++f) for(int c=1; c<=C; ++c){
         if(G[f][c] == 1)
             Flow.addEdge(f, F+c, 1);
     }
