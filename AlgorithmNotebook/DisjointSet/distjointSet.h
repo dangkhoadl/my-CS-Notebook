@@ -8,6 +8,7 @@
 
 int par_[MAXN];
 int size_[MAXN];    // size of the corresponding set
+int id_[MAXN];      // all ids of the set
 void init(int n) {
     for(int i = 1; i <= n; ++i)
         par_[i] = i;
@@ -26,6 +27,15 @@ void Merge(int a, int b) {
     size_[a] += size_[b];
     par_[b] = a;
 }
+// Update set IDs
+void Update(int n) {
+    for(int i=1; i<=n; ++i) {
+        int x = i;
+        while(x != par_[x]) x = par_[x];
+        id_[i] = x;
+    }
+}
+
 
 /*---------------------------- DSU w/ struct ---------------------------------------*/
 // init range: [0, n)
@@ -33,10 +43,12 @@ struct disjointSet {
 public:
     vector<int> parent_;
     vector<int> rank_;
+    vector<int> id_;
 public:
     disjointSet(int n) {
         rank_.assign(n, 0);
         parent_.assign(n, 0);
+        id_.assign(n, -1);
         for(int i=0; i<n; ++i) parent_[i] = i;
     }
     int Find(int x) {
@@ -56,6 +68,14 @@ public:
             parent_[a_id] = b_id;
             if (rank_[a_id] == rank_[b_id])
                 ++rank_[b_id];
+        }
+    }
+    // Update set IDs
+    void Update() {
+        for(int i=0; i<id_.size(); ++i) {
+            int x = i;
+            while(x != parent_[x]) x = parent_[x];
+            id_[i] = x;
         }
     }
 };
