@@ -30,10 +30,3 @@ bool isSmallerEqual(double a, double b) {
         return true;
     return false;
 }
-
-/*---------------------------------------------------------------------------------------------------------*/
-const double EPSILON = 1e-6; // for x <= 10^6;
-inline double safe_sqrt(double x) { return sqrt(max((double)0.0, x)); } 
-inline int d2i(double x) {return x >= 0 ? x + EPSILON : x - EPSILON;}
-inline double sfloor(double x) {return x >= 0 ? floor(x + EPSILON) : floor(x - EPSILON);}
-inline double sceil(double x) {return x >= 0 ? ceil(x - EPSILON) : ceil(x + EPSILON);};
