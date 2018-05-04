@@ -57,19 +57,19 @@ template<typename T> inline bool DEC(T fdfsfv_i,T fdfsfv_j) {return((fdfsfv_i)>(
 #define quit exit(0);
 #define nl cerr<<endl;
 template<typename T,typename TT> inline ostream& operator<<(ostream &fdfsfv_s,pair<T,TT> fdfsfv_t){return fdfsfv_s<<"("<<fdfsfv_t.first<<","<<fdfsfv_t.second<<")";}
-#define pr(args...) {vector<string> fdfsfv_v=split(#args,',');err(fdfsfv_v.begin(),args);cerr<<endl;}
-vector<string> split(const string& fdfsfv_str,char fdfsfv_c){vector<string> fdfsfv_vstr;stringstream ssss_(fdfsfv_str);string fdfsfv_x;while(getline(ssss_,fdfsfv_x,(fdfsfv_c))){fdfsfv_vstr.emplace_back(fdfsfv_x);}return move(fdfsfv_vstr);}
-void err(vector<string>::iterator fdfsfv_itx) {}
-template<typename T,typename... Args> void err(vector<string>::iterator fdfsfv_itx,T fdfsfv_a,Args... args){cerr<<(fdfsfv_itx)->substr((*(fdfsfv_itx))[0]==' ',(fdfsfv_itx)->length())<<" = " <<(fdfsfv_a)<<", ";err(++(fdfsfv_itx),(args)...);}
+#define pr(args...) {vector<string> fdfsfv_v=fdfsfv_split(#args,',');fdfsfv_err(fdfsfv_v.begin(),args);cerr<<endl;}
+vector<string> fdfsfv_split(const string& fdfsfv_str,char fdfsfv_c){vector<string> fdfsfv_vstr;stringstream ssss_(fdfsfv_str);string fdfsfv_x;while(getline(ssss_,fdfsfv_x,(fdfsfv_c))){fdfsfv_vstr.emplace_back(fdfsfv_x);}return move(fdfsfv_vstr);}
+void fdfsfv_err(vector<string>::iterator fdfsfv_itx) {}
+template<typename T,typename... Args> void fdfsfv_err(vector<string>::iterator fdfsfv_itx,T fdfsfv_a,Args... args){cerr<<(fdfsfv_itx)->substr((*(fdfsfv_itx))[0]==' ',(fdfsfv_itx)->length())<<" = " <<(fdfsfv_a)<<", ";fdfsfv_err(++(fdfsfv_itx),(args)...);}
 #define pra(A,start,end) {cerr<<#A<<'['<<(start)<<','<<((end)-1)<<"] = ";FOR(fdfsfv_,(start),(end)){cerr <<(A)[fdfsfv_]<< ' ';}cerr<<endl;}
 #define prai(A,start,end) {cerr <<#A<<'['<<(start)<<','<<((end)-1)<<"] = ";FOR(fdfsfv_,(start),(end)){cerr<<'['<<fdfsfv_<<']'<<(A)[fdfsfv_]<<' ';}cerr<<endl;}
 #define prit(A) {cerr<<#A<<" = ";FORIT(fdfsfv_it__,(A)){cerr<<(*fdfsfv_it__)<<' ';}cerr << endl;}
 #define praa(A,start1,end1,start2,end2) {FOR(fdfsfv_,(start1),(end1)){FOR(fdfsfv__,(start2),(end2)){ostringstream fdfsfv_ssx;fdfsfv_ssx<<(A)[fdfsfv_][fdfsfv__];cerr<<setw(10)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
 #define praai(A,start1,end1,start2,end2) {FOR(fdfsfv_,(start1),(end1)){FOR(fdfsfv__,(start2),(end2)){ostringstream fdfsfv_ssx;fdfsfv_ssx <<'['<<fdfsfv_<<"]["<<fdfsfv__<<"]"<<(A)[fdfsfv_][fdfsfv__];cerr<<setw(17)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
-template<typename T> void prav(const vector<T> *fdfsfv_a,int start,int end) {FOR(fdfsfv_,(start),(end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(10)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
-template<typename T> void pravi(const vector<T> *fdfsfv_a,int start,int end) {FOR(fdfsfv_,(start),(end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<'['<<fdfsfv_<<"]["<<fdfsfv__<<']'<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(17)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
-template<typename T> void prvv(const vector<vector<T>> &fdfsfv_a,int start,int end) {FOR(fdfsfv_,(start),(end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(10)<<left <<fdfsfv_ssx.str();}cerr<<endl;}}
-template<typename T> void prvvi(const vector<vector<T>> &fdfsfv_a,int start,int end) {FOR(fdfsfv_,(start),(end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<'['<<fdfsfv_<<"]["<<fdfsfv__ <<']'<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(17)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
+template<typename T> void prav(const vector<T> *fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {FOR(fdfsfv_,(fdfsfv_start),(fdfsfv_end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(10)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
+template<typename T> void pravi(const vector<T> *fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {FOR(fdfsfv_,(fdfsfv_start),(fdfsfv_end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<'['<<fdfsfv_<<"]["<<fdfsfv__<<']'<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(17)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
+template<typename T> void prvv(const vector<vector<T>> &fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {FOR(fdfsfv_,(fdfsfv_start),(fdfsfv_end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(10)<<left <<fdfsfv_ssx.str();}cerr<<endl;}}
+template<typename T> void prvvi(const vector<vector<T>> &fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {FOR(fdfsfv_,(fdfsfv_start),(fdfsfv_end)){FOR(fdfsfv__,0,sz((fdfsfv_a)[fdfsfv_])){ostringstream fdfsfv_ssx;fdfsfv_ssx<<'['<<fdfsfv_<<"]["<<fdfsfv__ <<']'<<(fdfsfv_a)[fdfsfv_][fdfsfv__];cerr<<setw(17)<<left<<fdfsfv_ssx.str();}cerr<<endl;}}
 template<typename T> void prS(const stack<T> &fdfsfv_a) {stack<T> fdfsfv_S(fdfsfv_a);cerr<<"stack =  [top] ";while(!fdfsfv_S.empty()){cerr<<fdfsfv_S.top()<<' ';fdfsfv_S.pop();}cerr<<endl;}
 template<typename T> void prQ(const queue<T> &fdfsfv_a) {queue<T> fdfsfv_Q(fdfsfv_a);cerr<<"queue =  [front] ";while(!fdfsfv_Q.empty()){cerr<<fdfsfv_Q.front()<<' ';fdfsfv_Q.pop();}cerr<<"[back]"<<endl;}
 template<typename T> void prPQ(const priority_queue<T> &fdfsfv_a) {priority_queue<T> fdfsfv_PQ(fdfsfv_a);cerr << "heap =  [top] ";while(!fdfsfv_PQ.empty()){cerr<<fdfsfv_PQ.top()<<' ';fdfsfv_PQ.pop();}cerr<<endl;}
@@ -82,10 +82,10 @@ template<typename T> void prPQ(const priority_queue<T> &fdfsfv_a) {priority_queu
 #define praa(A,start1,end1,start2,end2)
 #define praai(A,start1,end1,start2,end2)
 #define prit(A)
-template<typename T> void prav(const vector<T> *fdfsfv_a,int start,int end) {}
-template<typename T> void pravi(const vector<T> *fdfsfv_a,int start,int end) {}
-template<typename T> void prvv(const vector<vector<T>> &fdfsfv_a,int start,int end) {}
-template<typename T> void prvvi(const vector<vector<T>> &fdfsfv_a,int start,int end) {}
+template<typename T> void prav(const vector<T> *fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {}
+template<typename T> void pravi(const vector<T> *fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {}
+template<typename T> void prvv(const vector<vector<T>> &fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {}
+template<typename T> void prvvi(const vector<vector<T>> &fdfsfv_a,int fdfsfv_start,int fdfsfv_end) {}
 template<typename T> void prS(const stack<T> &fdfsfv_a) {}
 template<typename T> void prQ(const queue<T> &fdfsfv_a) {}
 template<typename T> void prPQ(const priority_queue<T> &fdfsfv_a) {}
@@ -94,7 +94,7 @@ template<typename T> void prPQ(const priority_queue<T> &fdfsfv_a) {}
 const int MAXN = 1e6 + 3;
 
 
-ll readInput() {
+int readInput() {
     fflush(stdin);
 
     return 0;
@@ -108,7 +108,7 @@ int sol() {
     return 0;
 }
 
-void solve(unsigned long long t) {
+void solve(unsigned long long fdfsfv_t) {
     sol();
 }
 /*------------------------------------- MAIN ---------------------------------------------------------------*/
@@ -123,17 +123,17 @@ int32_t main() {
     cout << fixed << setprecision(11);
     /*----------------------------------------------------------------------------------------------------*/
     //InOut
-    unsigned long long T;
+    unsigned long long fdfsfv_T;
     fflush(stdin);
-    cin >> T;
+    cin >> fdfsfv_T;
 
     // Solve all cases
-    for (unsigned long long t = 1; t <= T; ++t) {
+    for (unsigned long long fdfsfv_t = 1; fdfsfv_t <= fdfsfv_T; ++fdfsfv_t) {
         //InOut
         readInput();
 
         //Solve
-        solve(t);
+        solve(fdfsfv_t);
     }
     return 0;
 }
