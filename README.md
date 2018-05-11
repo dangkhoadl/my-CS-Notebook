@@ -7,7 +7,7 @@
 ### 4. Math for Competitive Programming - [[Youtube](https://www.youtube.com/playlist?list=PLPt2dINI2MIY7l5zyFd1W28rei3b-AXaJ)]
 
 ## Resources
-### 1. Google Code Jam - [Past Contests](https://codejam.withgoogle.com/codejam/past-contests)
+### 1. Google Code Jam - [Past Contests](https://code.google.com/codejam/past-contests)
 ### 2. E-maxx-eng - [Source](https://e-maxx-eng.appspot.com/)
 ### 3. E-maxx.ru - [Source](http://e-maxx.ru/)
 ### 4. Top Coder Tutorials

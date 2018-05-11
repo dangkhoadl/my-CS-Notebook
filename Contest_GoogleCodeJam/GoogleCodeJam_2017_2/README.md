@@ -1,3 +1,3 @@
 
-### [Problem A. Fresh Chocolate](https://codejam.withgoogle.com/codejam/contest/5314486/dashboard)
+### [Problem A. Fresh Chocolate](https://code.google.com/codejam/contest/5314486/dashboard)
 

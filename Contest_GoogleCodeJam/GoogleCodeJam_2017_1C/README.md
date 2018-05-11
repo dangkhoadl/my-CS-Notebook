@@ -1,3 +1,3 @@
 
-### [Problem A. Ample Syrup](https://codejam.withgoogle.com/codejam/contest/3274486/dashboard)
+### [Problem A. Ample Syrup](https://code.google.com/codejam/contest/3274486/dashboard)
 
