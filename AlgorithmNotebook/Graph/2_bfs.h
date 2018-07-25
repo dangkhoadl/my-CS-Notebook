@@ -18,8 +18,8 @@ void bfs(int start) {
 		int v = q.front();
 		q.pop();
 
-		//process v
-		
+		//Process node v
+		//cout << v << endl;
 
 		for (int i = 0; i < e[v].size(); ++i)
 			if (!visited[e[v][i]]) {
@@ -29,8 +29,8 @@ void bfs(int start) {
 	}
 }
 
-/*------------------------------------- BFS to find edge dist---------------------------------------------------------------*/
-int edgeDist[MAXV]; // store the number of edges from start to all other vertices
+/*------------------------------------- BFS to find edge dist--------------------------------*/
+int edgeDist[MAXV]; // store the number of edges from [start] to all other vertices
 void bfs(int start) {
 	memset(edgeDist, -1, sizeof(edgeDist));
 	edgeDist[start] = 0;
@@ -41,7 +41,7 @@ void bfs(int start) {
 		int v = q.front();
 		q.pop();
 
-		//Process
+		//Process node v
 		//cout << v << endl;
 
 		for (int i = 0; i < e[v].size(); ++i) 
@@ -54,7 +54,7 @@ void bfs(int start) {
 	}
 }
 
-/*------------------------------------- shortest(edge) path tree ---------------------------------------------------------------*/
+/*------------------------------------- shortest(edge) path tree -----------------------------*/
 int edgeDist[MAXV]; // store the number of edges from start to all other vertices
 int pre[MAXV];
 void bfs(int start) {
@@ -68,6 +68,9 @@ void bfs(int start) {
 		int v = q.front();
 		q.pop();
 
+		//Process node v
+		//cout << v << endl;
+
 		for (int i = 0; i < e[v].size(); ++i) 
 			if (edgeDist[e[v][i]] == -1) {
 				q.push(e[v][i]);
@@ -78,7 +81,7 @@ void bfs(int start) {
 			}
 	}
 }
-vector<int> reconstructSPT(int start, int end) {
+vector<int> reconstructSPT(int start, int end) { // do bfs(start) then find the shortest(edge) path from [start] to [end]
 	vector<int> res;
 	int v = end;
 	while (v != start) {
