@@ -2,65 +2,55 @@
 
 map<pair<vi,int>, int> dp;
 map<pair<vi,int>, bool> visited;
-int get(const vi &p, int r) {
-    int &res = dp[{p,r}];
-    bool &vis = visited[{p,r}];
+int get(const pair<vi,int> &p) {
+    int &res = dp[p];
+    bool &vis = visited[p];
 
     if(vis)
         return res;
     vis = true;
 
-    vi r1;
-    int r1;
+
+    //////////////////////////////////////
+    pair<vi,int> p_;
 
     // Case 1
-    p1 =
-    r1 = 
-
-    p2 =
-    r2 =
-
-    res = get(p1, r1) + get(p2, r2);
+    p_ = p + ...;
+    res = max(res, get(p) + ...);
 
     // Case 2
-    p1 =
-    r1 = 
+    p_ = p - ...;
+    res = max(res, get(p) + ...);
 
-    p2 =
-    r2 =
-
-    res = get(p1, r1) + get(p2, r2);
-
-    // Case FOR
-    FOR(i) {
-        p1 =
-        r1 = 
-
-        p2 =
-        r2 =
-
-        res = get(p1, r1) + get(p2, r2);
-        
+    // Case if
+    if() {
+        p_ = p - ...;
+        res = max(res, get(p) + ...);
     }
+
+    // Case For
+    FOR() {
+        p_ = p + ...;
+        res = max(res, get(p) + ...);
+    }
+
+    /////////////////////////////////////
     return res;
 }
 
 int solDP() {
+    // Clear
     dp.clear();
     visited.clear();
 
     // Base cases
-    vi z(P,0);
     FOR(r,0,P) {
-        dp[{ z, r }] = 0;
-        visited[ { z, r } ] = true;
+        dp[ {{0,0,0},r} ] = 0;
+        visited[ {{0,0,0},r} ] = true;
     }
 
     // Top case
-    vi p(P,0);
-    FOR(n,1,N+1) {
-        ++p[n];
-    }
+    pair<vi,int> p = {{,,,}, }
 
-    return get(p, 0);
+    return get(p) + ...;
 }

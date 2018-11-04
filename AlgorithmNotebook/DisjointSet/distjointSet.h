@@ -8,7 +8,7 @@
 
 int par_[MAXN];
 int size_[MAXN];    // size of the corresponding set
-int id_[MAXN];      // all ids of the set
+int id_[MAXN];      // all ids of the set: After Update elements in the same subsets have the same id(= root element)
 void init(int n) {
     for(int i = 1; i <= n; ++i)
         par_[i] = i;
@@ -27,7 +27,7 @@ void Merge(int a, int b) {
     size_[a] += size_[b];
     par_[b] = a;
 }
-// Update set IDs
+// Update set IDs: elements in the same subsets have the same id(= root element)
 void Update(int n) {
     for(int i=1; i<=n; ++i) {
         int x = i;
@@ -70,7 +70,7 @@ public:
                 ++rank_[b_id];
         }
     }
-    // Update set IDs
+    // Update set IDs: elements in the same subsets have the same id(= root element)
     void Update() {
         for(int i=0; i<id_.size(); ++i) {
             int x = i;
