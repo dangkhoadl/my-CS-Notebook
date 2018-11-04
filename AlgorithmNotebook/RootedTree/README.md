@@ -1,3 +1,3 @@
 
 ## Rooted Tree 
-<img src="./img/rootedTree.png" alt="drawing" width="1000"/>
+<img src="./img/rootedTree.png" alt="drawing" width="650"/>

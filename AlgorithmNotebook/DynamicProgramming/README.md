@@ -2,4 +2,4 @@
 
 ## Topdown DP
 
-<img src="./img/1.jpg" alt="drawing" width="1000"/>
+<img src="./img/1.jpg" alt="drawing" width="650"/>
