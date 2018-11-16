@@ -14,8 +14,8 @@ using namespace std;
 
 #define MIN LLONG_MIN
 #define MAX LLONG_MAX
-const long long inf = 9187201950435737471;
-const long long ninf = -9114861777597660799;
+const long long inf = 9187201950435737471;      // 9.19E18 (0x7f)
+const long long ninf = -9114861777597660799;    // -9.11E18 (-0x7f)
 const double EPS = 1e-9;
 #define sq(x) ((x)*(x))
 #define PI (2*acos((double)0))
@@ -36,7 +36,8 @@ template<typename T> inline bool DEC(T fdfsfv_i,T fdfsfv_j) {return((fdfsfv_i)>(
 #define all(a) (a).begin(), (a).end()
 #define ra(A,start,end) (A)+(start),(A)+(end)
 #define rv(A,start,end) (A).begin()+(start),(A).begin()+(end)
-#define ms(a,x) memset((a),(x),sizeof(a)) //Care: Only init with 0,-1,0x7f, char[] and bool(true,false)
+#define ms(a,x) memset((a),(x),sizeof(a)) 
+    //Care: Init with 0,-1,0x7f,-0x7f,char[] and bool(true,false)
 
 #define REP(a) for(int idx=0,_a=(a);idx<_a;++idx)
 #define FOR(idx,start,end) for(int (idx)=(start),_end=(end);(idx)<_end;++(idx)) // [start, end)
