@@ -6,6 +6,7 @@
 
 /*------------------------------------- TEMPLATE ---------------------------------------------------------------*/
 #include <bits/stdc++.h>
+#include <sys/resource.h>
 using namespace std;
 
 #define int long long
@@ -124,6 +125,22 @@ int32_t main() {
     ios::sync_with_stdio(false);
     // cin.tie(false);
     cout << fixed << setprecision(11);
+
+    // This code is here to increase the stack size to avoid stack overflow
+    // in depth-first search.
+    const rlim_t kStackSize = 64L * 1024L * 1024L;  // min stack size = 64 Mb
+    struct rlimit rl;
+    int result;
+    result = getrlimit(RLIMIT_STACK, &rl);
+    if (result == 0) {
+        if (rl.rlim_cur < kStackSize) {
+            rl.rlim_cur = kStackSize;
+            result = setrlimit(RLIMIT_STACK, &rl);
+            if (result != 0) {
+                fprintf(stderr, "setrlimit returned result = %d\n", result);
+            }
+        }
+    }
     /*----------------------------------------------------------------------------------------------------*/
     //InOut
     unsigned long long fdfsfv_T;

@@ -11,7 +11,7 @@ vector<int> bitSetToSet(int x) {
     int k = 0;
     for(int i = 1; i <= x; i <<= 1, ++k) {
         if(x & i)
-            res.pb(k);
+            res.push_back(k);
     }
     return res;
 }
