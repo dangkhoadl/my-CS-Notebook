@@ -1,15 +1,10 @@
 
-
-int dp[MAXN][MAXN];
-bool visited[MAXN][MAXN];
+int dp[][];
 int get(int i, int j) {
     int &res = dp[i][j];
-    bool &vis = visited[i][j];
 
-    if(vis)
+    if(res != inf)
         return res;
-    vis = true;
-
 
     //////////////////////////////////////
     int i_, j_;
@@ -17,56 +12,51 @@ int get(int i, int j) {
     // Case 1
     i_ = i + ...;
     j_ = j + ...;
-    res = max(res, get(i_, j_) + ...);
+    res = min(res, get(i_, j_) + ...);
 
     // Case 2
     i_ = i - ...;
     j_ = j - ...;
-    res = max(res, get(i_, j_) + ...);
+    res = min(res, get(i_, j_) + ...);
 
     // Case if
     if() {
         i_ = i + ...;
         j_ = j + ...;
-        res = max(res, get(i_, j_) + ...);
+        res = min(res, get(i_, j_) + ...);
     }
 
     // Case For
     FOR() {
         i_ = i + ...;
         j_ = j + ...;
-        res = max(res, get(i_, j_) + ...);
+        res = min(res, get(i_, j_) + ...);
     }
 
     /////////////////////////////////////
     return res;
 }
 int solveDP() {
-    // Clear
-    ms(dp, 0);
-    ms(visited, false);
+    // Init
+    ms(dp, 0x7f);
 
     // Base cases
     FOR(i,1,N+1) FOR(j,1,N+1) {
         dp[i][j] = 0;
-        visited[i][j] = true;
     }
 
     // Top case
-    return get( , ) + ...;
+    return get(m , n) + ...;
 }
 
 
 /*******************************************************************************************************************/
 int dp[MAXN][MAXN];
-bool visited[MAXN][MAXN];
 int get(int i, int j) {
     int &res = dp[i][j];
-    bool &vis = visited[i][j];
 
-    if(vis)
+    if(res != ninf)
         return res;
-    vis = true;
 
 
     //////////////////////////////////////
@@ -109,14 +99,12 @@ int get(int i, int j) {
     return res;
 }
 int solveDP() {
-    // Clear
-    ms(dp, 0);
-    ms(visited, false);
+    // Init
+    ms(dp, -0x7f);
 
     // Base cases
     FOR(i,1,N+1) FOR(j,1,N+1) {
         dp[i][j] = 0;
-        visited[i][j] = true;
     }
 
     // Top case
