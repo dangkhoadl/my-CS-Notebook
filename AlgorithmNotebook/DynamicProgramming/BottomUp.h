@@ -22,25 +22,29 @@ int solveDP() {
         // Update 1
         i_ = i + ...;
         j_ = j + ...;
-        dp[i_][j_] = min(dp[i_][j_], cur + ...);
+        if(i_ in range [0,I] && j_ in range [0,J])
+            dp[i_][j_] = min(dp[i_][j_], cur + ...);
 
         // Update 2
         i_ = i + ...;
         j_ = j + ...;
-        dp[i_][j_] = min(dp[i_][j_], cur + ...);
+        if(i_ in range [0,I] && j_ in range [0,J])
+            dp[i_][j_] = min(dp[i_][j_], cur + ...);
 
         // Case if
         if() {
             i_ = i + ...;
             j_ = j + ...;
-            dp[i_][j_] = min(dp[i_][j_], cur + ...);
+            if(i_ in range [0,I] && j_ in range [0,J])
+                dp[i_][j_] = min(dp[i_][j_], cur + ...);
         }
 
         // Case For
         FOR() {
             i_ = i + ...;
             j_ = j + ...;
-            dp[i_][j_] = min(dp[i_][j_], cur + ...);
+            if(i_ in range [0,I] && j_ in range [0,J])
+                dp[i_][j_] = min(dp[i_][j_], cur + ...);
         }
     }
 

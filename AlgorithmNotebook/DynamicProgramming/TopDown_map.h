@@ -16,22 +16,26 @@ int get(const pair<vi,int> &p) {
 
     // Case 1
     p_ = p + ...;
-    res = max(res, get(p) + ...);
+    if(p_ in range[0,P])
+        res = max(res, get(p) + ...);
 
     // Case 2
     p_ = p - ...;
-    res = max(res, get(p) + ...);
+    if(p_ in range[0,P])
+        res = max(res, get(p) + ...);
 
     // Case if
     if() {
         p_ = p - ...;
-        res = max(res, get(p) + ...);
+        if(p_ in range[0,P])
+            res = max(res, get(p) + ...);
     }
 
     // Case For
     FOR() {
         p_ = p + ...;
-        res = max(res, get(p) + ...);
+        if(p_ in range[0,P])
+            res = max(res, get(p) + ...);
     }
 
     /////////////////////////////////////
