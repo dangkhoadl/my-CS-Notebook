@@ -11,7 +11,7 @@ int solveDP() {
 
     // Loop
     FOR(i,0,I) FOR(j,0,J) {
-        int &cur = dp[i][j];
+        int cur = dp[i][j];
 
         if(cur == inf)
             continue;
@@ -48,6 +48,9 @@ int solveDP() {
         }
     }
 
-    // Top cases
-    return dp[m][n];
+    // Return value: The safest way is to loop through the whole table
+    int res = inf;
+    FOR(i,0,I) FOR(j,0,J)
+        res = min(res, dp[i][j])
+    return res;
 }
