@@ -31,10 +31,10 @@ inline long long mul(long long a,long long b) {
 inline long long power(long long a, long long n) {
     assert(n>=0);
     assert(a>=0);
-    if(a == 0)
-        return 0;
     if(n == 0)
         return 1;
+    if(a == 0)
+        return 0;
     if(n == 1)
         return a%MOD;
 

@@ -69,9 +69,9 @@ int solveDP() {
         }
     }
 
-    // Return value: The safest way is to loop through the whole table
+    // Choose wisely
     int res = inf;
-    FOR(i,0,I) FOR(j,0,J)
-        res = min(res, dp[i][j])
+    FOR(i,0,I) 
+        res = min(res, dp[i][J])
     return res;
 }

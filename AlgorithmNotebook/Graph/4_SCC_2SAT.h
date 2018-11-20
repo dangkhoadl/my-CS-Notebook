@@ -9,20 +9,20 @@
 // 1 4
 
 // Algo:
-//		Find x1,x2,x3,x4 satisfy the L (L true)
-//		Ex: L = (x2 v -x1) (-x1 v x2) (x1 v x3) (-x2 v -x3) (x1 v x4)
-//		- create graph with (a v b) = 
-// 				(-a)----->(b)
-//				(-b)----->(a)
-// 			- my rule: 
-//					   a = i * 2 - 1
-//					  -a = i * 2
-//			- Ex: 
-//				a1: a1 = (1)   and -a1  = (2)
-//				a2: a2 = (3)   and -a2 = (4)
+//      Find x1,x2,x3,x4 satisfy the L (L true)
+//      Ex: L = (x2 v -x1) (-x1 v x2) (x1 v x3) (-x2 v -x3) (x1 v x4)
+//      - create graph with (a v b) = 
+//              (-a)----->(b)
+//              (-b)----->(a)
+//          - my rule: 
+//                     a = i * 2 - 1
+//                    -a = i * 2
+//          - Ex: 
+//              a1: a1 = (1)   and -a1  = (2)
+//              a2: a2 = (3)   and -a2 = (4)
 //
-//			- Final result
-//					x1 = false, x2 =false, x3 = true, x4 = true	
+//          - Final result
+//                  x1 = false, x2 =false, x3 = true, x4 = true 
 
 /* ------------------------------------------------ 2SAT ----------------------------------------------------------------------------- */
 
@@ -30,9 +30,9 @@ const int MAXV = 101;
 
 vector<pair<int,int>> sat;
 void readInput() {
-	long long a,b;
-	while(scanf("%lld %lld", &a, &b) > 0)
-		sat.push_back( {a,b} );
+    long long a,b;
+    while(scanf("%lld %lld", &a, &b) > 0)
+        sat.push_back( {a,b} );
 }
 
 inline pair<int,int> getVertexID(int i) {

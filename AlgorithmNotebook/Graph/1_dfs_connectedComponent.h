@@ -11,20 +11,20 @@ bool visited[MAXV];
 int CCLabel[MAXV];
 int label;
 void explore(int v) {
-	visited[v] = true;
-	CCLabel[v] = label;
+    visited[v] = true;
+    CCLabel[v] = label;
 
-	for (int i = 0; i < e[v].size(); ++i) {
-		if (!visited[e[v][i]])
-			explore(e[v][i]);
-	}
+    for (int i = 0; i < e[v].size(); ++i) {
+        if (!visited[e[v][i]])
+            explore(e[v][i]);
+    }
 }
 void dfsAll() {
-	memset(visited, false, sizeof(visited));
-	label = 1;
-	for (int v = 1; v <= V; ++v)
-		if (!visited[v]) {
-			explore(v);
-			++label;
-		}
+    memset(visited, false, sizeof(visited));
+    label = 1;
+    for (int v = 1; v <= V; ++v)
+        if (!visited[v]) {
+            explore(v);
+            ++label;
+        }
 }
