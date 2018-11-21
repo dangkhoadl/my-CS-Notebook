@@ -1,5 +1,5 @@
 
-/********************************** Kosaraju ************************************************************/
+/********************* Kosaraju *****************************/
 //O(V + E)
 // Algo:
 //      - Find groups of Strong Connected Components in Directed graph

@@ -30,7 +30,7 @@ void dijkstra(int start) {
         processed[v] = true;
 
         for (int i = 0; i < e[v].size(); ++i)
-            if (dist[e[v][i]] > dist[v] + wei[v][i]) {
+            if (dist[v] != inf && dist[e[v][i]] > dist[v] + wei[v][i]) {
                 //Relax
                 dist[e[v][i]] = dist[v] + wei[v][i];
                 pre[e[v][i]] = v;
@@ -63,7 +63,7 @@ void dijkstra(int start) {
         int v = minheap.extractMin();
 
         for(int i = 0; i < e[v].size(); ++i) 
-            if (dist[e[v][i]] > dist[v] + wei[v][i]) {
+            if (dist[v] != inf && dist[e[v][i]] > dist[v] + wei[v][i]) {
                 dist[e[v][i]] = dist[v] + wei[v][i];
                 pre[e[v][i]] = v;
 
