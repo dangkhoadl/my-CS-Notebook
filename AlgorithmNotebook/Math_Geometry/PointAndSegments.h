@@ -23,7 +23,7 @@ bool isIntersect(pair<int,int> seg1, pair<int,int> seg2, pair<int,int> &res) {
 
 
 // Check if all segment intersect, return the overlapped range
-bool isAllIntersect(vector<pair<int,int>> segs, ) {
+bool isAllIntersect(const vector<pair<int,int>> &segs, pair<int,int> &res) {
     int a = -inf;
     int b = inf;
     for(int i = 0; i < segs.size(); ++i) {

@@ -1,19 +1,22 @@
 
+// O(V+E)
+
 const int MAXV = 1e6 + 1;
 int V, E;
 vector<int> e[MAXV];
-vector<int> wei[MAXV];
 
-/************************************************************** TopoSort *****************************************************************************************************************/
-/*--------------- TopoSort - no Cycle detection -------------------------------------*/
+/*--------------- TopoSort - no Cycle detection -----------*/
 bool visited[MAXV];
 vector<int> topoOrder;
 void explore(int v) {
+    // Preprocess
     visited[v] = true;
+
     for (int i = 0; i < e[v].size(); ++i) {
         if (!visited[e[v][i]])
             explore(e[v][i]);
     }
+
     //Postprocess
     topoOrder.push_back(v);
 }
@@ -24,132 +27,63 @@ void dfs() {
             explore(v);
 }
 void topoSort() {
+    topoOrder.clear();
     dfs();
     reverse(topoOrder.begin(), topoOrder.end());
 }
 
-/*--------------- TopoSort w/ Cycle detection ---------------------------------------*/
-int state[MAXV];
-vector<int> topoOrder;
-bool isDAG;
-void explore(int v) {
-    state[v] = 1;
-    //Preprocess
+/*--------------- TopoSort w/ Cycle detection ------------*/
+class TopoSort {
+private:
+    int V;
+    vector<int> state;
+    vector<int> topoOrder;
+    vector<vector<int>> e;
+    bool isDAG;
+private:
+    void explore(int v) {
+        // Preprocess
+        this->state[v] = 1;
 
-    for (int i = 0; i < e[v].size(); ++i) {
-        if (state[e[v][i]] == 1)
-            isDAG = false;
-        if (state[e[v][i]] == 0)
-            explore(e[v][i]);
+        for (int i = 0; i < this->e[v].size(); ++i) {
+            if (this->state[e[v][i]] == 1)
+                this->isDAG = false;
+            if (this->state[this->e[v][i]] == 0)
+                this->explore(this->e[v][i]);
+        }
+
+        // Postprocess
+        this->state[v] = 2;
+        this->topoOrder.push_back(v);
     }
-    state[v] = 2;
-    // Postprocess
-    topoOrder.push_back(v);
-}
-void dfs() {
-    memset(state, 0, sizeof(state));
-    for (int v = 1; v <= V; ++v)
-        if (state[v] == 0)
-            explore(v);
-}
-void topoSort() {
-    isDAG = true;
-    dfs();
-
-    if (isDAG)
-        reverse(topoOrder.begin(), topoOrder.end());
-    else
-        topoOrder.clear();
-}
-
-
-/************************************************************** DP on DAG *****************************************************************************************************************/
-//    (a1),(a2),... ----------> (b)
-
-/*--------------- Count the number of path to reach from start to other vertices - f(b) += f(a) ---------------------------------------*/
-int state[MAXV];
-vector<int> topoOrder;
-bool isDAG;
-void explore(int v) {
-    state[v] = 1;
-    for (int i = 0; i < e[v].size(); ++i) {
-        if (state[e[v][i]] == 1)
-            isDAG = false;
-        if (state[e[v][i]] == 0)
-            explore(e[v][i]);
+    void dfs() {
+        for (int v = 1; v <= V; ++v)
+            if (this->state[v] == 0)
+                this->explore(v);
     }
-    state[v] = 2;
-    // Postprocess
-    topoOrder.push_back(v);
-}
-void dfs() {
-    memset(state, 0, sizeof(state));
-    for (int v = 1; v <= V; ++v)
-        if (state[v] == 0)
-            explore(v);
-}
-void topoSort() {
-    isDAG = true;
-    dfs();
-
-    if (isDAG)
-        reverse(topoOrder.begin(), topoOrder.end());
-    else
-        topoOrder.clear();
-}
-int f[MAXV];
-void countPath(int start) {
-    f[start] = 1;
-    topoSort();
-    for (int i = 0; i < topoOrder.size(); ++i) {
-        int v = topoOrder[i];
-        for (int j = 0; j < e[v].size(); ++j)
-            f[e[v][j]] += f[v];
+public:
+    TopoSort(int V): V(V) {
+        this->state.assign(V+1, 0);
+        this->isDAG = true;
+        this->e.assign(V+1, vector<int>());
     }
-}
-
-/*--------------- shortestPath in DAG - f(b) = min(f(a) + wei(a->b), f[b]) ---------------------------------------*/
-int state[MAXV];
-vector<int> topoOrder;
-bool isDAG;
-void explore(int v) {
-    state[v] = 1;
-    //Preprocess
-
-    for (int i = 0; i < e[v].size(); ++i) {
-        if (state[e[v][i]] == 1)
-            isDAG = false;
-        if (state[e[v][i]] == 0)
-            explore(e[v][i]);
+    void addEdge(int u, int v) {
+        this->e[u].push_back(v);
     }
-    state[v] = 2;
-    // Postprocess
-    topoOrder.push_back(v);
-}
-void dfs() {
-    memset(state, 0, sizeof(state));
-    for (int v = 1; v <= V; ++v)
-        if (state[v] == 0)
-            explore(v);
-}
-void topoSort() {
-    isDAG = true;
-    dfs();
+    bool topoSort() {
+        this->topoOrder.clear();
+        this->isDAG = true;
+        this->dfs();
 
-    if (isDAG)
-        reverse(topoOrder.begin(), topoOrder.end());
-    else
-        topoOrder.clear();
-}
-int f[MAXV];
-void shortestPath(int start) {
-    topoSort();
+        if(this->isDAG) {
+            reverse(this->topoOrder.begin(), this->topoOrder.end());
+            return true;
+        }
 
-    fill(f+1, f+V+1, inf);
-    f[start] = 0;
-    for(int i = 0; i < topoOrder.size(); ++i) {
-        int v = topoOrder[i];
-        for(int j = 0; j < e[v].size(); ++j) 
-            f[e[v][j]] = min(f[v] + wei[v][j], f[e[v][j]]);
+        this->topoOrder.clear();
+        return false;
     }
-}
+    vector<int> get_Results() {
+        return this->topoOrder;
+    }
+};

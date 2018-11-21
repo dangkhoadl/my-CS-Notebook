@@ -1,4 +1,5 @@
 
+/********************************** Kosaraju ************************************************************/
 //O(V + E)
 // Algo:
 //      - Find groups of Strong Connected Components in Directed graph
@@ -8,72 +9,75 @@
 //      - DFS(Gr)
 //          Construct SCC groups
 
-/********************************** Kosaraju ************************************************************/
-const int MAXV = 101;
-int V, E;
-vector<int> e[MAXV];
-vector<int> e_r[MAXV];
+// vertex_id start by 1
+class Kosaraju {
+private:
+    int V;
+    vector<vector<int>> e, e_r;
+    vector<bool> check, visited, visited_r;
+    stack<int> postVisitOrder;
+    vector<int> group;
+    vector<vector<int>> SCC;
 
 
-// DFS G
-bool visited[MAXV];
-stack<int> postVisitOrder;
-void explore(int v) {
-    visited[v] = true;
+    void explore_G(int v) {
+        this->visited[v] = true;
 
-    for (int i = 0; i < e[v].size(); ++i) {
-        if (!visited[e[v][i]])
-            explore(e[v][i]);
+        for (int i = 0; i < this->e[v].size(); ++i) {
+            if (!this->visited[e[v][i]])
+                this->explore_G(e[v][i]);
+        }
+
+        // PostVisit
+        this->postVisitOrder.push(v);
     }
+    void explore_Gr(int v) {
+        this->visited_r[v] = true;
 
-    // PostVisit
-    postVisitOrder.push(v);
-}
+        // Previsit
+        this->group.push_back(v);
 
-//DFS G_R
-bool visited_r[MAXV];
-vector<int> group;
-void explore_r(int v) {
-    visited_r[v] = true;
-
-    // Previsit
-    group.push_back(v);
-
-    for (int i = 0; i < e_r[v].size(); ++i) {
-        if (!visited_r[e_r[v][i]])
-            explore_r(e_r[v][i]);
-    }
-}
-
-//Kosaraju
-bool check[MAXV];
-vector<vector<int>> SCC;
-void kosaraju() {
-    // Create G_r
-    for(int v = 1; v <= V; ++v) 
-        for(int i = 0; i < e[v].size(); ++i)
-            e_r[e[v][i]].push_back(v);
-
-    // dfs G
-    memset(visited, false, sizeof(visited));
-    for (int v = 1; v <= V; ++v) {
-        if (!visited[v])
-            explore(v);
-    }
-
-    //dfs G_r
-    memset(visited_r, false, sizeof(visited));
-    while(!postVisitOrder.empty()) {
-        int v = postVisitOrder.top();
-        postVisitOrder.pop();
-
-        if(!visited_r[v])
-            explore_r(v);
-
-        // Put group into SCC
-        if (group.size() > 0) {
-            SCC.push_back(group);
-            group.clear();
+        for (int i = 0; i < this->e_r[v].size(); ++i) {
+            if (!this->visited_r[e_r[v][i]])
+                this->explore_Gr(e_r[v][i]);
         }
     }
-}
+public:
+    Kosaraju(int V = 0) : V(V) {
+        this->e.assign(V + 1, vector<int>());
+        this->e_r.assign(V + 1, vector<int>());
+
+        this->check.assign(V + 1, false);
+        this->visited.assign(V + 1, false);
+        this->visited_r.assign(V + 1, false);
+    }
+    void addEdge(int v, int u) {
+        this->e[v].push_back(u);
+        this->e_r[u].push_back(v);
+    }
+    void find_SCC() {
+        // dfs G
+        for (int v = 1; v <= this->V; ++v) {
+            if (!this->visited[v])
+                this->explore_G(v);
+        }
+
+        //dfs Gr
+        while(!this->postVisitOrder.empty()) {
+            int v = this->postVisitOrder.top();
+            this->postVisitOrder.pop();
+
+            if(!this->visited_r[v])
+                this->explore_Gr(v);
+
+            // Put group into SCC
+            if (this->group.size() > 0) {
+                this->SCC.push_back(group);
+                this->group.clear();
+            }
+        }
+    }
+    vector<vector<int>> get_SCC() {
+        return this->SCC;
+    }
+};

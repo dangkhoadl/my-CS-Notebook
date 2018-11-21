@@ -1,6 +1,4 @@
 
-## C++ Priority Queue = *Max* Heap
-
 ## Data type Ranges
 
 | TypeName        | Bytes           | Other Names  | Range | Range E |

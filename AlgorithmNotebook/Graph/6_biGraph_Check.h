@@ -1,6 +1,8 @@
 
 
-// Bidirected, no weight graph
+// Checking whether a Graph is Bipartite
+// O(V+E)
+
 /*-------------------------------------------------------------------------------------------------------------*/
 const int MAXV = 101;
 int V, E;
@@ -21,13 +23,15 @@ void explore(int v, int preC) {
         if(!visited[e[v][i]])
             explore(e[v][i], color[v]);
 }
-void dfs(int start) {
-    memset(visited + 1, false, sizeof(visited));
-    memset(color + 1, 0, sizeof(color));
-    explore(start, 2, sizeof(start));
+void dfs() {
+    memset(visited, false, sizeof(visited));
+    memset(color, 0, sizeof(color));
+    for(int v=1; v<=V; ++v)
+        if(!visited[v])
+            explore(v, 2);
 }
 bool biGraphCheck() {
-    dfs(1);
+    dfs();
     for (int v = 1; v < V + 1; ++v)
         for (int i = 0; i < e[v].size(); ++i)
             if (color[v] == color[e[v][i]]) 

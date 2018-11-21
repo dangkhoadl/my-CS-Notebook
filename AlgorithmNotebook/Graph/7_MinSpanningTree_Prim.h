@@ -4,7 +4,8 @@ const int MAXV = 1e6 + 1;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
-/*------------------------------------------------- Use pq -------------------------------------------------------------------------------*/
+
+/*-------------------- Use pq ------------------------*/
 int cost[MAXV];
 int pre[MAXV];
 bool processed[MAXV];
@@ -39,55 +40,8 @@ void prim(int start) {
     }
 }
 
-/*-------------------------------------------------------- Struct ------------------------------------------------------------------------*/
-struct MinHeap {
-public:
-    vector<pair<int, int>> H_;
-public:
-    void makeHeap() {
-        make_heap(H_.begin(), H_.end(), [](const pair<int, int> &a, const pair<int, int> &b) {return a.first > b.first; });
-    }
-    void insert(pair<int, int>  p) {
-        H_.push_back(p);
-        push_heap(H_.begin(), H_.end(), [](const pair<int, int> &a, const pair<int, int> &b) {return a.first > b.first; });
-    }
-    bool empty() {
-        if (H_.size() == 0)
-            return true;
-        return false;
-    }
-    int getMin() {
-        return H_.front().second;
-    }
-    int extractMin() {
-        int min = H_.front().second;
-        pop_heap(H_.begin(), H_.end(), [](const pair<int, int> &a, const pair<int, int> &b) {return a.first > b.first; });
-        H_.pop_back();
-        return min;
-    }
-    struct CompareSecond {
-        CompareSecond(int val) : val_(val) {}
-        bool operator()(const pair<int, int>& element) const {
-            return val_ == element.second;
-        }
-    private:
-        int val_;
-    };
-    bool exist(int z) {
-        auto it = find_if(H_.begin(), H_.end(), CompareSecond(z));
-        if (it != H_.end())
-            return true;
-        return false;
-    }
-    void changePriority(pair<int, int> p) {
-        auto it = find_if(H_.begin(), H_.end(), CompareSecond(p.second));
-        if (it != H_.end()) {
-            it->first = p.first;
-            make_heap(H_.begin(), H_.end(), [](const pair<int, int> &a, const pair<int, int> &b) {return a.first > b.first; });
-        }
-    }
-};
 
+/*-------------------- Struct - Min Heap -----------------------*/
 int cost[MAXV]; // store the weight from i -> pre[i]
 int pre[MAXV];  // root node of the tree (start) has pre = 0
 void prim(int start) {

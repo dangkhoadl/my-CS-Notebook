@@ -6,10 +6,11 @@ int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
-/*------------------------------------- simple BFS ---------------------------------------------------------------*/
+/*---------------------------- simple BFS -----------------------------*/
 bool visited[MAXV];
 void bfs(int start) {
     memset(visited, false, sizeof(visited));
+
     visited[start] = true;
     queue<int> q;
     q.push(start);
@@ -29,10 +30,12 @@ void bfs(int start) {
     }
 }
 
-/*------------------------------------- BFS to find edge dist--------------------------------*/
+
+/*----------------------- BFS to find edge dist--------------------*/
 int edgeDist[MAXV]; // store the number of edges from [start] to all other vertices
 void bfs(int start) {
     memset(edgeDist, -1, sizeof(edgeDist));
+
     edgeDist[start] = 0;
     queue<int> q;
     q.push(start);
@@ -54,12 +57,14 @@ void bfs(int start) {
     }
 }
 
-/*------------------------------------- shortest(edge) path tree -----------------------------*/
+
+/*---------------------- shortest(edge) path tree -----------------------------*/
 int edgeDist[MAXV]; // store the number of edges from start to all other vertices
 int pre[MAXV];
 void bfs(int start) {
     memset(edgeDist, -1, sizeof(edgeDist));
     memset(pre, -1, sizeof(pre));
+
     edgeDist[start] = 0;
     queue<int> q;
     q.push(start);
