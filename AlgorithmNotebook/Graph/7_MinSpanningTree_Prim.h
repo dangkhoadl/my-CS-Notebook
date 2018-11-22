@@ -1,6 +1,6 @@
 
 //                              Prim: O(V + Elog(E))
-const int MAXV = 1e6 + 1;
+const int MAXV = 100 + 3;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
@@ -9,7 +9,7 @@ vector<int> wei[MAXV];
 int cost[MAXV];
 int pre[MAXV];
 bool processed[MAXV];
-void prim(int start) {
+int prim(int start) {
     memset(processed, false, sizeof(processed));
     memset(pre, 0, sizeof(pre));
     memset(cost, 0x7f, sizeof(cost));
@@ -38,13 +38,19 @@ void prim(int start) {
             }
         }
     }
+
+    // Calc minSpanning Tree total weight
+    int totalTreeWeight = 0;
+    for(int v=1; v<=V; ++v)
+        totalTreeWeight += cost[v];
+    return totalTreeWeight;
 }
 
 
 /*-------------------- Struct - Min Heap -----------------------*/
 int cost[MAXV]; // store the weight from i -> pre[i]
 int pre[MAXV];  // root node of the tree (start) has pre = 0
-void prim(int start) {
+int prim(int start) {
     MinHeap H;
     memset(pre + 1, 0, V * sizeof(int));
     for (int v = 1; v <= V; ++v) {
@@ -61,4 +67,10 @@ void prim(int start) {
                 H.changePriority({cost[e[v][i]], e[v][i]});
             }
     }
+
+    // Calc minSpanning Tree total weight
+    int totalTreeWeight = 0;
+    for(int v=1; v<=V; ++v)
+        totalTreeWeight += cost[v];
+    return totalTreeWeight;
 }

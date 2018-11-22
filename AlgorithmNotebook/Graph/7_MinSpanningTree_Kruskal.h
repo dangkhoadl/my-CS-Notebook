@@ -1,21 +1,19 @@
 
 //                                              MST by Kruskal
 //          O(E*log(V))
-const int MAXV = 1e6 + 1;
+const int MAXV = 100 + 3;
 int V, E;
 vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
 
-/*--------------------------- Fast code -------------------------------------------*/
-// init range: [1, n]
-#define MAXN 20
-int par_[MAXN];
-int size_[MAXN];    // size of the corresponding set
-void init(int n) {
+/*------------------- Fast code ---------------------*/
+int par_[MAXV];
+int size_[MAXV];    // size of the corresponding set
+void init(int V) { // init range: [1, V]
     memset(size_, 1, sizeof(size_));
-    for(int i = 1; i <= n; ++i)
-        par_[i] = i;
+    for(int v = 1; v <= V; ++v)
+        par_[v] = v;
 }
 int find(int x) {
     while(x != par_[x])
@@ -35,7 +33,7 @@ vector<int> pathwei;
 int Kruskal() {
     pathwei.clear();
 
-    int totalW = 0;
+    int totalTreeWeight = 0;
     init(V);
 
     priority_queue< pair<int, pair<int, int>>> pq;
@@ -51,22 +49,22 @@ int Kruskal() {
 
         if(find(a) != find(b)) {
             //Update
-            totalW += we;
+            totalTreeWeight += we;
             pathwei.push_back(we);
             merge(a,b);
         }
     }
-    return totalW;
+    return totalTreeWeight;
 }
 
 
-/*------------------------------ Struct --------------------------------*/
+/*----------------------- Struct --------------------------*/
 struct disjointSet {
 public:
     vector<int> parent_;
     vector<int> rank_;
 public:
-    disjointSet(int n) {
+    disjointSet(int n) {    // init range: [0, n-1]
         parent_.assign(n, 0);
         rank_.assign(n, 0);
     }
