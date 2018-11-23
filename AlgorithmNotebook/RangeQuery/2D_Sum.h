@@ -1,8 +1,10 @@
 
-/*--------------------------------------------------- SUM query ------------------------------------------------*/
+/*--------------------- SUM query -------------------------*/
 // Precomputation Time - O(N x M)
 // Query Time - O(1)
 
+
+/*-----------------------------------------------------------*/
 // Index 1 - size N*M: precompute_sum(N,M)
 int mat[MAXN][MAXN];
 
@@ -36,6 +38,8 @@ int query_sum(int i1,int j1, int i2, int j2) {
     return res;
 }
 
+
+/*----------------------------------------------------------*/
 // Index 0 - size N*M: precompute_sum(N,M)
 int mat[MAXN][MAXN];
 

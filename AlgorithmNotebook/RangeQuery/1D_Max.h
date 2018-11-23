@@ -3,6 +3,8 @@
 /*--------------------------------- Max query -----------------------*/
 // Sparse table: Build O(n*log(n)), query O(1)
 
+
+/*-----------------------------------------------------------------------*/
 //Array indexed 0: [0,n)
 int a[MAXN];
 int n;
@@ -33,9 +35,7 @@ int maxQuery(int i, int j) {        // Return index: indexx[i][k] and indexx[j -
 }
 
 
-// -------------
-// Sparse table: Build O(n*log(n)), query O(1)
-
+/*-----------------------------------------------------------------------*/
 //Array indexed 1: [1,n]
 int a[MAXN];
 int n;

@@ -5,6 +5,8 @@
 // Precomputation Time - O( N x M x log(N) x log(M))
 // Query Time - O(log(N) x log(M))
 
+
+/*-----------------------------------------------------------------------*/
 // index 1: size N*M: precompute_min(N+1,M+1);
 int mat[MAXN][MAXN];
 
@@ -42,6 +44,7 @@ int query_min(int i1, int j1, int i2, int j2){
 }
 
 
+/*--------------------------------------------------------------------------------------------------------*/
 // index 0: size N*M: precompute_min(N,M);
 int mat[MAXN][MAXN];
 

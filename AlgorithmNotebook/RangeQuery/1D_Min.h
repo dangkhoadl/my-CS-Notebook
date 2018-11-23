@@ -3,10 +3,11 @@
 /*--------------------------------- Min query -----------------------*/
 // Sparse table: Build O(n*log(n)), query O(1)
 
+
+/*-----------------------------------------------------------------------*/
 //Array indexed 0: [0,n)
 int a[MAXN];
 int n;
-
 
 int indexx[MAXN][25];
 void build() {
@@ -32,13 +33,11 @@ int minQuery(int i, int j) {        // Return index: indexx[i][k] and indexx[j -
     return a[indexx[j - (1<<k) + 1][k]];
 }
 
-// -------------
-// Sparse table: Build O(n*log(n)), query O(1)
 
+/*-----------------------------------------------------------------------*/
 //Array indexed 1: [1,n]
 int a[MAXN];
 int n;
-
 
 int indexx[MAXN][25];
 void build() {
