@@ -1,7 +1,7 @@
 
 // O( V + E)
 // Input format: L = (x2 v -x1) (-x1 v x2) (x1 v x3) (-x2 v -x3) (x1 v x4)
-//                      clauses = 4
+//                      numVar = 4
 // 2 -1
 // -1 -2
 // 1 3
@@ -11,24 +11,24 @@
 // Algo:
 //      Find x1,x2,x3,x4 satisfy the L (L true)
 //      Ex: L = (x2 v -x1) (-x1 v x2) (x1 v x3) (-x2 v -x3) (x1 v x4)
-//      - create graph with (a v b) = 
+//          -create graph with (a v b) = 
 //              (-a)----->(b)
 //              (-b)----->(a)
-//          - my rule: 
+//          - my rule:
 //                     a = i * 2 - 1
 //                    -a = i * 2
 //          - Ex: 
 //              a1: a1 = (1)   and -a1  = (2)
 //              a2: a2 = (3)   and -a2 = (4)
 //
-//          - Final result(res = [1]1 [2]1 [3]0 [4]0)
+//          - Final result(res = [1]0 [2]0 [3]1 [4]1)
 //                  x1 = false, x2 =false, x3 = true, x4 = true 
 
 
 /* -------------- 2SAT ----------------- */
 class TwoSAT {
 private:
-    int clauses;
+    int numVar;
     vector<pair<int,int>> sat;
     Tarjan tarjan;
     vector<bool> results;
@@ -60,7 +60,7 @@ private:
         }
     }
 public:
-    TwoSAT(int num): clauses(num), tarjan(num*2) {
+    TwoSAT(int num): numVar(num), tarjan(num*2) {
         this->results.assign(num+1, false);
     }
     void getInput(int a, int b) {
@@ -74,7 +74,7 @@ public:
 
         // Assgin Group id
         int groupID = 1;
-        vector<int> SCC_id(this->clauses*2+1);
+        vector<int> SCC_id(this->numVar*2+1);
         for(int i=0; i<SCC.size(); ++i) {
             for(int j=0; j<SCC[i].size(); ++j) {
                 SCC_id[SCC[i][j]] = groupID;
@@ -83,7 +83,7 @@ public:
         }
 
         //check SCC and yield results
-        for(int i = 1; i <= this->clauses; ++i) {
+        for(int i = 1; i <= this->numVar; ++i) {
             pair<int,int> var = getVar(i);
             int posVar = var.first;
             int negVar = var.second;
@@ -92,9 +92,9 @@ public:
                 return false;
 
             if(SCC_id[posVar] < SCC_id[negVar])
-                this->results[i] = false;
-            else
                 this->results[i] = true;
+            else
+                this->results[i] = false;
         }
         return true;
     }

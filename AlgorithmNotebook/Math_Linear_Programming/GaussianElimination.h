@@ -10,6 +10,7 @@
             {3.0, 7.0});
     = [2 1]
 */
+// Notes: use isnan(), isinf() to check for special solutions
 
 vector<double> GaussianElimination(const vector<vector<double>> &M, const vector<double> &y) {
     assert(M.size() == M[0].size());

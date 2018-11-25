@@ -6,9 +6,9 @@ vector<int> e[MAXV];
 vector<int> wei[MAXV];
 
 /*--------------------------------------------------------------------------------------------------------*/
-bool visited[MAXV];
+bool state[MAXV];
 void explore(int v) {
-    visited[v] = true;
+    state[v] = 1;
 
     // Previsit node v
     // cout << v << endl;
@@ -17,24 +17,25 @@ void explore(int v) {
         // Previsit edge v - u
         // cout <<  wei[v][i]<< endl;
 
-        if (!visited[e[v][i]])              // [Note]: Condition to visit edge v-u
+        if(state[e[v][i]] == 0)              // [Note]: Condition to visit edge v-u
             explore(e[v][i]);
 
         // Postvisit edge v - u
         // cout <<  wei[v][i]<< endl;
     }
+    state[v] = 2;
 
     // Postvisit node v
     // cout << v << endl;
 }
 void dfs(int start) {
-    memset(visited, false, sizeof(visited));
+    memset(state, 0, sizeof(state));
     explore(start);
 }
 void dfsAll() {
-    memset(visited, false, sizeof(visited));
+    memset(state, 0, sizeof(state));
     for (int v = 1; v <= V; ++v)
-        if(!visited[v])
+        if(state[v] == 0)
             explore(v);
 }
 
