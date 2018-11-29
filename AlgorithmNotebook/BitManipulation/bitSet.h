@@ -1,11 +1,19 @@
 
 
-// bitSet:
+// set x - element k in x:
 //      All subsets of a n-element set {0,1,...,n-1}            [0 : 2^n-1]     [0 : (1<<n)-1]
-//      Init set:                                               x = 0
+//      Init set empty:                                         x = 0
+//      Init set full:                                          x = -1
 //      Add element k to set:                                   x |= (1 << k)
 //      Remove element k out of set:                            x &= ~(1 << k)
 //      (bool) Check if k is in set:                            x & (1 << k)
+//      return x size                                           __builtin_popcount(x)
+
+// Set Operations set z, set x, set y:
+//      Union:                                              z = x | y
+//      Intersection:                                       z = x & y
+//      Complement:                                         y = ~x
+//      Diference (x\y):                                    z = x & (~y)
 vector<int> bitSetToSet(int x) {
     vector<int> res;
     int k = 0;
@@ -14,6 +22,17 @@ vector<int> bitSetToSet(int x) {
             res.push_back(k);
     }
     return res;
+}
+
+// Builtin function:
+//      __builtin_clz(x) : the number of zeros at the beginning of the number
+//      __builtin_ctz(x) : the number of zeros at the end of the number
+//      __builtin_popcount(x) : the number of ones in the number
+//      __builtin_parity(x) : the parity(even or odd) of the number of ones
+uint32_t popcount(uint32_t i) {
+    i = i - ((i >> 1) & 0x55555555);
+    i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+    return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
 }
 
 
@@ -37,21 +56,4 @@ vector<int> bitSetToSet(int x) {
 
 void printBin(int x) {
     cerr << x << " = " << bitset<32>(x).to_string() << endl;
-}
-
-// Set Operations:
-//      Union:                                              z = x | y
-//      Intersection:                                       z = a | b
-//      Complement:                                         y = ~x
-//      Diference (x\y):                                    z = x & (~y)
-
-// Builtin function:
-//      __builtin_clz(x) : the number of zeros at the beginning of the number
-//      __builtin_ctz(x) : the number of zeros at the end of the number
-//      __builtin_popcount(x) : the number of ones in the number
-//      __builtin_parity(x) : the parity(even or odd) of the number of ones
-uint32_t popcount(uint32_t i) {
-    i = i - ((i >> 1) & 0x55555555);
-    i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
-    return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
 }
