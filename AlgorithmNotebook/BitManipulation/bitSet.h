@@ -1,5 +1,10 @@
 
 
+/* Maximum elements is 31 (0-30) 
+        Note: Use C++ biset if > 30 elements
+*/
+
+
 // set x - element k in x:
 //      All subsets of a n-element set {0,1,...,n-1}            [0 : 2^n-1]     [0 : (1<<n)-1]
 //      Init set empty:                                         x = 0
