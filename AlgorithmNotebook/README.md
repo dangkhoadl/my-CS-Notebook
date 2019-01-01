@@ -15,6 +15,7 @@
 |       float        | 4 |  |   | Min: __1.17E-38__ - Max: __3.4E+38__ |
 |       double        | 8 | long double |   | Min: __2.22E-308__ - Max: __1.79E+308__ |
 
+## Note: Consider multimap vs map carefully
 
 ## Consider Sorting - Grouping duplicated elements as always 
 Consider grouping duplicates to reduce runtime of map, priorityqueue etc...
