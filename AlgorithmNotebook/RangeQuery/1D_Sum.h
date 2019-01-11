@@ -41,12 +41,12 @@ int prefix_sum[MAXN];
 void build() {
     memset(prefix_sum, 0, sizeof(prefix_sum));
     int sum_ = 0;
-    for(int i=0; i < n; ++i) {
-        prefix_sum[i] = sum_ += a[i];
+    for(int i=1; i <=n; ++i) {
+        prefix_sum[i] = sum_ += a[i-1];
     }
 }
 
 // return sum of a in range [i,j]
 int query(int i, int j) {
-    return prefix_sum[j] - prefix_sum[i-1];
+    return prefix_sum[j+1] - prefix_sum[i];
 }
