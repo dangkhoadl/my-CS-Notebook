@@ -1,0 +1,6 @@
+|                                                         |   Types  | Difference | Order (Ranking) | Similar Intervals | Meaningful Zero Point | Example                                 |
+|:-------------------------------------------------------:|:--------:|:----------:|:---------------:|:-----------------:|:---------------------:|-----------------------------------------|
+|                  Categorical (Use Mode)                 |  Nomial  |      +     |        -        |         -         |           -           | Nationality(French, Spanish...), Gender |
+|                                                         |  Ordinal |      +     |        +        |         -         |           -           |         Prize(1st, 2nd, 3rd...)         |
+| Quantitative (Discrete/Continuous) (Use mean or median) | Interval |      +     |        +        |         +         |           -           |                   Age                   |
+|                                                         |   Ratio  |      +     |        +        |         +         |           +           |                  Height                 |

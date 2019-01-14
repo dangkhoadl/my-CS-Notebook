@@ -23,3 +23,4 @@
 ## Books
 #### Competitive Programmer's Handbook - Antti Laaksonen - [Source](https://github.com/pllk/cphb)
 #### Discrete mathematics and its applications - Kenneth H. Rosen
+#### Algorithms by Jeff Erickson - [Source](http://jeffe.cs.illinois.edu/teaching/algorithms/#book)
