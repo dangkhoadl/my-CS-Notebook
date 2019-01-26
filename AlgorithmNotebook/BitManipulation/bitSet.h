@@ -4,15 +4,15 @@
         Note: Use C++ biset if > 30 elements
 */
 
-
 // set x - element k in x:
 //      All subsets of a n-element set {0,1,...,n-1}            [0 : 2^n-1]     [0 : (1<<n)-1]
 //      Init set empty:                                         x = 0
-//      Init set full:                                          x = -1
-//      Add element k to set:                                   x |= (1 << k)
-//      Remove element k out of set:                            x &= ~(1 << k)
-//      (bool) Check if k is in set:                            x & (1 << k)
-//      return x size                                           __builtin_popcount(x)
+//      Init set full:                                          x = (1 << n) - 1
+//      Add element k to set:                                   (1 << k) | x
+//      Check if element k is in set:                           (1 << k) & x
+//      Remove element k out of set:                           ~(1 << k) & x
+//      Toggle element k:                                      ^(1 << k) & x
+//      return x size                                           __builtin_popcountll(x)
 
 // Set Operations set z, set x, set y:
 //      Union:                                              z = x | y
@@ -32,15 +32,13 @@ vector<int> bitSetToSet(int x) {
 // Builtin function:
 //      __builtin_clz(x) : the number of zeros at the beginning of the number
 //      __builtin_ctz(x) : the number of zeros at the end of the number
-//      __builtin_popcount(x) : the number of ones in the number
+//      __builtin_popcountll(x) : the number of ones in the number
 //      __builtin_parity(x) : the parity(even or odd) of the number of ones
 uint32_t popcount(uint32_t i) {
     i = i - ((i >> 1) & 0x55555555);
     i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
     return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
 }
-
-
 
 #define isOn(x, k) (x & (1 << k))       //To check if the k-th item of the set is on. 
 #define setBit(x, k) (x |= (1 << k))    //To set/turn on the k-th item (0-based indexing) of the set.
