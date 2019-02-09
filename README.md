@@ -1,5 +1,5 @@
 
-# My Competitive Programming Notebook
+# My Problem Solving Notebook
 
 ## Courses
 #### CSE547 - Discrete Mathematics - [[Youtube](https://www.youtube.com/playlist?list=PL462275E91FC7844D)]
