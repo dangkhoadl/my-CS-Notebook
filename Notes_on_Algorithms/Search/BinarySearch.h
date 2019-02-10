@@ -1,29 +1,30 @@
 
+
 // A[left,right]
-int binarySearchR(int x, int l, int r) {
-    if(l > r)
+int binarySearch(const vector<int> &A, int key, int l, int r) {
+    if(l > r) 
         return -1;
 
     int m = l + (r-l)/2;
-    if(A[m] == x)
+    if(A[m] == key)
         return m;
-    if(x > A[m])
-        return binarySearchR(x,m+1,r);
-    return binarySearchR(x,l,m-1);
+    if(key < A[m])
+        return binarySearch(A, key, l, m-1);
+    return binarySearch(A, key, m+1, r);
 }
 
-int binarySearch(int x, int l, int r) {
-    while (true) {
-        if (l > r)
-            return -1;
 
+// A[left,right]
+int binarySearch(const vector<int> &A, int key, int l, int r) {
+    while(l <= r) {
         int m = l + (r-l)/2;
-        if (A[m] == x)
-            return m;
 
-        if (x > A[m]) 
-            l = m + 1;
+        if(A[m] == key)
+            return m;
+        if(key < A[m])
+            r = m-1;
         else
-            r = m - 1;
+            l = m+1;
     }
+    return -1;
 }
