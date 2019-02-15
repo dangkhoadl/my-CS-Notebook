@@ -18,9 +18,9 @@
     + [Optimizing DP solution](https://apps.topcoder.com/forums/?module=Thread&start=0&threadID=697925)
 
 #### VNOI Wiki - [Source](http://vnoi.info/wiki/Home)
-#### Algorithms - Jeff Erickson [Source](http://jeffe.cs.illinois.edu/teaching/algorithms/)
 
 ## Books
 #### Competitive Programmer's Handbook - Antti Laaksonen - [Source](https://github.com/pllk/cphb)
 #### Discrete mathematics and its applications - Kenneth H. Rosen
-#### Algorithms by Jeff Erickson - [Source](http://jeffe.cs.illinois.edu/teaching/algorithms/#book)
+#### Algorithms - Jeff Erickson - [Source](http://jeffe.cs.illinois.edu/teaching/algorithms/#book)
+#### Algorithm Design - Jon Kleinberg and Éva Tardos - [Source](http://www.cs.princeton.edu/~wayne/kleinberg-tardos/)
