@@ -41,38 +41,6 @@ void dijkstra(int start) {
     }
 }
 
-
-/*------------------- Use Min HEAP -----------*/
-const int MAXV = 1e6 + 1;
-int V, E;
-vector<int> e[MAXV];
-vector<int> wei[MAXV];
-
-int dist[MAXV];     // Store the distance from start -> i
-int pre[MAXV];      // store the path
-void dijkstra(int start) {
-    memset(pre, 0, sizeof(pre));
-    memset(dist, 0x7f, sizeof(dist));
-    dist[start] = 0;
-
-    MinHeap minheap;
-    for (int v = 1; v <= V; ++v) 
-        minheap.insert({ dist[v] , v});
-    
-    while (!minheap.empty()) {
-        int v = minheap.extractMin();
-
-        for(int i = 0; i < e[v].size(); ++i) 
-            if (dist[v] != inf && dist[e[v][i]] > dist[v] + wei[v][i]) {
-                dist[e[v][i]] = dist[v] + wei[v][i];
-                pre[e[v][i]] = v;
-
-                //Change priority
-                minheap.changePriority({ dist[e[v][i]] , e[v][i] });
-            }
-    }
-}
-
 /*---------------------- reconstruct shortest path -----------*/
 vector<int> reconstructSPT(int start, int end) {
     vector<int> res;
