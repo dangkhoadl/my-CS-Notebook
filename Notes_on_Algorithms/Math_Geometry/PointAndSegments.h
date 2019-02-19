@@ -1,4 +1,5 @@
 
+// segment = [a, b]
 
 // Notes: Greedy segment: Consider the end(b) of a segment (sorted in incresing order...)
 
