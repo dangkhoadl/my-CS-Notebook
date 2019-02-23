@@ -7,18 +7,18 @@ int val[MAXV];
 int root;
 /*-----------------------------------------------------------------------------------------------------------------*/
 void bfs(int start) {
-	queue<int> q;
-	q.push(start);
+    queue<int> q;
+    q.push(start);
 
-	while (!q.empty()) {
-		int x = q.front();
-		q.pop();
+    while (!q.empty()) {
+        int x = q.front();
+        q.pop();
 
-		//Process
-		
+        //Process
+        
 
-		//Enqueue
-		for (int i = 0; i < child[x].size(); ++i)
-			q.push(child[x][i]);
-	}
+        //Enqueue
+        for (int i = 0; i < child[x].size(); ++i)
+            q.push(child[x][i]);
+    }
 }
