@@ -94,18 +94,39 @@ template<typename T> void prPQ(const priority_queue<T> &fdfsfv_a) {}
 /*----------------------------------- CODE STARTS HERE -----------------------------------------------------------------*/
 const int MAXN = 1e6 + 3;
 
-
+int A, B;
+int N;
 int readInput() {
+    // Fixed Inputs
     fflush(stdin);
+    cin >> A >> B >> N;
 
     return 0;
 }
 
+int ge;
+string aa;
+void guess(int l, int r) {
+    // Process
+    ge = l + (r-l)/2;
 
+    // Output
+    cout << ge << endl;
+    fflush(stdout);
+
+    // Input
+    aa = "";
+    fflush(stdin);
+    while(aa == "") getline(cin, aa);
+
+    // Interactions
+    if(aa == "CORRECT") return;
+    if(aa == "TOO_SMALL") guess(ge+1, r);
+    if(aa == "TOO_BIG") guess(l, ge-1);
+}
 
 int sol() {
-    
-
+    guess(A, B);
     return 0;
 }
 
