@@ -1,6 +1,9 @@
 
 // bfs Bottom UP: i_, j_ abitrary
 
+// data
+int a[MAXN], b[MAXN];
+
 int dp[][];
 int solveDP() {
     // Init
@@ -27,8 +30,11 @@ int solveDP() {
         // Update 1
         i_ = i + ...;
         j_ = j + ...;
-        if(i_ in range [0,I] && j_ in range [0,J]) {
-            if(dp[i_][j_] > cur + ...) { // Min Optimization
+        if(i in range [0,I-1] && j in range [0,J-1] &&
+                condition a[i] && condition b[j]) {
+
+            // Min Optimization
+            if(dp[i_][j_] > cur + ...) {
                 dp[i_][j_] = cur + ...;
                 Q.push( {i_, j_} );
             }
@@ -37,34 +43,13 @@ int solveDP() {
         // Update 2
         i_ = i - ...;
         j_ = j - ...;
-        if(i_ in range [0,I] && j_ in range [0,J]) {
-            if(dp[i_][j_] > cur + ...) { // Min Optimization
+        if(i in range [0,I-1] && j in range [0,J-1] &&
+                condition a[i] && condition b[j]) {
+
+            // Min Optimization
+            if(dp[i_][j_] > cur + ...) {
                 dp[i_][j_] = cur + ...;
                 Q.push( {i_, j_} );
-            }
-        }
-
-        // Case if
-        if() {
-            i_ = i - ...;
-            j_ = j + ...;
-            if(i_ in range [0,I] && j_ in range [0,J]) {
-                if(dp[i_][j_] > cur + ...) { // Min Optimization
-                    dp[i_][j_] = cur + ...;
-                    Q.push( {i_, j_} );
-                }
-            }
-        }
-
-        // Case For
-        FOR() {
-            i_ = i + ...;
-            j_ = j - ...;
-            if(i_ in range [0,I] && j_ in range [0,J]) {
-                if(dp[i_][j_] > cur + ...) { // Min Optimization
-                    dp[i_][j_] = cur + ...;
-                    Q.push( {i_, j_} );
-                }
             }
         }
     }
