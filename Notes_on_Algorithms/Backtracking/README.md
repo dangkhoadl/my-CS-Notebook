@@ -8,7 +8,5 @@
 ### DFS 1
 <img src="./img/2.jpg" alt="drawing" width="680"/>
 
-### [DFS 2](https://github.com/dangkhoadl/Coursera-Discrete-Optimization/blob/master/2_Knapsack/DFBB.h)
+### DFS 2
 <img src="./img/4.jpg" alt="drawing" width="680"/>
-
-### [N-Queen](https://github.com/dangkhoadl/my-Competitive-Programming-Notebook/tree/master/Problems/N_Queens)
