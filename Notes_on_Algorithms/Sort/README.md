@@ -1,5 +1,18 @@
 
 ## Sort
+#### Basic sort
+```C++
+vector<int> nums;
+
+// Sort Increasing
+sort(nums.begin(), nums.end());
+sort(nums.begin(), nums.end(), [](int a, int b){return a < b;});
+
+// Sort Decreasing
+sort(nums.begin(), nums.end(), [](int a, int b){return a > b;});
+
+```
+
 #### Struct sort
 ```C++
 struct Object {
