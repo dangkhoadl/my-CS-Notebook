@@ -25,6 +25,7 @@ void build() {
         }
 }
 
+// return min of a in range [i,j]
 int minQuery(int i, int j) {        // Return index: indexx[i][k] and indexx[j - (1<<k) + 1][k]
     int k = log2(j - i + 1);
 
@@ -55,6 +56,7 @@ void build() {
         }
 }
 
+// return min of a in range [i,j]
 int minQuery(int i, int j) {        // Return index: indexx[i][k] and indexx[j - (1<<k) + 1][k]
     --i; --j;
     int k = log2(j - i + 1);
