@@ -6,21 +6,26 @@
 // init range: [0, n)
 class disjointSet {
 private:
+    int n_;
     vector<int> par_;
     vector<int> rank_;
     vector<int> id_;
 public:
     disjointSet(int n) {
+        this->n_ = n;
         this->rank_.assign(n, 0);
         this->id_.assign(n, 0);
         this->par_.assign(n, 0);
         for(int i=0; i<n; ++i) id_[i] = par_[i] = i;
     }
     int find(int x) {
+        assert(x<n_);
         if(x != par_[x]) par_[x] = find(par_[x]);
         return par_[x];
     }
     void merge(int a, int b) {
+        assert(a<n_);
+        assert(b<n_);
         int root_a = find(a);
         int root_b = find(b);
         if (root_a == root_b)
