@@ -40,4 +40,13 @@ public:
         for(int i=0; i<id_.size(); ++i) id_[i] = find(i);
         return id_;
     }
+    // get number of sets
+    int getNumset() {
+        unordered_set<int> roots;
+        for(int i=0; i<id_.size(); ++i) {
+            id_[i] = find(i);
+            roots.insert(id_[i]);
+        }
+        return roots.size();
+    }
 };
