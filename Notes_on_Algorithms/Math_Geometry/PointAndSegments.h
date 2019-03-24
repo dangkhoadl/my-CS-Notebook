@@ -28,8 +28,8 @@ bool isAllIntersect(const vector<pair<int,int>> &segs, pair<int,int> &res) {
     int a = -inf;
     int b = inf;
     for(int i = 0; i < segs.size(); ++i) {
-        a = max(a,segs[i].first());
-        b = min(b,segs[i].second());
+        a = max(a,segs[i].first);
+        b = min(b,segs[i].second);
     }
 
     if(a > b)
