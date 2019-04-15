@@ -1,4 +1,8 @@
 
+/*----
+Notes:
+    m >= 0 && n > 0
+-----*/
 
 // floor(m/n)
 int floor_(int m, int n) {
@@ -33,4 +37,38 @@ int ceil_(int m, int n) {
     if(a==b)
         return a;
     assert(1==0);
+}
+
+
+/*----
+Notes:
+    if consider m<0 || n<0:
+-----*/
+
+// floor(m/n)
+int floor_all(int m, int n) {
+    int ans = 0;
+    if(x<0 && y>0)
+        ans = -ceil_(-x,y);
+    else if(x>0 && y<0)
+        ans = -ceil_(x,-y);
+    else if(x<0 && y<0)
+        ans = floor_(-x,-y);
+    else
+        ans = floor_(x,y);
+    return ans;
+}
+
+// ceil(m/n)
+int ceil_all(int m, int n) {
+    int ans = 0;
+    if(x<0 && y>0)
+        ans = -floor_(-x,y);
+    else if(x>0 && y<0)
+        ans = -floor_(x,-y);
+    else if(x<0 && y<0)
+        ans = ceil_(-x,-y);
+    else
+        ans = ceil_(x,y);
+    return ans;
 }
