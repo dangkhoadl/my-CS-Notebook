@@ -14,3 +14,10 @@ int isPerfectSquare(int n) {
     }
     return 0;
 }
+
+
+// Simple version
+bool is_sqrt(int x) {
+    int v = sqrt(x);
+    return v*v == x;
+}
