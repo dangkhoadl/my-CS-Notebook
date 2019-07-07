@@ -7,4 +7,4 @@ shuffle(nums.begin(), nums.end(), default_random_engine(seed));
 
 // method 2
 mt19937 rng(5);
-shuffle(all(orders), rng);
+shuffle(nums.begin(), nums.end(), rng);
