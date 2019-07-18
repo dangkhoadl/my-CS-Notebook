@@ -5,14 +5,15 @@
 */
 
 // set x - element k in x:
-//      All subsets of a n-element set {0,1,...,n-1}            [0 : 2^n-1]     [0 : (1<<n)-1]
-//      Init set empty:                                         x = 0
-//      Init set full:                                          x = (1 << n) - 1
-//      Add element k to set:                                   (1 << k) | x
-//      Check if element k is in set:                           (1 << k) & x
-//      Remove element k out of set:                           ~(1 << k) & x
-//      Toggle element k:                                      ^(1 << k) & x
-//      return x size                                           __builtin_popcountll(x)
+//      All subsets of a n-element set {0,1,...,n-1}                 [0 : 2^n-1]     [0 : (1<<n)-1]
+//      Init set empty:                                              x = 0
+//      Init set full:                                               x = (1 << n) - 1
+//      Add element k to set:                                        (1 << k) | x
+//      Check if element k is in set:                                (1 << k) & x
+//      Remove element k out of set:                                ~(1 << k) & x
+//      Toggle element k:                                           ^(1 << k) & x
+//      Return x size (number of bit 1)                             __builtin_popcountll(x)
+//      Check if a n-element set {0,1,...,n-1} is full (all 1)       x == (1 << n) - 1
 
 // Set Operations set z, set x, set y:
 //      Union:                                              z = x | y
