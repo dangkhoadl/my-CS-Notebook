@@ -13,20 +13,15 @@ vector<vector<int>> matrixMul(const vector<vector<int>> &A, const vector<vector<
 
 // O(n^3 * log(k))
 vector<vector<int>> matrixPow(const vector<vector<int>> &A, int k) {
-    assert(A.size() > 0 and A.size() == A[0].size() and k >= 0);
     if(k == 0) {
         vector<vector<int>> C(A.size(), vector<int>(A.size(), 0));
-        for(int i=0; i < A.size(); ++i)
-            C[i][i] = 1;
+        for(int i=0; i < A.size(); ++i) C[i][i] = 1;
         return C;
     }
-    if(k == 1) {
-        return A;
-    }
-
+    if(k == 1) return A;
+    
     vector<vector<int>> C = matrixPow(A, k/2);
     C = matrixMul(C, C);
-    if(k & 1)
-        return matrixMul(C,A);
+    if(k%2 == 1) return matrixMul(C,A);
     return C;
 }
