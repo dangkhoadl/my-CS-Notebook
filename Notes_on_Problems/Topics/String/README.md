@@ -21,7 +21,8 @@ for(const char &c:s) cnt[c-'a'] += 1;
     + "funeral" = "real fun"
 - Solve
     + Sort characters -> compare
-    + Note: sort using count sort O(s)
+    + Note: sort using count sort O(k)
+        + k = size of the alphabet
 
 ```C++
 string count_sort(const string &s) {
@@ -31,7 +32,9 @@ string count_sort(const string &s) {
 
     // Sort
     string res = "";
-    for(int i=0; i<26; ++i) res += string(cnt[i], 'a'+i);
+    for(int i=0; i<26; ++i) res += string(cnt[i], 'a'+i); 
+        // Fill n*c / Eg: "bbbb" / n = 4, c = 'b'
+        // string(size_t n, char c)
     return res;
 }
 ```
