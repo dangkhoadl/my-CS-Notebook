@@ -26,3 +26,16 @@ Consider grouping duplicates to reduce runtime of map, priorityqueue etc...
 - map<int, int>
 - map<int, vector<>, vector<>>
 - priority_queue<int, int>
+
+## Hash table for key as pair<> or vector<>
+
+```C++
+// O(log(n))
+map<pair<int,int>, int> mapper;
+mapper[{x,y}] = z;
+
+
+// O(1)
+unordered_map<int, unordered_map<int, int>> mapper;
+mapper[x][y] = z;
+```
