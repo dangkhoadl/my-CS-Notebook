@@ -1,5 +1,31 @@
+/************************************** Simple Trie ******************************************************************/
+// Note: Apply for string in range[a,z]. Remember to adjust 'a' or 26
+struct TrieNode {
+    TrieNode *children[26];
+    bool isWord;
+    TrieNode() {
+        isWord = false;
+        memset(this->children, NULL, sizeof(this->children));
+    }
+};
+class Trie {
+public:
+    TrieNode *root;
+    Trie() {
+        this->root = new TrieNode();
+    }
+    void insert(const string &word) {
+        TrieNode *cur = root;
+        for(const char &c:word) {
+            if(cur->children[c-'a'] == NULL) cur->children[c-'a'] = new TrieNode();
+            cur = cur->children[c-'a'];
+        }
+        cur->isWord = true;
+    }
+};
 
 
+/************************************** Advanced ******************************************************************/
 // Note: Apply for string in range[a,z]. Remember to adjust 'a' or 26
 struct TrieNode {
     TrieNode *children[26];

@@ -18,12 +18,12 @@
 
 ## Note: Consider multimap vs map carefully
 
-## Consider Sorting - Grouping duplicated elements as always 
+## Consider Sorting - Grouping duplicated elements as always
 Consider grouping duplicates to reduce runtime of map, priorityqueue etc...
 
     2 2 2 3 5
     -> [{2:3}, {3:1}, {5:1}]
-    
+
 - map<int, int>
 - map<int, vector<>, vector<>>
 - priority_queue<int, int>
@@ -42,8 +42,9 @@ mapper[x][y] = z;
 ```
 
 ## range(a,b) in C++
+
 ```C++
-// Example: range(10,15) = [10, 11, 12, 13, 14]
+// Example: range(10,15) = [10, 11, 12, 13, 14]. Usage:
     // for(int &i:range<int>(10,15))
     //      cout << i << endl;
 template <typename T>
@@ -52,4 +53,19 @@ vector<T> range(T N1, T N2) {
     iota(numbers.begin(), numbers.end(), N1);
     return numbers;
 }
+```
+
+## Note: dfs, backtrack
+#### And type
+
+```C++
+// Favor false: If 1 false case -> return false
+return dfs(x, str, i + 1)
+```
+
+#### Or type
+
+```C++
+// Favor true: If 1 true case -> return true
+if(dfs(x, str, i + 1)) return true;
 ```
