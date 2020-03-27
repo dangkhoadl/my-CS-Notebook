@@ -56,16 +56,17 @@ vector<T> range(T N1, T N2) {
 ```
 
 ## Note: dfs, backtrack
-#### And type
+#### Normal return
 
 ```C++
-// Favor false: If 1 false case -> return false
+// Return when dfs only generate 1 case
 return dfs(x, str, i + 1)
 ```
 
-#### Or type
+#### Search - backtrack
 
 ```C++
-// Favor true: If 1 true case -> return true
-if(dfs(x, str, i + 1)) return true;
+// Search for the true case
+FOR(x,0,4)
+	if(dfs(x, str, i + 1)) return true;
 ```
