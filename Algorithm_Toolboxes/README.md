@@ -28,33 +28,6 @@ Consider grouping duplicates to reduce runtime of map, priorityqueue etc...
 - map<int, vector<>, vector<>>
 - priority_queue<int, int>
 
-## Hash table for key as pair<> or vector<>
-
-```C++
-// O(log(n))
-map<pair<int,int>, int> mapper;
-mapper[{x,y}] = z;
-
-
-// O(1)
-unordered_map<int, unordered_map<int, int>> mapper;
-mapper[x][y] = z;
-```
-
-## range(a,b) in C++
-
-```C++
-// Example: range(10,15) = [10, 11, 12, 13, 14]. Usage:
-    // for(int &i:range<int>(10,15))
-    //      cout << i << endl;
-template <typename T>
-vector<T> range(T N1, T N2) {
-    vector<T> numbers(N2-N1);
-    iota(numbers.begin(), numbers.end(), N1);
-    return numbers;
-}
-```
-
 ## Note: dfs, backtrack
 #### Normal return
 
