@@ -1,4 +1,11 @@
 
+
+// round(m/n): Consider m,n < 0
+int round_(const int m, const int n) {
+    return ((m < 0) ^ (n < 0)) ? ((m - n/2)/n) : ((m + n/2)/n);
+}
+
+
 /*----
 Notes:
     m >= 0 && n > 0

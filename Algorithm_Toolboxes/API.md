@@ -47,6 +47,12 @@ vector<int> res = slice_<int>(v, 2, 4);
 ```
 
 # set
+#### Quick check if c in `{'a', 's', 'd'}`
+
+```cpp
+unordered_set<char>({'a','s','d'}).count(c) == true;
+```
+
 
 ```cpp
 // Add to set
@@ -61,6 +67,20 @@ s.erase(1);
 ```
 
 # map
+#### Constructors
+
+```cpp
+unordered_map<int, unordered_map<string, int>> states = {
+    {1, { {"blank", 1}, {"sign", 2}, {"digit", 3} } },
+    {2, { {"digit", 3} } },
+    {3, { {"digit", 3} } }
+};
+```
+
+#### Operations
+- **Note**: Default value in map is, without insert {key, val}
+    + `0` for `int`
+    + `""` for `string`
 
 ```cpp
 // Add val
@@ -70,6 +90,8 @@ m[1] = 2;
 // Check
 m.count(1) == NULL;
 m.count(1) != NULL;
+m[1] == 0;
+m[1] != 0;
 
 // Remove
 m.erase(1);
