@@ -1,2 +1,2 @@
-## NOTE !!!!
-- Mahattan distance can be seperated into X and Y to solve independently
+#### Mahattan distance
+- dist(P) = dist(P.X) + dist(P.Y) = |X| + |Y|

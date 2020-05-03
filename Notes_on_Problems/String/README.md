@@ -48,3 +48,6 @@ string count_sort(const string &s) {
     + return the recursive func
 - get(int &i)
     + Put a reference to update current position after return from ')'
+
+## DP
+- Consider bottomup DP

@@ -1,6 +1,6 @@
 
 ## Sort
-#### Basic sort
+#### Sort vector
 ```C++
 vector<int> nums;
 
@@ -13,6 +13,31 @@ sort(nums.begin(), nums.end(), [](int a, int b){return a < b;});
 sort(nums.begin(), nums.end(), greater<int>());
 sort(nums.begin(), nums.end(), [](int a, int b){return a > b;});
 ```
+
+#### Sort pair
+```C++
+// --------------- first -------------- //
+// first: increase
+sort(nums.begin(), nums.end());
+// first: decrease
+sort(nums.begin(), nums.end(), [](pair<int, char> &a, pair<int, char> &b){return a.first > b.first;});
+
+// --------------- second -------------- //
+// second: increase
+sort(nums.begin(), nums.end(), [](pair<int, char> &a, pair<int, char> &b){return a.second < b.second;});
+// second: decrease
+sort(nums.begin(), nums.end(), [](pair<int, char> &a, pair<int, char> &b){return a.second > b.second;});
+```
+
+#### Sort unordered_map
+```C++
+unordered_map<int, int> tab;
+
+// sorted by second: increase
+vector<pair<int, int>> tmp(tab.begin(), tab.end());
+sort(tmp.begin(), tmp.end(), [](pair<int, int> &a, pair<int, int> &b){return a.second < b.second;});
+```
+
 
 #### Struct sort
 ```C++
@@ -64,54 +89,4 @@ sort(objects.begin(), objects.end(),
 stable_sort(objects.begin(), objects.end(), 
     [](const Object &a, const Object &b) 
         {return a.firstPrior > b.firstPrior;});
-```
-
-## Priority Queue
-#### C++ Default Priority Queue = *Max* Heap
-```C++
-priority_queue<int> pq;
-```
-
-#### C++ Min Priority Queue
-```C++
-priority_queue<
-    int,
-    vector<int>,
-    greater<int>> pq;
-```
-
-#### C++ Max PQ pair<int, int>, max - max
-```C++
-priority_queue<
-    pair<int, int>,
-    vector<pair<int, int>>,
-    less<pair<int, int>>> pq;
-```
-
-#### C++ Speical PQ pair<int, int>
-- 1st prior: max second
-- 2nd prior: min first
-
-```
-(1,8)
-(2,8)
-(3,8)
-(1,7)
-(2,7)
-(3,7)
-(1,6)
-(2,6)
-(3,6)
-```
-
-```C++
-struct Compare {
-    bool operator() (const pair<int,int> &a, const pair<int,int> &b) const {
-        return (a.second < b.second) || (a.second == b.second && a.first > b.first);
-    }
-};
-priority_queue<
-    pair<int,int>,
-    vector<pair<int,int>>,
-    Compare> pq;
 ```
