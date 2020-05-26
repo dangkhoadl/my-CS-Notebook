@@ -18,6 +18,8 @@ int toDecimal(const string &s, int b) {
 
 // Convert n from Decimal to base b (max 16, can be modified)
 string fromDecimal2(int n, int b) {
+    if(n == 0) return "0";
+
     string chars = "0123456789ABCDEF";
     string result = "";
 
