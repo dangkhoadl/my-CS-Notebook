@@ -4,7 +4,11 @@
 ```cpp
 vector<int> A({1,2,3}); 	// [1, 2, 3]
 vector<int> A = {1,2,3}; 	// [1, 2, 3]
-vector<int> A(5, 0); 		// [0, 0, 0, 0, 0] 
+vector<int> A(5, 0); 		// [0, 0, 0, 0, 0]
+
+// Build vector from map
+map<int, string> mp = { {1,"one"}, {2,"two"}, {3,"three"} };
+vector<pair<int, string>> A(mp.begin(), mp.end());
 ```
 
 #### Return multiple val by vector

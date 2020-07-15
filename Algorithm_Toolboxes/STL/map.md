@@ -3,11 +3,21 @@
 #### Constructors
 
 ```cpp
+unordered_map<int, unordered_map<string, int>> states({
+    {1, { {"blank", 1}, {"sign", 2}, {"digit", 3} } },
+    {2, { {"digit", 3} } },
+    {3, { {"digit", 3} } }
+});
 unordered_map<int, unordered_map<string, int>> states = {
     {1, { {"blank", 1}, {"sign", 2}, {"digit", 3} } },
     {2, { {"digit", 3} } },
     {3, { {"digit", 3} } }
 };
+
+
+// Build map from vector
+vector<pair<int, string>> A({{1,"one"}, {3,"three"}, {2,"two"}});
+map<int, string> mp(A.begin(), A.end());
 ```
 
 #### Operations
