@@ -40,6 +40,8 @@ return dfs(x, str, i + 1)
 
 ```C++
 // Search for the true case
+//     if >= 1 case true -> true
+//     if all cases false -> false
 FOR(x,0,4)
-	if(dfs(x, str, i + 1)) return true;
+    if(dfs(x, str, i + 1)) return true;
 ```

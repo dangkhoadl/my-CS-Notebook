@@ -44,3 +44,35 @@ do {
     if(p != -1) pos.push_back(p);
 } while(p != -1);
 ```
+
+# Convert
+
+#### string to
+```C++
+// str -> int
+int a = stoi(str);
+
+// str -> long long
+long long a = stoll(str);
+
+//str -> double
+double a = stod(str);
+```
+
+#### to string
+
+```C++
+// int -> str
+int a = 52;
+string str = to_string(52);
+```
+
+#### int <-> char
+
+```C++
+// char -> int
+int a = c - '0';
+
+// int -> char
+char c = a + '0';
+```
