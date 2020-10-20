@@ -1,5 +1,3 @@
-#### Mahattan distance
-- dist(P) = dist(P.X) + dist(P.Y) = |X| + |Y|
 
 
 #### Grid
@@ -50,6 +48,7 @@ inline bool inRange(int x, int a, int b) {
 
 
 /*________________________ 1D <-> 2D ______________________ */
+/* Notes: i, j index at 0 */
 // 2D(n*m) -> 1D
 int cell = i*m + j;
 
@@ -57,3 +56,8 @@ int cell = i*m + j;
 int i = cell / m;
 int j = cell % m;
 ```
+
+#### Diagonals of a grid
+
+<img src="./img/3.jpg" alt="drawing" style="width:500px;"/>
+<img src="./img/4.jpg" alt="drawing" style="width:500px;"/>
