@@ -8,7 +8,7 @@ string s;
 // [i, end)
 string sub_string = s.substr(i);
 
-// [i, i+len) or [i, i+len-1]
+// s[i, i+len) or s[i, i+len-1]
 string sub_string = s.substr(i, len);
 ```
 
