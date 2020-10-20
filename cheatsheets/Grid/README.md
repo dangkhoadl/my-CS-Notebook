@@ -1,4 +1,9 @@
+#### Mahattan distance
+- dist(P) = dist(P.X) + dist(P.Y) = |X| + |Y|
 
+
+#### Grid
+```C++
 /*____________________________________ DIR ____________________________ */
 /*              [r][c]
 *   up:         -1  0
@@ -50,4 +55,5 @@ int cell = i*m + j;
 
 // 1D -> 2D
 int i = cell / m;
-int j = cell % m;  
+int j = cell % m;
+```
