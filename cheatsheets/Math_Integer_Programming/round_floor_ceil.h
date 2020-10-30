@@ -49,11 +49,11 @@ int ceil_(int m, int n) {
 
 /*----
 Notes:
-    if consider m<0 || n<0:
+    if consider x<0 || y<0:
 -----*/
 
-// floor(m/n)
-int floor_all(int m, int n) {
+// floor(x/y)
+int floor_all(int x, int y) {
     int ans = 0;
     if(x<0 && y>0)
         ans = -ceil_(-x,y);
@@ -66,8 +66,8 @@ int floor_all(int m, int n) {
     return ans;
 }
 
-// ceil(m/n)
-int ceil_all(int m, int n) {
+// ceil(x/y)
+int ceil_all(int x, int y) {
     int ans = 0;
     if(x<0 && y>0)
         ans = -floor_(-x,y);
