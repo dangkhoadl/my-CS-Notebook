@@ -17,6 +17,12 @@ vector<pair<int, string>> A(mp.begin(), mp.end());
 return vector<int>({a, b, c});
 ```
 
+#### Reverse a vector
+
+```C++
+reverse(v.begin(), v.end());
+```
+
 #### range(a,b) in C++
 
 ```C++
