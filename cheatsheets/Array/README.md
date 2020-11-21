@@ -1,5 +1,32 @@
-# Array
-- Normal loop `A[i:j] = A[start:end]`
+# Array - DP
+
+#### DP state
+- `dp[i][...]`
+    + `i` state: Optimal solution in idx range `[0,i]`
+
+
+- Template: Build up `[0,i]` from `[0,j]`: `j < i`
+
+<img src="./img/2.jpg" width="600"/>
+
+```C++
+for(int i=0; i<=N; ++i) for(int j=-1; j<i;++j) {
+    if(j==-1) {
+        // Update base case i=0
+    }
+    if(j>=0) {
+        // DP
+        dp[i][] = min(dp[i][], dp[j][] + A[i]);
+    }
+}
+
+```
+
+
+
+#### Loop by length (for dp: longer array built-up from short array `A[i:j] = A[start:end]`
+
+- Normal loop `A[i:j]`
 
 ```C++
 for(int i=0; i<N; ++i) {
@@ -23,7 +50,7 @@ for(int i=0; i<N; ++i) {
 3 3
 ```
 
-#### Loop by length (for dp: longer array built-up from short array `A[i:j] = A[start:end]`
+- Loop by len: `A[i:j]`, `len = j-i+1`
 
 ```C++
 // len = j - i + 1
@@ -48,6 +75,9 @@ for(int len=1; len<=N; ++len) {
 1 3
 0 3
 ```
+
+
+
 
 
 # Circular array
