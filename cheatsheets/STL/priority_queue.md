@@ -1,11 +1,14 @@
 
-## Priority Queue
+# Priority Queue
+## 1. Max-Min heap 1 element
 #### C++ Default Priority Queue = *Max* Heap
+
 ```C++
 priority_queue<int> pq;
 ```
 
-#### C++ Min Priority Queue
+#### Min Heap
+
 ```C++
 priority_queue<
     int,
@@ -13,15 +16,38 @@ priority_queue<
     greater<int>> pq;
 ```
 
-#### C++ Max PQ pair<int, int>, max - max
-```C++
-priority_queue<
-    pair<int, int>,
-    vector<pair<int, int>>,
-    less<pair<int, int>>> pq;
+## 2. 2 elements with different priority
+
+#### C++ special PQ pair<int, int>
+- 1st prior: min first
+- 2nd prior: max second
+
+```
+(1,8)
+(1,7)
+(1,6)
+(2,8)
+(2,7)
+(2,6)
+(3,8)
+(3,7)
+(3,6)
 ```
 
-#### C++ Speical PQ pair<int, int>
+```C++
+// min first - max second
+struct Compare {
+    bool operator() (const pair<int,int> &a, const pair<int,int> &b) const {
+        return (a.first > b.first) || (a.first == b.first && a.second < b.second);
+    }
+};
+priority_queue<
+    pair<int,int>,
+    vector<pair<int,int>>,
+    Compare> pq;
+```
+
+#### C++ special PQ pair<int, int>
 - 1st prior: max second
 - 2nd prior: min first
 
@@ -38,6 +64,7 @@ priority_queue<
 ```
 
 ```C++
+// max second - min first
 struct Compare {
     bool operator() (const pair<int,int> &a, const pair<int,int> &b) const {
         return (a.second < b.second) || (a.second == b.second && a.first > b.first);
