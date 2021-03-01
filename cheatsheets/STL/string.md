@@ -57,6 +57,10 @@ long long a = stoll(str);
 
 //str -> double
 double a = stod(str);
+
+// str -> char
+string str("+");
+char c = str[0];
 ```
 
 #### to string
@@ -65,6 +69,10 @@ double a = stod(str);
 // int -> str
 int a = 52;
 string str = to_string(52);
+
+// char -> str
+char c = '+';
+string str(c,1);
 ```
 
 #### int <-> char

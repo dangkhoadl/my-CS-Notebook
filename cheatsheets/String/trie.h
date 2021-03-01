@@ -1,77 +1,87 @@
 /************************************** Simple Trie ******************************************************************/
 // Note: Apply for string in range[a,z]. Remember to adjust 'a' or 26
 struct TrieNode {
-    TrieNode *children[26];
-    bool isWord;
-    TrieNode() {
-        isWord = false;
-        memset(this->children, NULL, sizeof(this->children));
-    }
-};
-class Trie {
 public:
-    TrieNode *root;
-    Trie() {
-        this->root = new TrieNode();
-    }
-    void insert(const string &word) {
-        TrieNode *cur = root;
-        for(const char &c:word) {
-            if(cur->children[c-'a'] == NULL) cur->children[c-'a'] = new TrieNode();
-            cur = cur->children[c-'a'];
-        }
-        cur->isWord = true;
+    TrieNode *_children[26];
+    bool _is_word;
+
+public:
+    TrieNode() {
+        _is_word = false;
+        memset(_children, NULL, sizeof(_children));
     }
 };
 
+class Trie {
+public:
+    TrieNode *_root;
+
+public:
+    Trie() {
+        _root = new TrieNode();
+    }
+    void insert(const string &pattern) {
+        TrieNode *cur = _root;
+        for(const char &c:pattern) {
+            if(cur->_children[c-'a'] == NULL) cur->_children[c-'a'] = new TrieNode();
+            cur = cur->_children[c-'a'];
+        }
+        cur->_is_word = true;
+    }
+};
 
 /************************************** Advanced ******************************************************************/
 // Note: Apply for string in range[a,z]. Remember to adjust 'a' or 26
 struct TrieNode {
-    TrieNode *children[26];
-    string pref; // curent prefix (remove if not needed)
+public:
+    TrieNode *_children[26];
+    string _pref; // curent prefix (remove if not needed)
 
-    int num_word; // Number of words pass through this node (remove if not needed)
-    int end_word; // Number of words end at this node (count version of boolean isWord) (remove if not needed)
-    int len;      // current len of the prefix (remove if not needed)
-    TrieNode(int len = 0, string pref = "") : len(len), pref(pref) {
-        this->end_word = 0;
-        this->num_word = 0;
-        memset(this->children, NULL, sizeof(this->children));
+public:
+    int _num_word; // Number of words pass through this node (remove if not needed)
+    int _end_word; // Number of words end at this node (count version of boolean isWord) (remove if not needed)
+    int _len;      // current len of the prefix (remove if not needed)
+    TrieNode(int len=0, string pref="") : _len(len), _pref(pref) {
+        _end_word = 0;
+        _num_word = 0;
+        memset(_children, NULL, sizeof(_children));
     }
 };
+
 class Trie {
 public:
-    TrieNode *root;
+    TrieNode *_root;
     Trie() {
-        root = new TrieNode(0, "");
+        _root = new TrieNode(0, "");
     }
-    void insert(const string &S) {
-        TrieNode *cur = root;
-        for (const char &c : S) {
-            if (cur->children[c - 'a'] == NULL) {
-                cur->children[c - 'a'] = new TrieNode(cur->len + 1, cur->pref + c);
+
+public:
+    void insert(const string &pattern) {
+        TrieNode *cur = _root;
+        for (const char &c : pattern) {
+            if (cur->_children[c - 'a'] == NULL) {
+                cur->_children[c - 'a'] = new TrieNode(cur->len + 1, cur->_pref + c);
             }
-            cur->children[c - 'a']->num_word += 1;
+            cur->_children[c - 'a']->_num_word += 1;
 
             // Next
-            cur = cur->children[c - 'a'];
+            cur = cur->_children[c - 'a'];
         }
-        cur->end_word += 1;
+        cur->_end_word += 1;
     }
 };
 
 /******************** DFS template ********************/
-// Driver: for (int i = 0; i < 26; ++i) dfs(trie->root->children[i]);
+// Driver: for (int i = 0; i < 26; ++i) dfs(trie->_root->_children[i]);
 void dfs(TrieNode *cur) {
     if (cur == NULL) return;
 
-    cout << "Current prefix: \"" << cur->pref << "\" - len = " << cur->len << endl;
-    cout << "Number of words pass through this node: " << cur->num_word << endl;
-    cout << "Number of words end at this node: " << cur->end_word << endl
+    cout << "Current prefix: \"" << cur->_pref << "\" - len = " << cur->_len << endl;
+    cout << "Number of words pass through this node: " << cur->_num_word << endl;
+    cout << "Number of words end at this node: " << cur->_end_word << endl
          << endl;
 
     for (int i = 0; i < 26; ++i) {
-        dfs(cur->children[i]);
+        dfs(cur->_children[i]);
     }
 }
