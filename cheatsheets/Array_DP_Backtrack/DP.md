@@ -48,6 +48,21 @@ for(i in {0,N})
         dp[i] = dp[i-2] + 3
 ```
 
+- Usual conditions
+
+```C++
+for(i in {0,N})
+    // Case exist i:
+    if(exist.count(i))
+        dp[i] = dp[j] + 1
+
+    // Case not exist --> propagate dp
+    else
+        dp[i+1] = dp[i]
+    
+
+```
+
 
 #### Transition
 

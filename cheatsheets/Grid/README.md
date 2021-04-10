@@ -1,4 +1,28 @@
+#### Notes
+- When doing bfs, dfs. Check `vis` next node immediately to reduce time/space complexity
 
+```C++
+while(!Q.empty()) {
+	int cur_node = Q.front();
+	Q.pop();
+
+	// Check vis here
+	vis[cur_node] = 1;
+
+	for(int &d:dirs) {
+		int next_node = cur_node + d;
+
+		if(vis[next_node] == 0) {
+			// Update
+			...
+
+			// Also check vis here to reduce BFS complexity
+			vis[next_node] = 1;
+			Q.push(next_node);
+		}
+	}
+}
+```
 
 #### Grid
 ```C++
@@ -14,31 +38,6 @@
 *   down-left    1 -1
 */
 
-// 8-dir: up, down, left ,right, up-left, up-right, down-right, down-left
-const int DIR = 8;
-int dirR[DIR] = {-1, 1, 0, 0,-1,-1, 1, 1};
-int dirC[DIR] = { 0, 0,-1, 1,-1, 1, 1,-1};
-
-// 4-dir: up, down, left ,right
-const int DIR = 4;
-int dirR[DIR] = {-1, 1, 0, 0};
-int dirC[DIR] = { 0, 0,-1, 1};
-
-// 2-dir: up, down
-const int DIR = 2;
-int dirR[DIR] = {-1, 1};
-int dirC[DIR] = { 0, 0};
-
-// 2-dir: left, right
-const int DIR = 2;
-int dirR[DIR] = { 0, 0};
-int dirC[DIR] = {-1, 1};
-
-// 3-dir: down, down-right, right
-const int DIR = 3;
-int dirR[DIR] = {1,1,0};
-int dirC[DIR] = {0,1,1};
-
 
 /*________________________ check Inrange ______________________ */
 // Check if x in [a,b)
@@ -49,12 +48,12 @@ inline bool inRange(int x, int a, int b) {
 
 /*________________________ 1D <-> 2D ______________________ */
 /* Notes: i, j index at 0 */
-// 2D(n*m) -> 1D
-int cell = i*m + j;
+// 2D(R*C) -> 1D
+int cell = i*C + j;
 
 // 1D -> 2D
-int i = cell / m;
-int j = cell % m;
+int i = cell / C;
+int j = cell % C;
 ```
 
 #### Diagonals of a grid

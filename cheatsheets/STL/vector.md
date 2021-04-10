@@ -20,7 +20,12 @@ return vector<int>({a, b, c});
 #### Reverse a vector
 
 ```C++
+// Reverse all
 reverse(v.begin(), v.end());
+
+
+// Reverse v[l,r]
+reverse(v.begin() + l, v.begin() + r + 1);
 ```
 
 #### range(a,b) in C++

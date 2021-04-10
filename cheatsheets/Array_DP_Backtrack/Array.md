@@ -76,8 +76,16 @@ for(int len=1; len<=N; ++len) {
 0 3
 ```
 
+#### Multiple info from 1 loop
+- 1 loop can interact with multiple datapoints (Eg: cur, next)
 
 
+```C++
+for(int i=0; i<N-1; ++i) {
+    int cur = i;
+    int next = i+1;
+}
+```
 
 
 # Circular array
