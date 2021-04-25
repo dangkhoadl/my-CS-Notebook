@@ -8,6 +8,8 @@
 
 using namespace std;
 
+
+/*--------- Copy from here ---------*/
 #define MAX 10000 // for strings
 class BigInteger {
 private:
@@ -16,10 +18,10 @@ private:
 public:
     BigInteger(); // empty constructor initializes zero
     BigInteger(string s); // "string" constructor
-    BigInteger(string s, bool sin); // "string" constructor
+    BigInteger(string s, bool sin); // "string" constructor, sin = sign
     BigInteger(int32_t n); // "int" constructor
     void setNumber(string s);
-    const string& getNumber(); // retrieves the number
+    const string& getNumber(); // retrieves the number (string format)
     void setSign(bool s);
     const bool& getSign();
     BigInteger absolute(); // returns the absolute value

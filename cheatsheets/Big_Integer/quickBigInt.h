@@ -1,19 +1,10 @@
-
+// Notes: current implementation only for integer lnum >= 0
 
 typedef vector<long long> lnum;
 const long long base = 1000*1000*1000;
 
-// print lnum
-void printf_lnum(const lnum &a) {
-    printf ("%d", a.empty() ? 0 : a.back());
-    for (long long i=(long long)a.size()-2; i>=0; --i)
-        printf ("%09lld", a[i]);
-    printf ("\n");
-}
-
-
-// read lnum from string
-lnum read_lnum(string s) {
+// string -> lnum
+lnum str_2_lnum(const string &s) {
     lnum a;
     for (long long i=(long long)s.length(); i>0; i-=9) {
         if (i < 9)
@@ -27,6 +18,17 @@ lnum read_lnum(string s) {
         a.pop_back();
     return a;
 }
+
+// lnum -> string
+string lnum_2_str(const lnum &a) {
+    string res = "";
+    a.empty() ? res = "0" : res = to_string(a.back());
+    for (long long i=(long long)a.size()-2; i>=0; --i)
+        res += to_string(a[i]);
+    return res;
+}
+
+/*---------------------- Ops ----------------------*/
 
 // c = a + b
 lnum add_lnum(const lnum &a,const lnum &b) {
