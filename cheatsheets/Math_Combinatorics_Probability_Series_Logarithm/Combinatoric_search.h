@@ -8,7 +8,7 @@
 /*-------------------------- O(2^n) ------------------*/
 // n -> 2^n
 // {1,2,5} -> {}, {1}, {2}, {1,2}, {5}, {1,5}, {2,5}, {1,2,5}
-vector<vector<int>> getAllSubsets(const vector<int> &myset) {
+vector<vector<int>> get_all_subset(const vector<int> &myset) {
     vector<vector<int>> subsets;
     vector<int> empty;
     subsets.push_back(empty);
@@ -29,7 +29,7 @@ vector<vector<int>> getAllSubsets(const vector<int> &myset) {
 /*-------------------------- O(2^n) -----------------------*/
 // n -> nCk
 // {5,4,2}, k=2 --> {5,4}, {5,2}, {4,2}
-vector<vector<int>> getAllCombination(const vector<int> &myset, int k) {
+vector<vector<int>> get_all_combination(const vector<int> &myset, int k) {
     vector<vector<int>> subsets;
     vector<int> empty;
     subsets.push_back(empty);
@@ -55,10 +55,11 @@ vector<vector<int>> getAllCombination(const vector<int> &myset, int k) {
 
 /*---------------------------------------------------------*/
 // {2,3,5} -> {2,3,5}, {2,5,3}, {3,2,5}, {3,5,2}, {5,2,3}, {5,3,2}
-vector<vector<int>> getAllPermutation(const vector<int> &myset) {
+vector<vector<int>> get_all_permutation(const vector<int> &myset) {
     vector<vector<int>> permutations;
     vector<int> p(myset);
     do {
+        // each permu stored in p
         permutations.push_back(p);
     } while(next_permutation(p.begin(), p.end()));
 

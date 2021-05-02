@@ -37,4 +37,3 @@ int poly_to_num(const vector<int> &poly){
     }
     return num;
 }
-

@@ -61,35 +61,50 @@ m[vector<int>({x,y,z})] = z;
 #### map as special PQ
 
 ```C++
-map<int, int> cnt = {{1,3}, {2,5}, {3,2}};
+map<int, int> _cnt_ = {{1,3}, {2,5}, {3,2}};
 
 // pop_min
-assert(cnt.size() > 0);
-if(cnt.begin()->second == 1) {
-    cnt.erase(cnt.begin());
+assert(_cnt_.size() > 0);
+if(_cnt_.begin()->second == 1) {
+    _cnt_.erase(_cnt_.begin());
 }
 else {
-    cnt.begin()->second -= 1;
+    _cnt_.begin()->second -= 1;
 }
 
 // pop_max
-assert(cnt.size() > 0);
-if(cnt.rbegin()->second == 1) {
-    cnt.erase(prev(cnt.end()));
+assert(_cnt_.size() > 0);
+if(_cnt_.rbegin()->second == 1) {
+    _cnt_.erase(prev(_cnt_.end()));
 }
 else {
-    cnt.rbegin()->second -= 1;
+    _cnt_.rbegin()->second -= 1;
 }
 
 // pop i-th small
 int i = 1;
-assert(cnt.size() > i);
 
-auto it = next(cnt.begin(), i);
+assert(_cnt_.size() > i);
+auto it = next(_cnt_.begin(), i);
 if(it->second == 1) {
-    cnt.erase(it);
+    _cnt_.erase(it);
 }
 else {
     it->second -= 1;
+}
+
+
+// pop by key
+int key = 2;
+
+assert(_cnt_.size() > 0);
+auto it = _cnt_.find(key);
+if(it != _cnt_.end()) {
+    if(it->second == 1) {
+        _cnt_.erase(it);
+    }
+    else {
+        it->second -= 1;
+    }
 }
 ```
