@@ -4,16 +4,19 @@
 #### C++ Default Priority Queue = *Max* Heap
 
 ```C++
-priority_queue<int> pq;
+priority_queue<int> max_heap;
+
+// Clear method
+max_heap = priority_queue<int>();
 ```
 
 #### Min Heap
 
 ```C++
-priority_queue<
-    int,
-    vector<int>,
-    greater<int>> pq;
+priority_queue<int, vector<int>, greater<int>> min_heap;
+
+// Clear method
+min_heap = priority_queue<int, vector<int>, greater<int>>();
 ```
 
 ## 2. 2 elements with different priority

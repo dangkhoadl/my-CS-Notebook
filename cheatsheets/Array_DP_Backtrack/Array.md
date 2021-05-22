@@ -97,3 +97,8 @@ for(int i=0; i<N-1; ++i) {
 - Example: `N = 10, A = [2,3,8,9]` -> `[2,3,8,9,12,13,18,19]`
 
 <img src="./img/1.jpg" width="200"/>
+
+
+# Median
+
+<img src="./img/1.png" width="600"/>
