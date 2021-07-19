@@ -1,3 +1,12 @@
+#### Simple hash func
+
+```C++
+int hash(int key, BUCKETS) {
+    int p = 982453397;
+    int a = 982462417, b = 982452479;
+    return (a*key + b) % p % BUCKETS;
+}
+```
 
 ## Data type Ranges
 

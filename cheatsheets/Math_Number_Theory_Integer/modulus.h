@@ -1,6 +1,6 @@
 
 
-int mod(int x, int m) {
+inline int64_t mod(int64_t x, int64_t m) {
     return ((x%m)+m) % m;
 }
 
