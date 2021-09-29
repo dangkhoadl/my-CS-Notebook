@@ -15,6 +15,7 @@ sort(nums.begin(), nums.end(), [](int a, int b){return a > b;});
 ```
 
 #### Sort pair
+
 ```C++
 // --------------- first -------------- //
 // first: increase

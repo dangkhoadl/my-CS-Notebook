@@ -1,7 +1,7 @@
 
 # Priority Queue
 ## 1. Max-Min heap 1 element
-#### C++ Default Priority Queue = *Max* Heap
+#### Max Heap = C++ Default Priority Queue
 
 ```C++
 priority_queue<int> max_heap;
