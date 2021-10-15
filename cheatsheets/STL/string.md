@@ -12,7 +12,7 @@ string sub_string = s.substr(i);
 string sub_string = s.substr(i, len);
 ```
 
-#### insert in between
+- **Insert in between**
 
 ```cpp
 string s = "One three";
@@ -43,6 +43,22 @@ do {
     p = text.find(pattern, p+1); 
     if(p != -1) pos.push_back(p);
 } while(p != -1);
+```
+
+#### Compare
+
+```C++
+// Compare 2 strings lexicographically. Return
+//       0: str_1 == str_2 (abc == abc)
+//     < 0: abc < bc || abc < abcd
+//     > 0: bc > abc || abcd > abc
+int res = str_1.compare(str_2);
+
+
+// Compare 2 substrings lexicographically
+//      substr_1 = str_1[i_1, i_1 + len_1)
+//      substr_2 = str_2[i_2, i_2 + len_2)
+int res = str_1.compare(i_1, len_1, str_2, i_2, len_2);
 ```
 
 # Convert

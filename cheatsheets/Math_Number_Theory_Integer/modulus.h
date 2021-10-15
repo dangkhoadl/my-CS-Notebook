@@ -48,6 +48,7 @@ inline int64_t gcd(int64_t a, int64_t b) {
     return max(a,b);
 }
 inline vector<int64_t> extendedGCD(int64_t a, int64_t b) {
+    // Find the coefficients x and y such that: ax + by = gcd(a, b)
     assert(a >= b and b >= 0 and a + b > 0);
 
     if(b == 0) return {a,1,0};
@@ -57,8 +58,8 @@ inline vector<int64_t> extendedGCD(int64_t a, int64_t b) {
     int64_t y = dpq[1] - dpq[2] * (a/b);
 
     assert(a % dpq[0] == 0 and b % dpq[0] == 0);
-    assert(dpq[0] == a * x + b * y);
-    return {dpq[0],x,y};
+    assert(dpq[0] == a*x + b*y);
+    return {dpq[0] + b*y, x, y};
 }
 inline int64_t inv(int64_t b) {
     if(b<0) b = (b%MOD) + MOD;
