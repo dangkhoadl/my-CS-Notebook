@@ -1,4 +1,4 @@
-
+// Time Complexity: O(m^2 n)
 
 /*
     [1 1] [x1] = [3]
@@ -6,63 +6,84 @@
 
     GaussianElimination({
         {1.0, 1.0},
-        {2.0, 3.0}}, 
+        {2.0, 3.0}},
             {3.0, 7.0});
     = [2 1]
 */
-// Notes: use isnan(), isinf() to check for special solutions
+pair<int, vector<double>> solve_gaussian_elimination(
+        const vector<vector<double>> &A,
+        const vector<double> &b,
+        double EPS=(double)1e-9) {
+    // Solve Ax = b
+    // returns (ans, x)
+    //      ans: the number of solutions of the system ( 0,1, or INF(2) )
+    //      x: solution if unique
+    int n = (int) A.size();
+    assert(n > 0 && n == b.size());
+    int m = A[0].size();
 
-vector<double> GaussianElimination(const vector<vector<double>> &M, const vector<double> &y) {
-    assert(M.size() == M[0].size());
-    assert(M.size() == y.size());
+    // Concat U = (A,b)
+    vector<vector<double>> U(A);
+    for(int i=0; i<n; ++i) U[i].push_back(b[i]);
 
-    // matrix rank
-    int n = y.size();
-    if(n == 0)
-        return vector<double>();
+    // Init where: Identicate col swapped
+    vector<int> where(m, -1);
 
-    // Make Single matrix
-    vector<vector<double>> A(M);
-    for(int r=0; r<n; ++r)
-        A[r].push_back(y[r]);
-
-    for(int r=0; r<n; ++r) { 
-        // Search for maximum in column
-        double maxEl = abs(A[r][r]);
-        int maxRow = r;
-        for(int r_=r+1; r_<n; ++r_) { 
-            if (abs(A[r_][r]) > maxEl) {
-                maxEl = abs(A[r_][r]);
-                maxRow = r_;
+    for (int col=0, row=0; col<m && row<n; ++col) {
+        // Select row idx that U[idx][col] max
+        int idx = row;
+        for (int i=row; i<n; ++i) {
+            if(abs(U[i][col]) > abs(U[idx][col])) {
+                idx = i;
             }
         }
 
-        // Swap maximum row with current row (column by column)
-        for(int c=r; c<n+1; ++c) {
-            double tmp = A[maxRow][c];
-            A[maxRow][c] = A[r][c];
-            A[r][c] = tmp;
+        if (abs(U[idx][col]) < EPS) continue;
+
+        // Swap row: idx <-> row
+        where[col] = row;
+        for(int j=col; j<=m; ++j) {
+            swap(U[idx][j], U[row][j]);
         }
 
-        // Make all rows below this one 0 in current column
-        for(int r_=r+1; r_<n; ++r_) { 
-            double c = -A[r_][r]/A[r][r];
-            for(int j=r; j<n+1; ++j) { 
-                if (r==j)
-                    A[r_][j] = 0;
-                else
-                    A[r_][j] += c * A[r][j];
+        // Gaussian eliminate
+        for (int i=0; i<n; ++i) {
+            if (i != row) {
+                double c = U[i][col] / U[row][col];
+                for (int j=col; j<=m; ++j) {
+                    U[i][j] -= U[row][j] * c;
+                }
             }
         }
+
+        // Next row
+        row += 1;
     }
 
-    // Solve equation Ax=b for an upper triangular matrix A
-    vector<double> x(n, 0);
-    for (int r=n-1; r>-1; --r) { 
-        x[r] = A[r][n] / A[r][r];
-        for(int r_=r-1; r_>-1; --r_)
-            A[r_][n] -= A[r_][r] * x[r];
+    // Init x
+    vector<double> x(m, 0.0);
+
+    // Solve equation Ux=b for an upper triangular matrix U
+    for(int j=0; j<m; ++j) {
+        if (where[j] != -1) {
+            x[j] = U[where[j]][m] / U[where[j]][j];
+        }
+    }
+    for(int i=0; i<n; ++i) {
+        double sum = 0;
+        for(int j=0; j<m; ++j) {
+            sum += x[j] * U[i][j];
+        }
+
+        // No solutions
+        if(abs(sum - U[i][m]) > EPS) return {0, vector<double>()};
     }
 
-    return x;
+    // inf solutions
+    for (int j=0; j<m; ++j) {
+        if(where[j] == -1) return {2, vector<double>()};
+    }
+
+    // 1 solution
+    return {1, x};
 }
