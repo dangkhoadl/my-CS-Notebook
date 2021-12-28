@@ -8,48 +8,43 @@
 /*-------------------------- O(2^n) ------------------*/
 // n -> 2^n
 // {1,2,5} -> {}, {1}, {2}, {1,2}, {5}, {1,5}, {2,5}, {1,2,5}
-vector<vector<int>> get_all_subset(const vector<int> &myset) {
-    vector<vector<int>> subsets;
-    vector<int> empty;
-    subsets.push_back(empty);
-
-    for(int i=0; i < myset.size(); ++i) {
-        vector<vector<int>> subsetTemp = subsets;
-
-        for(int j=0; j < subsetTemp.size(); ++j)
-            subsetTemp[j].push_back( myset[i] );
-
-        for(int j=0; j < subsetTemp.size(); ++j)
-            subsets.push_back( subsetTemp[j] );
+vector<int> subset;
+void iterate_subsets(int idx, const vector<int> &A) {
+    if(idx == A.size()) {
+        // Process subset
+        
+        return;
     }
-    return subsets;
+
+    // Add A[i]
+    subset.push_back(A[idx]);
+    iterate_subsets(idx+1, A);
+    subset.pop_back();
+
+    // Not add A[i]
+    iterate_subsets(idx+1, A);
 }
 
 
 /*-------------------------- O(2^n) -----------------------*/
 // n -> nCk
 // {5,4,2}, k=2 --> {5,4}, {5,2}, {4,2}
-vector<vector<int>> get_all_combination(const vector<int> &myset, int k) {
-    vector<vector<int>> subsets;
-    vector<int> empty;
-    subsets.push_back(empty);
+vector<int> combination;
+void iterate_combinations(int idx, const vector<int> &A, int k) {
+    if(combination.size() == k) {
+        // Process combination
 
-    for(int i=0; i < myset.size(); ++i) {
-        vector<vector<int>> subsetTemp = subsets;
-
-        for(int j=0; j < subsetTemp.size(); ++j) 
-            subsetTemp[j].push_back( myset[i] );
-
-        for(int j=0; j < subsetTemp.size(); ++j)
-            subsets.push_back( subsetTemp[j] );
+        return;
     }
+    if(idx == A.size()) return;
 
-    vector<vector<int>> combinations;
-    for(int i=0; i<subsets.size(); ++i)
-        if(subsets[i].size() == k)
-            combinations.push_back(subsets[i]);
+    // Add A[i]
+    combination.push_back(A[idx]);
+    iterate_combinations(idx+1, A, k);
+    combination.pop_back();
 
-    return combinations;
+    // Not add A[i]
+    iterate_combinations(idx+1, A, k);
 }
 
 
