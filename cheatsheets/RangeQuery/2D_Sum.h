@@ -1,18 +1,18 @@
 
 /*--------------------- SUM query -------------------------*/
-// Precomputation Time - O(N x M)
+// Precomputation Time - O(M*N)
 // Query Time - O(1)
 
 
 /*-----------------------------------------------------------*/
-// Index 1 - size N*M: precompute_sum(N,M)
+// Index 1 - size M*N: precompute_sum(M,N)
 int mat[MAXN][MAXN];
 
 int T[MAXN][MAXN];
-void precompute_sum(int n, int m) {
+void precompute_sum(int m, int n) {
     memset(T,0,sizeof(T));
-    for (int i=1; i<=n; i++)
-        T[1][i] = mat[1][i];
+    for (int j=1; j<=n; j++)
+        T[1][j] = mat[1][j];
  
     for (int i=2; i<=m; i++)
         for (int j=1; j<=n; j++)
@@ -40,14 +40,14 @@ int query_sum(int i1,int j1, int i2, int j2) {
 
 
 /*----------------------------------------------------------*/
-// Index 0 - size N*M: precompute_sum(N,M)
+// Index 0 - size M*N: precompute_sum(M,N)
 int mat[MAXN][MAXN];
 
 int T[MAXN][MAXN];
-void precompute_sum(int n, int m) {
+void precompute_sum(int m, int n) {
     memset(T,0,sizeof(T));
-    for (int i=0; i<n; i++)
-        T[0][i] = mat[0][i];
+    for (int j=0; j<n; j++)
+        T[0][j] = mat[0][j];
  
     for (int i=1; i<m; i++)
         for (int j=0; j<n; j++)

@@ -2,7 +2,7 @@
 // Note: Apply for string in range[a,z]. Remember to adjust 'a' or 26
 struct TrieNode {
 public:
-    TrieNode *_children[26];
+    TrieNode* _children[26];
     bool _is_word;
 
 public:
