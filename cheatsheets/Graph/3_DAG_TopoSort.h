@@ -39,7 +39,7 @@ private:
     vector<int> state;
     vector<int> topoOrder;
     vector<vector<int>> e;
-    bool isDAG;
+    bool isDAG; // isDAG = not has cycle
 private:
     void explore(int v) {
         // Preprocess

@@ -1,7 +1,7 @@
 
 // segment = [a, b]
 
-// Notes: Greedy segment: Consider the end(b) of a segment (sorted in incresing order...)
+// Notes: Greedy segment: Consider the end(b) of a segment (sorted in increasing order...)
 
 // Check if point in Segments
 bool isInRange(int p, int a, int b) {
